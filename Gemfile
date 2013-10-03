@@ -46,6 +46,7 @@ group :development do
   gem "better_errors"
   gem 'meta_request'
   gem 'rack-webconsole'
+  gem 'faker', '~> 1.0.1', :group => :development
   # Guard
   gem 'guard-bundler'
   gem 'guard-livereload'
