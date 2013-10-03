@@ -1,0 +1,22 @@
+!!!5
+<!--[if lt IE 7]> <html class="front rtl ie lt-ie9 lt-ie8 lt-ie7 fluid top-full"> <![endif]-->
+<!--[if IE 7]>    <html class="front rtl ie lt-ie9 lt-ie8 fluid top-full sticky-top"> <![endif]-->
+<!--[if IE 8]>    <html class="front rtl ie lt-ie9 fluid top-full sticky-top"> <![endif]-->
+<!--[if gt IE 8]> <html class="front rtl ie gt-ie8 fluid top-full sticky-top"> <![endif]-->
+<!--[if !IE]><!-->
+%html.front.fluid.top-full.rtl.sticky-top
+  <!-- <![endif]-->
+  %head
+    %title Net3allem
+    = stylesheet_link_tag "application-rtl", "style-default", "uniform.default"
+    = javascript_include_tag 'application'
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+    = yield :header
+  %body
+    .container-fluid
+      #content
+        = render partial: 'layouts/home_header'
+        = yield
+
+  
