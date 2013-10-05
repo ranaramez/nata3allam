@@ -13,7 +13,7 @@
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     = yield :header
-  %body
+  %body{class: @page_class }
     .container-fluid
       #content
         = render partial: 'layouts/home_header'

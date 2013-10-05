@@ -1,0 +1,17 @@
+#login
+  .container
+    .wrapper
+      %h1.glyphicons.unlock
+        تسجيل الدخول
+        %i
+      .widget.widget-heading-simple.widget-body-gray
+        .widget-body
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            = f.label 'اسم المستخدم'
+            = f.email_field :email, class: "input-block-level", placeholder: "البريد الالكتروني"
+            = f.label "كلمة السر"
+            = f.password_field :password, class: "input-block-level margin-none", placeholder: "كلمة السر"
+            .separator.bottom
+            .row-fluid
+              .span4.center
+                = f.submit "دخول", class: "btn btn-block btn-inverse"

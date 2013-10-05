@@ -1,0 +1,24 @@
+.navbar.main
+  %button.btn.btn-navbar.pull-right{type: "button"}
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
+  %ul.topnav
+    %li.search.open
+      %form.dropdown.dd-1{autocomplete: "off"}
+        %input{type: "text", value:"", placeholder: "ابحث عن طالب .. ", :'data-toggle' => "typeahead"}
+        %button.glyphicons.search{type: "button"}
+          %i
+  %ul.topnav.pull-right
+    %li.active
+      = link_to "#", class: "glyphicons dashboard" do
+        %i
+        الاحصائيات
+    %li
+      = link_to "#", class: "glyphicons group" do
+        %i
+        الطلاب
+    %li
+      = link_to "#", class: "glyphicons briefcase" do
+        %i
+        الفصول

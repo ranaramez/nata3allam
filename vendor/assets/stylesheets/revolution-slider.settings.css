@@ -464,7 +464,7 @@ website:    http://www.themepunch.com
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6) !important;
   font-size: 15px;
   line-height: 45px !important;
-  background: url(../images/gradient/g30.png) repeat-x top;
+  background: url(gradient/g30.png) repeat-x top;
   font-family: arial, sans-serif;
   font-weight: bold;
   letter-spacing: -1px;
@@ -477,7 +477,7 @@ website:    http://www.themepunch.com
   padding: 9px 20px;
   font-size: 19px;
   line-height: 57px !important;
-  background: url(../images/gradient/g40.png) repeat-x top;
+  background: url(gradient/g40.png) repeat-x top;
 }
 
 .purchase:hover,.button:hover,.button.big:hover {

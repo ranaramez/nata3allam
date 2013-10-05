@@ -1,0 +1,35 @@
+!!!5
+/[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar rtl"> 
+/[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar rtl">
+/[if IE 8]>    <html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar rtl">
+/[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar rtl">
+<!--[if !IE]><!-->
+%html.fluid.top-full.rtl.sticky-top.sidebar.sidebar-full.sticky-sidebar
+  <!-- <![endif]-->
+  %head
+    %title Net3allem
+    = stylesheet_link_tag "application-dashboard-rtl", "style-default", "uniform.default"
+    = javascript_include_tag 'application-dashboard'
+    <!--[if lt IE 9]><!-->
+    = javascript_include_tag 'system/html5shiv'
+    <!--<![endif]-->
+
+    <!--[if IE]><!-->
+    = javascript_include_tag 'excanvas/excanvas'
+    <!--<![endif]-->
+    <!--[if lt IE 8]><!-->
+    = javascript_include_tag 'json2'
+    <!--[endif]-->
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+    = yield :header
+  %body{class: @page_class }
+    .container-fluid.fluid.menu-right
+      #wrapper
+        #menu.hidden-phone.hidden-print
+          = render partial: 'layouts/sidebar'
+        #content
+          = render partial: 'layouts/dashboard_header'
+          = yield
+
+  

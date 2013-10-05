@@ -1,0 +1,50 @@
+%h2
+  احصائيات عامة
+  %span 
+    عن الحضانة والطلاب
+
+.innerLR
+  .row-fluid
+    .span9.tablet-column-reset
+      .row-fluid
+        .span9
+          .widget.widget-heading-simple.widget-body-simple
+            .widget-body
+              .row-fluid
+                .span3
+                  = link_to "#", class: "widget-stats widget-stats-1" do
+                    %span.glyphicons.group
+                      %i
+                      %span.txt
+                        عدد الطلاب
+                    .clearfix
+                    %span.count
+                      ٦٠
+                .span3
+                  = link_to "#", class: "widget-stats widget-stats-1" do
+                    %span.glyphicons.briefcase
+                      %i
+                      %span.txt
+                        عدد الفصول
+                    .clearfix
+                    %span.count
+                      ٤
+
+                .span3
+                  = link_to "#", class: "widget-stats widget-stats-1" do
+                    %span.glyphicons.user
+                      %i
+                      %span.txt
+                        عدد المعلمين
+                    .clearfix
+                    %span.count
+                      ٥
+    .span3.tablet-column-reset
+      .widget.widget-heading-simple.widget-body-gray
+        .widget-head
+          %h4.heading.glyphicons.calendar
+            %i
+            النتيجة
+
+        .widget-body
+          #datepicker-inline

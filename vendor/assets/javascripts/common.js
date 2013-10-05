@@ -9,7 +9,11 @@
  * ========================================================== */ 
 
 /* Utility functions */
-
+var primaryColor = '#4a8bc2',
+ 		dangerColor = '#b55151',
+  	successColor = '#609450',
+  	warningColor = '#ab7a4b',
+  	inverseColor = '#45484d';
 // generate a random number
 function randNum()
 {
@@ -196,7 +200,7 @@ function genEasyPie()
 	{
 		$.each($('.easy-pie'), function(k,v)
 		{	
-			var color = primaryColor;
+			var color = "#4a8bc2";
 			if ($(this).is('.danger')) color = dangerColor;
 			if ($(this).is('.success')) color = successColor;
 			if ($(this).is('.warning')) color = warningColor;

@@ -1,5 +1,4 @@
 class Student < Person
-
   include Mongoid::Document
 
   belongs_to :n_class, :class_name => "NClass", :inverse_of => :students
