@@ -12,97 +12,25 @@
       %th.center{ width: "120"}
     
   %tbody
-    %tr
-      %td.center{ width: "80" }
-        %span.thumb
-          %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-      %td.important
-        %h3
-          فصل ( أ )
-      %td.center.stats
-        %span
-          عدد الطلاب
-        %span.count ٢٠
-      %td.center.stats
-        %span
-          عدد المواد
-        %span.count ٤
-      %td.center.stats
-        %span
-          مدرسة الفصل
-        %span.count
-          ميس انشراح
-      %td.center
-        %button.btn.btn-default{type: "button"}
-          تعديل
-    %tr
-      %td.center{ width: "80" }
-        %span.thumb
-          %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-      %td.important
-        %h3
-          فصل ( ب )
-      %td.center.stats
-        %span
-          عدد الطلاب
-        %span.count ٢٠
-      %td.center.stats
-        %span
-          عدد المواد
-        %span.count ٤
-      %td.center.stats
-        %span
-          مدرسة الفصل
-        %span.count
-          ميس ميسا
-      %td.center
-        %button.btn.btn-default{type: "button"}
-          تعديل
-
-    %tr
-      %td.center{ width: "80" }
-        %span.thumb
-          %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-      %td.important
-        %h3
-          فصل ( ج )
-      %td.center.stats
-        %span
-          عدد الطلاب
-        %span.count ١٠
-      %td.center.stats
-        %span
-          عدد المواد
-        %span.count ٤
-      %td.center.stats
-        %span
-          مدرسة الفصل
-        %span.count
-          ميس إيمان
-      %td.center
-        %button.btn.btn-default{type: "button"}
-          تعديل
-
-    %tr
-      %td.center{ width: "80" }
-        %span.thumb
-          %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-      %td.important
-        %h3
-          فصل ( بطوط )
-      %td.center.stats
-        %span
-          عدد الطلاب
-        %span.count ١٥
-      %td.center.stats
-        %span
-          عدد المواد
-        %span.count ٤
-      %td.center.stats
-        %span
-          مدرسة الفصل
-        %span.count
-          ميس كاميليا
-      %td.center
-        %button.btn.btn-default{type: "button"}
-          تعديل
+    -@classes.each do |n_class| 
+      %tr
+        %td.center{ width: "80" }
+          %span.thumb
+            %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
+        %td.important
+          %h3= n_class.name
+        %td.center.stats
+          %span
+            عدد الطلاب
+          %span.count= n_class.students.count
+        %td.center.stats
+          %span
+            عدد المواد
+          %span.count=  n_class.subjects.count
+        %td.center.stats
+          %span
+            مدرسة الفصل
+          %span.count= n_class.teacher_name
+        %td.center
+          %button.btn.btn-default{type: "button"}
+            تعديل
