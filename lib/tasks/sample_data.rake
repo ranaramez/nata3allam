@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 namespace :sample_data do
   task :generate => :environment do 
 
@@ -62,7 +64,7 @@ def make_users
                               :last_name => ln,
                               :username => Faker::Internet.user_name(name).sub(".","_"),
                               :email => Faker::Internet.email(name),
-                              :password=> 'please',
+                              :password=> 'please123',
                               :address => Faker::Address.secondary_address,
                               :gender => [:male, :female].sample,
                               :educational_backround => Faker::Lorem.sentence,
@@ -76,7 +78,7 @@ end
 def make_students (people)
   puts "Creating students"
   students = [] 
-  number = 30
+  number = 100
   number.times do |n|
     fn = Faker::Name.first_name
     ln = Faker::Name.last_name
@@ -101,20 +103,22 @@ end
 
 def make_teachers
   puts "Creating teachers"
+  teachers_names = ["ميس  انشراح",  "ميس ميسا", "ميس إيمان" ,"ميس كاميليا"]
   people = [] 
   number = 10
   number.times do |n|
     fn = Faker::Name.first_name
     ln = Faker::Name.last_name
     name = "#{fn} #{ln}"
-    people << Teacher.create!( :first_name => fn,
-                              :last_name => ln,
+    teacher = Teacher.create!( :first_name => teachers_names.sample,
+                              :last_name => "",
                               :address => Faker::Address.secondary_address,
                               :gender => [:male, :female].sample,
                               :educational_backround => Faker::Lorem.sentence,
                               :job => Faker::Lorem.sentence,
                               :contacts => Faker::PhoneNumber.phone_number
                             )
+    people << teacher
   end
   
   return people
@@ -123,14 +127,16 @@ end
 
 def make_subjects
   puts "Creating subjects"
+  subjects_names = ["عربي مرحلة أولى","إنجليزي مرحلة أولى", "حساب مرحلة ثانية","حديث مرحلة أولي" ]
+  lessons_names = ["حرف الضاد", "رقم واحد", "رقم إثنين", "حرف  الألف", "حديث ١" ]
   subjects = []
   number =10
   number.times do |n|
-    subject = Subject.create!( :description => Faker::Lorem.sentence,
+    subject = Subject.create!( :description => subjects_names.sample,
                                :level => Faker::Lorem.words.join(" ")
                              )
     10.times do |t|
-      lesson = Lesson.new(:description => Faker::Lorem.sentence)
+      lesson = Lesson.new(:description => lessons_names.sample)
       performance_metrics = Hash.new 
       3.times do |m|
         performance_metrics[Faker::Lorem.words.join(" ")] = [10,15,20,50].sample 
@@ -147,10 +153,10 @@ end
 def make_class_subjects (teachers, subjects)
   puts "Creating class subjects"
   class_subjects = []
-  number = 30
+  number = 100
   number.times do |n|
-    class_subject = ClassSubject.create!(:description => Faker::Lorem.sentence)
     subject = subjects.sample
+    class_subject = ClassSubject.create!(:description => subject.description)  
     class_subject.subject = subject
     class_subject.lessons = subject.lessons
     class_subject.subject_teachers = [teachers.sample]
@@ -162,18 +168,25 @@ end
 
 def make_classes(teachers, students, class_subjects)
   puts "Creating classes"
+  class_names = ["فصل (ا)","فصل(ب)","فصل(ج)" ,"فصل(بطوط)"]
   classes = []
   number = 10
   number.times do |n|
-    nclass = NClass.create!(:name => Faker::Lorem.words.join(" "))
-    nclass.class_teacher = teachers.sample
+    teacher = teachers.sample
+    teachers = teachers - [teacher]
+    nclass = NClass.create!(:name => class_names.sample, :class_teacher => teacher)
+    puts "#{nclass.name} - #{nclass.class_teacher.first_name}"
+    (1..3).each do |c|
+      student = students.sample
+      students = students - [student]
+      nclass.students << students.sample
+    end
+    (1..3).each do |c|
+      class_subject = class_subjects.sample
+      class_subjects = class_subjects -[class_subject]
+      nclass.subjects << class_subject
+    end
     nclass.save!
-    (1..3).each do |c|
-      nclass.students +=[students.sample]
-    end
-    (1..3).each do |c|
-      nclass.subjects += [class_subjects.sample]
-    end
     classes<<nclass
   end
   classes
@@ -245,7 +258,6 @@ def make_class_subject_schedule(class_subjects)
   end
 
 end
-
 
 
 
