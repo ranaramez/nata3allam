@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
   layout :set_layout
-  before_filter :set_layout
   before_filter :set_css_class
   protect_from_forgery
 
