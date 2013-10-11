@@ -19,8 +19,7 @@ class NClass
   def class_monthly_schedule month
     subjects_hash = {}
     subjects.each do |subject|
-      description = subject[:description]
-      subjects_hash[description] = subject.subject_monthly_schedule month
+      subjects_hash[subject] = subject.subject_monthly_schedule month
     end
     subjects_hash
   end

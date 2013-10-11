@@ -1,0 +1,8 @@
+-if subject_pair[1].present?
+  %span= subject_pair[1]
+  %a
+    %i.icon-edit
+-else  
+  %select.selectpicker.span2{"data-style" => "btn-default", :style => "display: none;"}
+    -subject_pair[0].lessons.each do |lesson|
+      %option= lesson.description
