@@ -5,6 +5,8 @@ Nata3allam::Application.routes.draw do
   resources :admin_dashboard, only: :index
 
   resources :n_class
+
+  match '/class_schedule', :to => 'n_class#schedule'
     
   root :to => 'Home#index'
 end

@@ -53,35 +53,33 @@
               %i
               الطلاب
   .clearfix
-  %table.fc-header{width: "100%"}
-    %tbody
+
+%table.table.table-striped.table-vertical-center.table-projects.table-bordered
+  %thead
+    %tr
+      %th{ colspan: "2" }
+        %span المواد
+      %th.center{ width: "100" }
+        %span إسبوع ١
+      %th.center{ width: "100"}
+        %span  إسبوع ٢
+      %th.center{ width: "100"}
+        %span  إسبوع ٣
+      %th.center{ width: "100"}
+        %span  إسبوع ٤
+  %tbody
+    -@schedule.each do |subject, subject_schedule| 
       %tr
-        %td.fc-header-left
-          .btn-group
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-next ►
-            %span.fc-header-space
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-prev ◄
-    
-  .separator.bottom
-  -@subjects.each_slice(2).to_a.each do |pair|
-    .row-fluid
-      .span6
-        .box-generic
-          .media
-            %img.media-object.pull-left.thumb{ src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", style: "width: 51px; height: 51px;"}
-            .media-body
-              %h4.media-heading=pair[0].description
-              %span=pair[0].teachers_names
-              %br
-              %span=format_arr(pair[0].get_lessons_desc @start_date)
-      -if pair[1].present?
-        .span6
-          .box-generic
-            .media
-              %img.media-object.pull-left.thumb{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", style: "width: 51px; height: 51px;"}
-              .media-body
-                %h4.media-heading=pair[1].description
-                %span=pair[1].teachers_names
-                %br
-                %span=format_arr(pair[1].get_lessons_desc @start_date)
+        %td.center{ width: "80" }
+          %span.thumb
+            %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
+        %td.center{ width: "100" }
+          %h3= subject
+        %td.center.stats
+          %span= subject_schedule[0]
+        %td.center.stats
+          %span= subject_schedule[1]
+        %td.center.stats
+          %span= subject_schedule[2]
+        %td.center.stats
+          %span= subject_schedule[3]

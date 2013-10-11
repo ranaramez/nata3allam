@@ -22,11 +22,11 @@
         %td.center.stats
           %span
             عدد الطلاب
-          %span.count= n_class.students.count
+          %span.count= format_number(n_class.students.count)
         %td.center.stats
           %span
             عدد المواد
-          %span.count=  n_class.subjects.count
+          %span.count=  format_number(n_class.subjects.count)
         %td.center.stats
           %span
             مدرسة الفصل

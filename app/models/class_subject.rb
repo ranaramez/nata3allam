@@ -19,4 +19,25 @@ class ClassSubject
   	names
   end
 
+  def get_lessons_desc date = nil
+    if date.present?
+      month = date.month
+      week_number = (date.day/7) + 1
+      entries = class_schedule_entries.where(week: week_number, month: month)
+      class_lessons = entries.map(&:lesson)
+    else
+      class_lessons = lessons
+    end
+    class_lessons.map(&:description)
+  end
+
+  def subject_monthly_schedule month
+    entries = class_schedule_entries.where(month: month)
+    lessons_hash ={}
+    entries.each do |entry|
+      lessons_hash[entry.week] = entry.lesson.description
+    end
+    lessons_hash
+  end
+
 end

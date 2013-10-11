@@ -8,7 +8,13 @@ class NClassController < ApplicationController
   end
 
   def show
-  	@n_class_id = params[:n_class_id]
+    if params[:date].present?
+      @start_date = Date.parse(params[:date])
+    else
+      @start_date = Date.today.beginning_of_week(:saturday)
+  	end
+    @end_date = @start_date + 6
+    @n_class_id = params[:n_class_id]
   	if @n_class_id.present?
   	  @n_class = NClass.where(_id: @n_class_id).first
     else
@@ -17,5 +23,22 @@ class NClassController < ApplicationController
     @teacher = @n_class.teacher_name
     @students = @n_class.students
     @subjects = @n_class.subjects
+  end
+
+  def schedule
+    if params[:month].present?
+      @month = Date.parse(params[:month])
+    else
+      @month = Date.today.month
+    end
+
+    @n_class_id = params[:n_class_id]
+    if @n_class_id.present?
+      @n_class = NClass.where(_id: @n_class_id).first
+    else
+      @n_class = NClass.all.first
+    end
+    @schedule = @n_class.class_monthly_schedule @month
+    @students =@n_class.students
   end
 end
