@@ -22,7 +22,6 @@ config/*.sphinx.conf
 config/database.yml
 config/facebook.yml
 config/twitter.yml
-config/mebla.yml
 config/mongoid.yml
 config/paperclip.yml
 config/tire.yml
