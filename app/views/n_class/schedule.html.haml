@@ -57,7 +57,7 @@
 %table.table.table-striped.table-vertical-center.table-projects.table-bordered
   %thead
     %tr
-      %th{ colspan: "2" }
+      %th{ colspan: "2"}
         %span المواد
       %th.center{ width: "100" }
         %span إسبوع ١
@@ -73,13 +73,13 @@
         %td.center{ width: "80" }
           %span.thumb
             %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-        %td.center{ width: "100" }
-          %h3= subject
-        %td.center.stats
-          %span= subject_schedule[0]
-        %td.center.stats
-          %span= subject_schedule[1]
-        %td.center.stats
-          %span= subject_schedule[2]
-        %td.center.stats
-          %span= subject_schedule[3]
+        %td
+          %h3= subject.description
+        %td
+          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[0]], as: :subject_pair
+        %td
+          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[1]], as: :subject_pair
+        %td
+          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[2]], as: :subject_pair
+        %td
+          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[3]], as: :subject_pair
