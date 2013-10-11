@@ -10,15 +10,6 @@
         %button.glyphicons.search{type: "button"}
           %i
   %ul.topnav.pull-right
-    %li.active
-      = link_to "#", class: "glyphicons dashboard" do
-        %i
-        الاحصائيات
-    %li
-      = link_to "#", class: "glyphicons group" do
-        %i
-        الطلاب
-    %li
-      = link_to "#", class: "glyphicons briefcase" do
-        %i
-        الفصول
+    = nav_link "الاحصائيات", admin_dashboard_index_path, "glyphicons dashboard"
+    = nav_link "الطلاب", "#", "glyphicons group"
+    = nav_link "الفصول", n_class_path, "glyphicons briefcase"
