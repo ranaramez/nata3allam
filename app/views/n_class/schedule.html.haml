@@ -53,33 +53,42 @@
               %i
               الطلاب
   .clearfix
-
-%table.table.table-striped.table-vertical-center.table-projects.table-bordered
-  %thead
-    %tr
-      %th{ colspan: "2"}
-        %span المواد
-      %th.center{ width: "100" }
-        %span إسبوع ١
-      %th.center{ width: "100"}
-        %span  إسبوع ٢
-      %th.center{ width: "100"}
-        %span  إسبوع ٣
-      %th.center{ width: "100"}
-        %span  إسبوع ٤
-  %tbody
-    -@schedule.each do |subject, subject_schedule| 
+  %table.fc-header{width: "100%"}
+    %tbody
       %tr
-        %td.center{ width: "80" }
-          %span.thumb
-            %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-        %td
-          %h3= subject.description
-        %td
-          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[0]], as: :subject_pair
-        %td
-          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[1]], as: :subject_pair
-        %td
-          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[2]], as: :subject_pair
-        %td
-          %span= render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[3]], as: :subject_pair
+        %td.fc-header-left
+          .btn-group
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+              %span= link_to "►", n_clas_schedule_path(:month => (@month-1), :n_clas_id => @n_class._id)
+            %span.fc-header-space
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_month(@month)}"
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+              %span= link_to "◄", n_clas_schedule_path(:month => (@month+1), :n_clas_id => @n_class._id)
+  %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+    %thead
+      %tr
+        %th.center.heading المادة
+        %th.center{style: "width: 15%"}
+          %span.plan اسبوع ١
+          .separator.bottom
+        %th.center{style: "width: 15%"}
+          %span.plan اسبوع ٢
+          .separator.bottom
+        %th.center{style: "width: 15%"}
+          %span.plan اسبوع ٣
+          .separator.bottom
+        %th.center{style: "width: 15%"}
+          %span.plan اسبوع ٤
+          .separator.bottom
+    %tbody
+      -@schedule.each do |subject, subject_schedule| 
+        %tr
+          %td= subject.description
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[0]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[1]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[2]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[3]], as: :subject_pair

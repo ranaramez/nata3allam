@@ -25,6 +25,10 @@ module ApplicationHelper
     arr.join(', ').to_s
   end
 
+  def format_month(month_no)
+    translate(Date::MONTHNAMES[month_no].downcase)
+  end
+
   def translate(text)
  	  begin
   	  I18n.translate!(text, :raise => true) 

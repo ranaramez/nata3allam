@@ -24,13 +24,13 @@
 .bootstrap-select.btn-group .btn .filter-option {
   overflow:hidden; 
   position:absolute;
-  left:12px; 
-  right:25px;
-  text-align:left;
+  left: 25px;
+  right: 12px;
+  text-align: right;
 }
 .bootstrap-select.btn-group .btn .caret {
   position:absolute;
-  right:12px;
+  left:12px;
 }
 .bootstrap-select.btn-group .disabled {cursor: not-allowed;}
 .bootstrap-select.btn-group[class*="span"] .btn {
