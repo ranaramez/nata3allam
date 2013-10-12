@@ -4,7 +4,7 @@ class NClassController < ApplicationController
   def index
   	@page_index = params[:page_index]
   	@page_index ||= 1
-  	@classes = NClass.page(@page_index).per(5)
+  	@classes = NClass.page(@page_index)
     
     respond_to do |format|
       format.html
