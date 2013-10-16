@@ -33,21 +33,4 @@ class NClassController < ApplicationController
     end
   end
 
-  def schedule
-    if params[:month].present?
-      @month = params[:month].to_i
-    else
-      @month = Date.today.month
-    end
-    @month = 1 if @month < 1
-    @month = (@month % 12) if @month > 12
-    @n_class_id = params[:n_clas_id]
-    if @n_class_id.present?
-      @n_class = NClass.where(_id: @n_class_id).first
-    else
-      @n_class = NClass.all.first
-    end
-    @schedule = @n_class.class_monthly_schedule @month
-    @students =@n_class.students
-  end
 end

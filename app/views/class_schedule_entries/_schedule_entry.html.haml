@@ -1,0 +1,8 @@
+%td.center
+  -if schedule_entry.lesson.present?
+    %span= schedule_entry.lesson.description
+    %a
+      = link_to class_schedule_entry_path(id: schedule_entry._id), :method => 'delete',  :class => "delete" do
+        %i.icon-edit
+  -else
+    = render partial:"new_schedule_entry", :object => schedule_entry, as: :class_schedule_entry
