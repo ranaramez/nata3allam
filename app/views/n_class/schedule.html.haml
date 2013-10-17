@@ -54,6 +54,20 @@
               الطلاب
   .clearfix
 
+  %table.fc-header{width: "100%"}
+    %tbody
+      %tr
+        %td.fc-header-left
+          .btn-group
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+              %span= link_to "►", n_clas_schedule_path(:month => (@month-1), :n_clas_id => @n_class._id)
+            %span.fc-header-space
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_month(@month)}"
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+              %span= link_to "◄", n_clas_schedule_path(:month => (@month+1), :n_clas_id => @n_class._id)
+  .separator.bottom
+
+
   %table.table.table-white.table-bordered.table-vertical-center.table-pricing
     %thead
       %tr

@@ -27,12 +27,14 @@ class NClassController < ApplicationController
 
   def schedule
     if params[:month].present?
-      @month = Date.parse(params[:month])
+      @month = params[:month].to_i
     else
       @month = Date.today.month
     end
 
-    @n_class_id = params[:n_class_id]
+    @month = 1 if @month < 1
+    @month = (@month % 12) if @month > 12
+    @n_class_id = params[:n_clas_id]
     if @n_class_id.present?
       @n_class = NClass.where(_id: @n_class_id).first
     else
