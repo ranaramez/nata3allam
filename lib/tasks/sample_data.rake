@@ -28,7 +28,179 @@ namespace :sample_data do
     class_attendance_records = make_class_attendance_records(students, class_subjects)
     make_class_subject_schedule(class_subjects)
   end
+
+   task :init => :environment do
+    init
+   end
 end
+
+def init
+
+  #Admin 
+
+  admin = User.new
+  admin.username = "admin"
+  admin.email = "admin@net3allem.com"
+  admin.first_name = "admin"
+  admin.password = "password"
+  admin.save!
+  puts "Admin Created \n username: admin@net3allem.com \n password: password "
+
+  #Teachers
+  teacher1 = Teacher.new
+  teacher1.first_name = "ميس نشوى"
+  teacher1.save!
+
+  teacher2 = Teacher.new
+  teacher2.first_name = "ميس ايمان"
+  teacher2.save!
+
+
+  teacher3 = Teacher.new
+  teacher3.first_name = "ميس نازلي"
+  teacher3.save!
+
+  teacher4 = Teacher.new
+  teacher4.first_name = "ميس رنا"
+  teacher4.save!
+
+  teacher4 = Teacher.new
+  teacher4.first_name = "ميس هنا"
+  teacher4.save!
+
+
+  teacher5 = Teacher.new
+  teacher5.first_name = "ميس صفاء"
+  teacher5.save!
+
+  teacher6 = Teacher.new
+  teacher6.first_name = "ميس لميا"
+  teacher6.save!
+
+  teacher7 = Teacher.new
+  teacher7.first_name = "ميس هدى"
+  teacher7.save!
+
+
+  teacher8 = Teacher.new
+  teacher8.first_name = "ميس امل"
+  teacher8.save!
+
+
+  teacher9 = Teacher.new
+  teacher9.first_name = "ميس سارة"
+  teacher9.save!
+
+  puts "Teachers Created ... "
+
+  #Subjects
+  arabic = Subject.new
+  arabic.description = "لغة عربية"
+  arabic.level = 1
+
+
+  math = Subject.new
+  math.description = "حساب"
+  math.level = 1
+
+  islamic = Subject.new
+  islamic.description = "تربية اسلامية"
+  islamic.level = 1
+
+  english = Subject.new
+  english.description = "لغة انجليزية"
+  english.level = 1
+
+  amaleya = Subject.new
+  amaleya.description = "الحياة العملية"
+  amaleya.level = 1
+
+  heseya = Subject.new
+  heseya.description = "الحياة الحسية"
+  heseya.level = 1
+
+  thakafa = Subject.new
+  thakafa.description = "الركن الثقافي"
+  thakafa.level = 1
+
+  subjects = [arabic, math, islamic, english, amaleya, heseya, thakafa]
+  subjects.map{|s| s.save!}
+
+  puts "Subjects Created ... "
+
+  #NClasses 
+  montessori1 = NClass.new 
+  montessori1.name = "المجموعة الأولى"
+  montessori1.class_teacher = teacher1
+
+  montessori2 = NClass.new 
+  montessori2.name = "المجموعة الثانية"
+  montessori2.class_teacher = teacher2
+
+  montessori3 = NClass.new 
+  montessori3.name = "المجموعة الثالثة"
+  montessori3.class_teacher = teacher3
+
+  montessori4 = NClass.new 
+  montessori4.name = "المجموعة الرابعة"
+  montessori4.class_teacher = teacher4
+
+  montessori5 = NClass.new 
+  montessori5.name = "المجموعة الخامسة"
+  montessori5.class_teacher = teacher5
+
+  montessori6 = NClass.new 
+  montessori6.name = "المجموعة السادسة"
+  montessori6.class_teacher = teacher6
+
+  class1= NClass.new 
+  class1.name = "فصل 1"
+  class1.class_teacher = teacher7
+
+  class2= NClass.new 
+  class2.name = "فصل 2"
+  class2.class_teacher = teacher8
+
+  class3= NClass.new 
+  class3.name = "فصل 3"
+  class3.class_teacher = teacher9
+
+  classes = [ 
+    montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
+    class1, class2, class3 ]
+
+  classes.map{|s| s.save!}
+
+  puts "Classes created ... "
+
+  Importer::Importer.import_lessons
+
+  puts "Lessons Importing done ... "
+
+   classes.each do |c|
+     subjects.each do |s|
+        s.reload
+        cs = ClassSubject.new
+        cs.description = s.description
+        # s.lessons.each do |l|
+        #   l.class_subject = cs
+        #   cs.save!
+        # end
+        cs.subject= s
+        cs.lessons = s.lessons
+        cs.save!
+        c.subjects << cs
+     end
+     make_class_subject_schedule(c.subjects)
+   end
+   puts "Class Subjects created "
+   puts "Fake initial schedule created "
+   puts "Initial Data compelte! "
+
+  #Import students 
+  #make_class_evaluation_records(students, class_subjects)
+  #make_class_attendance_records(students, class_subjects)    
+  end
 
 def make_people 
   puts "Creating people"
@@ -245,7 +417,7 @@ def make_class_attendance_records(students, class_subjects)
 end
 
 def make_class_subject_schedule(class_subjects)
-  puts "Creating class subject schedule"
+ #puts "Creating class subject schedule"
   class_subjects.each do |class_subject|
     class_subject.lessons.each do |lesson|
       entry = ClassScheduleEntry.new
