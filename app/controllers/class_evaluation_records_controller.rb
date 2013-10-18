@@ -43,7 +43,7 @@ class ClassEvaluationRecordsController < ApplicationController
       evaluation_record.grades = evaluation_record.grades.uniq
       evaluation_record.save!
     end
-    redirect_to edit_class_evaluation_record_path( id: id, class_subject_id: @class_subject._id)
+    redirect_to edit_class_evaluation_record_path( id: id, class_subject_id: @class_subject._id, month: params[:month])
   end
 
 end
