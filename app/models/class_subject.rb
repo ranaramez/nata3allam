@@ -19,16 +19,16 @@ class ClassSubject
   	names
   end
 
-  def get_lessons_desc date = nil
+  def get_lessons date = nil
     if date.present?
       month = date.month
-      week_number = (date.day/7) + 1
+      week_number = (date.day/7) 
       entries = class_schedule_entries.where(week: week_number, month: month)
       class_lessons = entries.map(&:lesson)
     else
-      class_lessons = lessons
+      class_lessons = class_schedule_entries.map(&:lesson)
     end
-    class_lessons.map(&:description)
+    class_lessons
   end
 
   def subject_monthly_schedule month
@@ -42,6 +42,10 @@ class ClassSubject
       lessons_arr[week_no] = entry
     end
     lessons_arr
+  end
+
+  def lesson_evaluated? lesson
+    class_evaluation_records.where('lesson._id' => lesson._id).first.present?
   end
 
 end

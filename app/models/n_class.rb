@@ -11,7 +11,7 @@ class NClass
   def teacher_name
   	teacher = class_teacher
   	if teacher.present?
-  		return teacher.first_name.to_s + " " + teacher.last_name.to_s
+  		return teacher.full_name
   	end
   	return "none"
   end

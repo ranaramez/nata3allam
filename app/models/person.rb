@@ -16,4 +16,7 @@ class Person
 
   validates_presence_of :first_name
 
+  def full_name
+    first_name.to_s + " " + last_name.to_s
+  end
 end

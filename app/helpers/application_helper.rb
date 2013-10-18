@@ -36,5 +36,8 @@ module ApplicationHelper
       text
     end
   end
-  
+
+  def get_student_grades lessons, evaluation_record
+    evaluation_record.get_student_grades lessons
+  end
 end

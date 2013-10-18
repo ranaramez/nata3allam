@@ -24,7 +24,7 @@ namespace :sample_data do
     teachers = make_teachers
     class_subjects = make_class_subjects(teachers, subjects)
     classes = make_classes(teachers, students, class_subjects)
-    class_evaluation_records = make_class_evaluation_records(students, class_subjects)
+    #class_evaluation_records = make_class_evaluation_records(students, class_subjects)
     class_attendance_records = make_class_attendance_records(students, class_subjects)
     make_class_subject_schedule(class_subjects)
   end
