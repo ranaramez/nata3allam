@@ -1,0 +1,23 @@
+%td.center
+  -if schedule_entry.lesson.present?
+    %span= schedule_entry.lesson.description
+    = link_to class_schedule_entry_path(id: schedule_entry._id), method: 'delete', class: "delete" do
+      %i.icon-edit
+  -else
+    - lessons = schedule_entry.class_subject.lessons
+    .row-fluid
+      .btn-group.bootstrap-select.span12
+        %button.btn.dropdown-toggle.clearfix.btn-default{"data-toggle" => "dropdown"}
+          %span.caret
+          %span.filter-option.pull-right اختر الدرس
+          \ 
+        .dropdown-menu{role: "menu"}
+          %ul{style: "max-height: 150px; overflow-y: scroll;"}
+            - lessons.each_with_index do |lesson, index|
+              = form_for schedule_entry, url: { action: "create"}, html: { class: "no-style", method: :post } do |f|
+                = hidden_field_tag 'month', schedule_entry.month
+                = hidden_field_tag 'week', schedule_entry.week
+                = hidden_field_tag 'class_subject_id', schedule_entry.class_subject._id    
+                = hidden_field_tag 'class_schedule_entry[lesson]', lesson.id
+                %li{rel: index.to_s}
+                  = link_to lesson.description, "#", tabindex: "-1", class: "subject-submit"

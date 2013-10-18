@@ -32,12 +32,16 @@ class ClassSubject
   end
 
   def subject_monthly_schedule month
-    entries = class_schedule_entries.where(month: month)
-    lessons_hash ={}
-    entries.each do |entry|
-      lessons_hash[entry.week] = entry.lesson.description
+    lessons_arr =[]
+    (0..3).each do |week_no|
+      entry = class_schedule_entries.where(month: month, week: week_no).first
+      if entry.nil?
+        entry = ClassScheduleEntry.new(month: month, week: week_no)
+        entry.class_subject = self
+      end
+      lessons_arr[week_no] = entry
     end
-    lessons_hash
+    lessons_arr
   end
 
 end

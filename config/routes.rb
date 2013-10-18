@@ -5,11 +5,12 @@ Nata3allam::Application.routes.draw do
   resources :admin_dashboard, only: :index
 
   resources :n_class do
-    get :schedule
     put :course_week
   end
 
-  match '/class_schedule', :to => 'n_class#schedule'
+
+  resources :class_schedule_entries, only: [:new, :create, :destroy]
+  match 'n_class/:n_clas_id/schedule', :to => 'class_schedule_entries#index', as: 'class_schedule_entries'
     
   root :to => 'Home#index'
 end
