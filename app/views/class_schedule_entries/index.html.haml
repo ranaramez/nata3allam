@@ -88,5 +88,9 @@
     %tbody
       - @schedule.each_with_index do |(subject, subject_schedule), index|
         %tr
-          %td= subject.description
+          %td
+            %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
+            = subject.description
+            / %span.thumb
+            
           = render partial: "schedule_entry", :collection => subject_schedule, as: :schedule_entry
