@@ -4,9 +4,12 @@ Nata3allam::Application.routes.draw do
   
   resources :admin_dashboard, only: :index
 
-  resources :n_class do
+  resources :n_classes do
     put :course_week
+    get :enrolled_students
   end
+
+  resources :students
 
 
   resources :class_schedule_entries, only: [:new, :create, :destroy]

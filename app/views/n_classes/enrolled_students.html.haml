@@ -1,0 +1,61 @@
+%ul.breadcrumb
+  %li
+    = link_to n_classes_path, class: "glyphicons briefcase" do
+      %i
+      الفصول
+  %li.divider
+  %li= @n_class.name
+.innerAll
+  .row-fluid
+    .span12
+      .span6
+        %table.table.table-invoice
+          %tbody
+            %tr
+              %td{ style: "width: 100%;"}
+                .media
+                  %img.media-object.pull-left.thumb{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
+                  .media-body
+                    %h2= @n_class.name
+                    %h4= @teacher
+                    .separator.bottom
+      .span6
+        .span3.pull-left
+              
+          =link_to "#", class: "widget-stats widget-stats-gray widget-stats-2 widget-stats-easy-pie txt-single" do
+            .easy-pie.success{ :'data-percent' => "90" }
+              %span.value ٩٠%
+            %span.txt تكملة المنهج
+            .clearfix
+            .separator.bottom
+        .span3.pull-left
+              
+          =link_to n_class_enrolled_students_path(@n_class), class: "widget-stats widget-stats-gray widget-stats-2" do
+            %span.count= format_number(@students.count)
+            %span.txt طالب
+            
+  .separator.bottom
+  .row-fluid
+    .span12
+      .tabsbar.tabsbar-2
+        %ul.row-fluid.row-merge
+          %li.span4.glyphicons.cargo
+            =link_to "#", class: "glyphicons user_add" do
+              %i
+              المواد
+          %li.span4.glyphicons.calendar
+            =link_to class_schedule_entries_path(n_clas_id: @n_class._id), class: "glyphicons user_add" do
+              %i
+              الجدول
+          %li.span4.glyphicons.group.active
+            =link_to n_class_enrolled_students_path(@n_class), class: "glyphicons user_add" do
+              %i
+              الطلاب
+  .clearfix
+  .row-fluid
+    = @students.count
+    - @students.each do |student|
+      = student.first_name
+      = student.last_name
+      %p
+        = student.gender

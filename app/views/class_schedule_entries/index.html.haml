@@ -59,20 +59,24 @@
       %tr
         %td.fc-header-left
           .btn-group
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
-              %span= link_to "►", class_schedule_entries_path(:month => (@month-1), :n_clas_id => @n_class._id)
+            = link_to class_schedule_entries_path(:month => (@month-1), :n_clas_id => @n_class._id), class: "fc-button btn btn-small btn-primary fc-button-next" do
+              %span 
+                ►
             %span.fc-header-space
             %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}
               = format_month(@month)
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
-              %span= link_to "◄", class_schedule_entries_path(:month => (@month+1), :n_clas_id => @n_class._id)
+            = link_to class_schedule_entries_path(:month => (@month+1), :n_clas_id => @n_class._id), class: "fc-button btn btn-small btn-primary fc-button-prev" do
+              %span 
+                ◄
   .separator.bottom
 
 
   %table.table.table-white.table-bordered.table-vertical-center.table-pricing
     %thead
       %tr
-        %th.center.heading المادة
+        %th.center{style: "width: 25%"} 
+          %span.plan االمادة
+          .separator.bottom
         %th.center{style: "width: 15%"}
           %span.plan اسبوع ١
           .separator.bottom
