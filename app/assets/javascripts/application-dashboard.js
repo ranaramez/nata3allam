@@ -52,8 +52,25 @@
 
 
 $(function(){
+
   Holder.add_theme("dark", {background:"#000", foreground:"#aaa", size:9});
   Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9});
+
+  $('.subject-submit').on('click', function(e){
+    // console.log()
+    $(this).parents('form:first').submit();
+    // $(this).closest('form').submit();
+  });
+
+  // fix hack
+  $('.schedule-entry-select').on('click', function(){
+    outer = $('#content').height();
+    inner = $('.innerAll').height();
+    menu = $(this).find('div.dropdown-menu').height();
+    if (inner + menu > outer){
+      $('tr:last').find('div.dropdown-menu').css({ top: - menu + 'px'});
+    }
+  });
 });
 
 var initPieChart = function() {

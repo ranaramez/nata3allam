@@ -59,24 +59,19 @@
       %tr
         %td.fc-header-left
           .btn-group
-            = link_to class_schedule_entries_path(:month => (@month-1), :n_clas_id => @n_class._id), class: "fc-button btn btn-small btn-primary fc-button-next" do
-              %span 
-                ►
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+              %span= link_to "►", n_clas_schedule_path(:month => (@month-1), :n_clas_id => @n_class._id)
             %span.fc-header-space
-            %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}
-              = format_month(@month)
-            = link_to class_schedule_entries_path(:month => (@month+1), :n_clas_id => @n_class._id), class: "fc-button btn btn-small btn-primary fc-button-prev" do
-              %span 
-                ◄
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_month(@month)}"
+            %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+              %span= link_to "◄", n_clas_schedule_path(:month => (@month+1), :n_clas_id => @n_class._id)
   .separator.bottom
 
 
   %table.table.table-white.table-bordered.table-vertical-center.table-pricing
     %thead
       %tr
-        %th.center{style: "width: 25%"} 
-          %span.plan االمادة
-          .separator.bottom
+        %th.center.heading المادة
         %th.center{style: "width: 15%"}
           %span.plan اسبوع ١
           .separator.bottom
@@ -90,12 +85,14 @@
           %span.plan اسبوع ٤
           .separator.bottom
     %tbody
-      - @schedule.each_with_index do |(subject, subject_schedule), index|
+      -@schedule.each do |subject, subject_schedule| 
         %tr
-          %td
-            %img{src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", alt: "" }
-            = subject.description
-            / %span.thumb
-            
-          = render partial: "schedule_entry", :collection => subject_schedule, as: :schedule_entry
-
+          %td= subject.description
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[0]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[1]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[2]], as: :subject_pair
+          %td.center
+            = render partial:"n_class/schedule_entry", :object => [subject, subject_schedule[3]], as: :subject_pair

@@ -1,4 +1,4 @@
-class NClassController < ApplicationController
+class NClassesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
@@ -31,6 +31,11 @@ class NClassController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  def enrolled_students
+    @n_class = NClass.find params[:n_class_id]
+    @students = @n_class.students
   end
 
 end

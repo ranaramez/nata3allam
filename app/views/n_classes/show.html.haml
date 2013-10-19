@@ -49,7 +49,7 @@
               %i
               الجدول
           %li.span4.glyphicons.group
-            =link_to "#", class: "glyphicons user_add active" do
+            =link_to n_class_enrolled_students_path(@n_class), class: "glyphicons user_add active" do
               %i
               الطلاب
   .clearfix
@@ -59,11 +59,12 @@
         %td.fc-header-left
           .btn-group
             %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
-              %span= link_to "►", :controller => "n_class", :action => "show", :date => (@start_date-7).to_s, :id => @n_class._id
+              %span= link_to "►", n_class_path(@n_class, date: (@start_date-7).to_s)
             %span.fc-header-space
             %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
             %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
-              %span= link_to "◄", :controller => "n_class", :action => "show", :date => (@end_date+1).to_s, :id => @n_class._id
+              %span= link_to "◄", n_class_path(@n_class, date: (@end_date+1).to_s)
+
     
   .separator.bottom
   -@subjects.each_slice(2).to_a.each do |pair|

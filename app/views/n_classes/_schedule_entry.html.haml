@@ -1,0 +1,17 @@
+-if subject_pair[1].present?
+  %span= schedule_e
+  %a
+    %i.icon-edit
+-else  
+  - lessons = subject_pair[0].lessons
+  .row-fluid
+    .btn-group.bootstrap-select.span12
+      %button.btn.dropdown-toggle.clearfix.btn-default{"data-toggle" => "dropdown"}
+        %span.caret
+        %span.filter-option.pull-right اختر الدرس
+        \ 
+      .dropdown-menu{role: "menu"}
+        %ul{style: "max-height: 150px; overflow-y: scroll;"}
+          - lessons.each_with_index do |lesson, index|
+            %li{rel: index.to_s}
+              = link_to lesson.description, "#", tabindex: "-1"

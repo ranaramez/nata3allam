@@ -44,8 +44,5 @@ class ClassSubject
     lessons_arr
   end
 
-  def lesson_evaluated? lesson
-    class_evaluation_records.where('lesson._id' => lesson._id).first.present?
-  end
 
 end
