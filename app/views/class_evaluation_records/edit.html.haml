@@ -1,10 +1,10 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons briefcase" do
+    = link_to n_classes_path, class: "glyphicons briefcase" do
       %i
       الفصول
   %li.divider
-  %li فصل ( أ )
+  %li= link_to @n_class.name, n_class_path(@n_class)
 
 .innerAll
   .row-fluid
@@ -17,7 +17,7 @@
                 .media
                   %img.media-object.pull-left.thumb{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
                   .media-body
-                    %h2= @n_class.name
+                    %h2= link_to @n_class.name, n_class_path(@n_class)
                     %h4= @teacher
                     .separator.bottom
       .span6
@@ -73,6 +73,7 @@
               = gf.hidden_field 'lesson_id', value: gf.object.lesson._id
               %td
                 = gf.check_box  :grade
+                %br
                 = gf.text_field :general_comments, :placeholder => "ملحوظات"
     %button{type: "submit", class: "right btn btn-blue"}
       حفظ

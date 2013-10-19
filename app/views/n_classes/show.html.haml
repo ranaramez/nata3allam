@@ -1,10 +1,10 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons briefcase" do
+    = link_to n_classes_path, class: "glyphicons briefcase" do
       %i
       الفصول
   %li.divider
-  %li فصل ( أ )
+  %li= link_to @n_class.name, n_class_path(@n_class)
 
 .innerAll
   .row-fluid
@@ -41,11 +41,11 @@
       .tabsbar.tabsbar-2
         %ul.row-fluid.row-merge
           %li.span4.glyphicons.cargo.active
-            =link_to "#", class: "glyphicons user_add active" do
+            =link_to n_class_path(@n_class), class: "glyphicons user_add active" do
               %i
               المواد
           %li.span4.glyphicons.calendar
-            =link_to class_schedule_entries_path(n_clas_id: @n_class._id), class: "glyphicons user_add active" do
+            =link_to class_schedule_entries_path(@n_class), class: "glyphicons user_add active" do
               %i
               الجدول
           %li.span4.glyphicons.group
@@ -77,6 +77,9 @@
               %span=pair[0].teachers_names
               %br
               = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[0], :lessons => pair[0].get_lessons(@start_date) } 
+              = link_to edit_class_evaluation_record_path(class_subject_id: pair[0], month: @end_date.month) do
+                %span التقييم
+                %i.icon-edit
               //%span=format_arr(pair[0].get_lessons_desc @start_date)
       -if pair[1].present?
         .span6
@@ -88,4 +91,7 @@
                 %span=pair[1].teachers_names
                 %br
                 = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[1], :lessons => pair[1].get_lessons(@start_date) } 
+                = link_to edit_class_evaluation_record_path(class_subject_id: pair[1], month: @end_date.month) do
+                  %span التقييم
+                  %i.icon-edit
                 //%span=format_arr(pair[1].get_lessons_desc @start_date)

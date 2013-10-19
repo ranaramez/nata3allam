@@ -1,10 +1,10 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons briefcase" do
+    = link_to n_classes_path, class: "glyphicons briefcase" do
       %i
       الفصول
   %li.divider
-  %li فصل ( أ )
+  %li= link_to @n_class.name, n_class_path(@n_class)
 
 .innerAll
   .row-fluid

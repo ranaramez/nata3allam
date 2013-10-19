@@ -1,11 +1,5 @@
 - lessons.each do |lesson|
   %span درس :
   %span= lesson.description
-  - unless class_subject.lesson_evaluated? lesson
-    %br
-    %span لم يتم ادخال التقييم 
-  %a
-  = link_to edit_class_evaluation_record_path(class_subject_id: class_subject, lesson_id: lesson._id) do
-    %i.icon-edit
   %br
     
