@@ -177,6 +177,10 @@ def init
 
   puts "Lessons Importing done ... "
 
+  Importer::Importer.import_students
+
+  puts "Importing Students done ..."
+
    classes.each do |c|
      subjects.each do |s|
         s.reload

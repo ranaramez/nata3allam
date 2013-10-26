@@ -37,7 +37,23 @@ class Importer::Importer
       lesson.subject = subject
       subject.save! 
     end
-             
+  end
+
+  def self.save_all_students filepath
+    sheet = sheet_to_hash filepath
+    sheet[:rows].each do |row|
+      student = Student.create!( 
+                :first_name => row[:first_name],
+                :last_name => row[:last_name],
+                :address => row[:address],
+                :gender => row[:gender],
+                :educational_backround => row[:e_bg],
+                :contacts => row[:phone] )
+    end
+  end
+
+  def self.import_students
+    save_all_students Rails.root.join('lib/importer/files/students.csv')
   end
 
   def self.import_lessons
@@ -48,7 +64,6 @@ class Importer::Importer
     import_subject_lessons Rails.root.join('lib/importer/files/amaleya.csv'), 'الحياة العملية'
     import_subject_lessons Rails.root.join('lib/importer/files/thakafa.csv'), 'الركن الثقافي'
     import_subject_lessons Rails.root.join('lib/importer/files/islamic.csv'), 'تربية اسلامية'
-
   end
 
 end
