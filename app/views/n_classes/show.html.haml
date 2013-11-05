@@ -78,10 +78,6 @@
               %span=pair[0].teachers_names
               %br
               = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[0], :lessons => pair[0].get_lessons(@start_date) } 
-              %a
-              = link_to edit_class_evaluation_record_path(class_subject_id: pair[0], month: @end_date.month) do
-                %span التقييم
-                %i.icon-edit
               //%span=format_arr(pair[0].get_lessons_desc @start_date)
       -if pair[1].present?
         .span6
@@ -93,8 +89,4 @@
                 %span=pair[1].teachers_names
                 %br
                 = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[1], :lessons => pair[1].get_lessons(@start_date) }
-                %a
-                = link_to edit_class_evaluation_record_path(class_subject_id: pair[1], month: @end_date.month) do
-                  %span التقييم
-                  %i.icon-edit
                 //%span=format_arr(pair[1].get_lessons_desc @start_date)
