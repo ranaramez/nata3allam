@@ -6,6 +6,7 @@
   %li.divider
   %li= link_to @n_class.name, n_class_path(@n_class)
 
+
 .innerAll
   .row-fluid
     .span12
@@ -35,23 +36,11 @@
             %span.count= format_number(@students.count)
             %span.txt طالب
 
-  %h4= "تقييم " + @class_subject.description
+  %h4= "تقييم #{@lesson.description} - #{@class_subject.description}"
   .clearfix
-    %table.fc-header{width: "100%"}
-      %tbody
-        %tr
-          %td.fc-header-left
-            .btn-group
-              %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
-                %span= link_to "►", edit_class_evaluation_record_path(:month => (@month-1), :class_subject_id => @class_subject._id)
-              %span.fc-header-space
-              %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_month(@month)}"
-              %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
-                %span= link_to "◄", edit_class_evaluation_record_path(:month => (@month+1), :class_subject_id => @class_subject._id)    
-
   .separator.bottom
   = form_for(@evaluation_record, url: class_evaluation_records_path(@evaluation_record), html: { method: :post}) do |f|
-    = hidden_field_tag "month", @month
+    = hidden_field_tag 'lesson_id', @lesson._id
     = f.hidden_field '_id', value: f.object._id
     = f.hidden_field 'class_subject_id', value: f.object.class_subject._id
     %table.table.table-white.table-bordered.table-vertical-center.table-pricing
@@ -59,21 +48,18 @@
         %tr
           %th.center{style: "width: 15%"}
             %span.plan الطالب
-          - @lessons.each do |lesson|
+          - ['تقديم', 'تدريب', 'إتقان', 'ملاحظات'].each do |criteria|
             %th.center{style: "width: 15%"}
-              %span.plan= lesson.description
+              %span.plan= criteria
               .separator.bottom
       %tbody
         = f.fields_for :evaluation_records do |ff|
           = ff.hidden_field 'student_id', value: ff.object.student._id
           %tr{ style: "background-color: #E8E8E8 "}
             %td= ff.object.student.full_name
-            - student_grades = get_student_grades @lessons, ff.object
-            = ff.fields_for :grades, student_grades do |gf|
-              = gf.hidden_field 'lesson_id', value: gf.object.lesson._id
-              %td
-                = gf.check_box  :grade
-                %br
-                = gf.text_field :general_comments, :placeholder => "ملحوظات"
+            %td= ff.check_box  :presentation
+            %td= ff.text_field  :training
+            %td= ff.check_box  :mastery
+            %td= ff.text_field :general_comments, :placeholder => 'ملاحظات'
     %button{type: "submit", class: "right btn btn-blue"}
       حفظ
