@@ -12,8 +12,6 @@ class ClassEvaluationRecordsController < ApplicationController
   end
 
   def create
-    puts params, params[:lesson_id] 
-    debugger
     lesson_id = params[:lesson_id]
     id = params[:class_evaluation_record][:_id]
     if id.present?

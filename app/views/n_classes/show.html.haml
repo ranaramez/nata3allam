@@ -1,10 +1,10 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons briefcase" do
+    = link_to n_classes_path, class: "glyphicons briefcase" do
       %i
       الفصول
   %li.divider
-  %li فصل ( أ )
+  %li= link_to @n_class.name, n_class_path(@n_class)
 
 .innerAll
   .row-fluid
@@ -41,11 +41,11 @@
       .tabsbar.tabsbar-2
         %ul.row-fluid.row-merge
           %li.span4.glyphicons.cargo.active
-            =link_to "#", class: "glyphicons user_add active" do
+            =link_to n_class_path(@n_class), class: "glyphicons user_add active" do
               %i
               المواد
           %li.span4.glyphicons.calendar
-            =link_to class_schedule_entries_path(n_clas_id: @n_class._id), class: "glyphicons user_add active" do
+            =link_to class_schedule_entries_path(@n_class), class: "glyphicons user_add active" do
               %i
               الجدول
           %li.span4.glyphicons.group

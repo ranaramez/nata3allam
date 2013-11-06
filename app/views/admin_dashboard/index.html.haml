@@ -18,8 +18,8 @@
                       %span.txt
                         عدد الطلاب
                     .clearfix
-                    %span.count
-                      ٦٠
+                    %span.count 
+                      =format_number(@students_count)
                 .span3
                   = link_to "#", class: "widget-stats widget-stats-1" do
                     %span.glyphicons.briefcase
@@ -28,7 +28,7 @@
                         عدد الفصول
                     .clearfix
                     %span.count
-                      ٤
+                      =format_number(@classes_count)
 
                 .span3
                   = link_to "#", class: "widget-stats widget-stats-1" do
@@ -38,7 +38,7 @@
                         عدد المعلمين
                     .clearfix
                     %span.count
-                      ٥
+                      =format_number(@teachers_count)
     .span3.tablet-column-reset
       .widget.widget-heading-simple.widget-body-gray
         .widget-head

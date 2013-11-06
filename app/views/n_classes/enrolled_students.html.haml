@@ -4,7 +4,7 @@
       %i
       الفصول
   %li.divider
-  %li= @n_class.name
+  %li= link_to @n_class.name, n_class_path(@n_class)
 .innerAll
   .row-fluid
     .span12
@@ -40,22 +40,43 @@
       .tabsbar.tabsbar-2
         %ul.row-fluid.row-merge
           %li.span4.glyphicons.cargo
-            =link_to "#", class: "glyphicons user_add" do
+            =link_to n_class_path(@n_class), class: "glyphicons user_add active" do
               %i
               المواد
           %li.span4.glyphicons.calendar
-            =link_to class_schedule_entries_path(n_clas_id: @n_class._id), class: "glyphicons user_add" do
+            =link_to class_schedule_entries_path(@n_class), class: "glyphicons user_add active" do
               %i
               الجدول
           %li.span4.glyphicons.group.active
-            =link_to n_class_enrolled_students_path(@n_class), class: "glyphicons user_add" do
+            =link_to n_class_enrolled_students_path(@n_class), class: "glyphicons user_add active" do
               %i
               الطلاب
   .clearfix
-  .row-fluid
-    = @students.count
-    - @students.each do |student|
-      = student.first_name
-      = student.last_name
-      %p
-        = student.gender
+  .widget.widget-heading-simple.widget-body-white.widget-employees
+    .widget-body.padding-none
+      .row-fluid.row-merge
+        .span6.listWrapper
+          %span.results
+            = @students.count 
+            طالب
+          %ul.list.unstyles{style: "top: 20px;"}
+            - @students.each do |student|
+              %li
+                .media.innerAll
+                  .media-object.pull-left.thumb
+                    %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
+                  .media-body
+                    = student.first_name
+                    = student.last_name
+                    %p
+                      = student.gender
+            - @students.each do |student|
+              %li
+                .media.innerAll
+                  .media-object.pull-left.thumb
+                    %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
+                  .media-body
+                    = student.first_name
+                    = student.last_name
+                    %p
+                      = student.gender

@@ -1,6 +1,7 @@
 class EvaluationRecord < Record
 
   include Mongoid::Document
+
   # TODO => make grades more generic
   field :presentation, :type => Boolean, :default => false
   field :training, :type => Integer, :default => 0
