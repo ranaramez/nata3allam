@@ -13,7 +13,9 @@ Nata3allam::Application.routes.draw do
 
   resources :class_evaluation_records, only: [:create, :edit]
 
-  resources :students
+  resources :students do
+    resources :student_behavior_records, :controller => 'students/student_behavior_records', only: [:create, :new]
+  end
 
 
   resources :class_schedule_entries, only: [:new, :create, :destroy]

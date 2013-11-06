@@ -35,7 +35,7 @@
             %span.count= format_number(@students.count)
             %span.txt طالب
 
-  %h4= "تقييم " + @class_subject.description
+  %h4= "تقييم #{@lesson.description} - #{@class_subject.description}"
   .clearfix
   .separator.bottom
   = form_for(@evaluation_record, url: class_evaluation_records_path(@evaluation_record), html: { method: :post}) do |f|

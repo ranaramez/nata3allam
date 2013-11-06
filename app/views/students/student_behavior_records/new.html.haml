@@ -1,0 +1,32 @@
+%ul.breadcrumb
+  %li
+    = link_to "#", class: "glyphicons user" do
+      %i
+        'الطالب'
+  %li.divider
+%h4= @student.full_name
+= form_for(@behavior_record, url: student_student_behavior_records_path, html: { method: :post, action: :create}) do |f|
+  = f.hidden_field '_id', value: f.object._id
+  = f.hidden_field 'from_date', value: @start_date
+  = f.hidden_field 'to_date', value: @end_date
+  = f.hidden_field 'student_id', value: f.object.student._id
+  %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+    %thead
+      %tr
+        %th.center{style: "width: 15%"}
+          %span.plan السلوك
+          - [ 'التقييم', 'ملاحظات'].each do |criteria|
+            %th.center{style: "width: 15%"}
+              %span.plan= criteria
+              .separator.bottom
+    %tbody
+      = f.fields_for :behavior_records do |ff|
+        = ff.hidden_field 'from_date', value: @start_date
+        = ff.hidden_field 'to_date', value: @end_date
+        = ff.hidden_field 'behavior_id', value: ff.object.behavior._id
+        %tr{ style: "background-color: #E8E8E8 "}
+          %td= ff.object.behavior.description
+          %td= ff.select :level, [["غير ملتزم",1],  ["قليل اﻷلتزام",2] , ["ملتزم",3]]
+          %td= ff.text_field :general_comments, :placeholder => 'ملاحظات'
+  %button{type: "submit", class: "right btn btn-blue"}
+    حفظ
