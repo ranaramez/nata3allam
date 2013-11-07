@@ -52,31 +52,74 @@
               %i
               الطلاب
   .clearfix
-  .widget.widget-heading-simple.widget-body-white.widget-employees
-    .widget-body.padding-none
-      .row-fluid.row-merge
-        .span6.listWrapper
-          %span.results
-            = @students.count 
-            طالب
-          %ul.list.unstyles{style: "top: 20px;"}
-            - @students.each do |student|
-              %li
-                .media.innerAll
-                  .media-object.pull-left.thumb
-                    %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
-                  .media-body
-                    = student.first_name
-                    = student.last_name
-                    %p
-                      = student.gender
-            - @students.each do |student|
-              %li
-                .media.innerAll
-                  .media-object.pull-left.thumb
-                    %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
-                  .media-body
-                    = student.first_name
-                    = student.last_name
-                    %p
-                      = student.gender
+  %table.dynamicTable.tableTools.table.table-striped.table-bordered.table-condensed.table-white
+    / Table heading
+    %thead
+      %tr
+        %th الطالب
+        %th.center لغة عربية
+        %th.center حساب
+        %th.center تربية اسلامية
+        %th.center لغة انجليزية
+        %th.center لحياة العملية
+        %th.center لحياة الحسية
+        %th.center الركن الثقافي
+    / // Table heading END
+    / Table body
+    %tbody
+      / Table row
+      %tr.gradeX
+        %td عمر أحمد محمد
+        %td حرف أ ، حرف ي
+        %td ٥
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center E letter
+      / // Table row END
+      / Table row
+      %tr.gradeX
+        %td عمر أحمد محمد
+        %td حرف أ ، حرف ي
+        %td ٥
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center E letter
+      / // Table row END
+      / Table row
+      %tr.gradeX
+        %td عمر أحمد محمد
+        %td حرف أ ، حرف ي
+        %td ٥
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center E letter
+      / // Table row END
+      / Table row
+      %tr.gradeX
+        %td عمر أحمد محمد
+        %td حرف أ ، حرف ي
+        %td ٥
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center E letter
+      / // Table row END
+      / Table row
+      %tr.gradeX
+        %td عمر أحمد محمد
+        %td حرف أ ، حرف ي
+        %td ٥
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center سورة الناس
+        %td.center E letter
+        %td.center E letter
+      / // Table row END
+      / Table row
