@@ -15,4 +15,5 @@ class Student < Person
     record
   end
 
+
 end

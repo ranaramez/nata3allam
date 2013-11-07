@@ -57,69 +57,14 @@
     %thead
       %tr
         %th الطالب
-        %th.center لغة عربية
-        %th.center حساب
-        %th.center تربية اسلامية
-        %th.center لغة انجليزية
-        %th.center لحياة العملية
-        %th.center لحياة الحسية
-        %th.center الركن الثقافي
-    / // Table heading END
-    / Table body
+        -@subjects.each do |subject|
+          %th.center= subject.description
     %tbody
       / Table row
-      %tr.gradeX
-        %td عمر أحمد محمد
-        %td حرف أ ، حرف ي
-        %td ٥
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center E letter
-      / // Table row END
-      / Table row
-      %tr.gradeX
-        %td عمر أحمد محمد
-        %td حرف أ ، حرف ي
-        %td ٥
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center E letter
-      / // Table row END
-      / Table row
-      %tr.gradeX
-        %td عمر أحمد محمد
-        %td حرف أ ، حرف ي
-        %td ٥
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center E letter
-      / // Table row END
-      / Table row
-      %tr.gradeX
-        %td عمر أحمد محمد
-        %td حرف أ ، حرف ي
-        %td ٥
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center E letter
-      / // Table row END
-      / Table row
-      %tr.gradeX
-        %td عمر أحمد محمد
-        %td حرف أ ، حرف ي
-        %td ٥
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center سورة الناس
-        %td.center E letter
-        %td.center E letter
+      -@students.each do |student|
+        %tr.gradeX
+          %td= student.full_name
+          -@report[student._id].each do |value|
+            %td= value.map(&:description).join(',')
       / // Table row END
       / Table row

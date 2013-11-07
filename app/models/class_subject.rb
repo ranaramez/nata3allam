@@ -31,6 +31,14 @@ class ClassSubject
     class_lessons
   end
 
+  def get_past_lessons date
+    month = date.month
+    week_number = (date.day/7) 
+    entries = class_schedule_entries.any_of({'week' => { "$lte" => week_number}, 
+                                           'month'=> month}, {'month' => {"$lt" => month}})
+    entries.map(&:lesson)
+  end
+
   def subject_monthly_schedule month
     lessons_arr =[]
     (0..3).each do |week_no|

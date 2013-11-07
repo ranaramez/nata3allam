@@ -24,4 +24,20 @@ class NClass
     subjects_hash
   end
 
+  def get_students_class_report date
+    students_class_report = {}
+    students_class_report.default = []
+    subjects.each do |subject|
+      past_lessons = subject.get_past_lessons date
+      students.each do |student|
+        finished_records = student.evaluation_records.where(mastery: true)
+        finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}
+        unfinished_lessons = past_lessons - finished_lessons
+        students_class_report[student._id] += [unfinished_lessons]
+      end
+    end
+
+    students_class_report
+  end
+
 end

@@ -36,6 +36,10 @@ class NClassesController < ApplicationController
   def enrolled_students
     @n_class = NClass.find params[:n_class_id]
     @students = @n_class.students
+    @subjects = @n_class.subjects
+    @date = Date.today.beginning_of_week(:saturday)
+    @report = @n_class.get_students_class_report @date
+
   end
 
 end
