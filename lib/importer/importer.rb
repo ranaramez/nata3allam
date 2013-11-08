@@ -75,7 +75,9 @@ class Importer::Importer
                             )  
         student.family_members += [mother]
       end
-      
+
+      nclass = NClass.find_by name: 'المجموعة الأولى'
+      student.n_class = nclass
       student.save!
     end
   end
