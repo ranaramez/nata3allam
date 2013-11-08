@@ -6,11 +6,13 @@ class Person
   field :first_name, :type => String
   field :last_name, :type => String
   field :address, :type => String
-  field :date_of_birth, :type => Date
+  field :date_of_birth, :type => Time
   field :gender, :type => Symbol
   field :job, :type => String
-  field :educational_backgroud, :type => String #certain values?
+  field :educational_background, :type => String #certain values?
   field :contacts, :type => String
+  field :national_id, :type => String
+
   has_many :relatives, :class_name => "Relative", validate: false
   belongs_to :student
 
