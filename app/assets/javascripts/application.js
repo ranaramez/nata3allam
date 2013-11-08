@@ -41,3 +41,4 @@ $(function(){
   Holder.add_theme("dark", {background:"#000", foreground:"#aaa", size:9});
   Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9});
 });
+

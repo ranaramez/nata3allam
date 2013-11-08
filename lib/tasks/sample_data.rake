@@ -32,9 +32,17 @@ namespace :sample_data do
     assign_students_behaviors(students)
   end
 
-   task :init => :environment do
+  task :init => :environment do
     init
-   end
+  end
+
+  task fake_students: :environment do
+    make_students(make_people)
+  end
+
+  task fake_behaviors: :environment do
+    assign_students_behaviors(Student.all.entries)
+  end
 end
 
 def init
@@ -198,7 +206,7 @@ def init
         cs.save!
         c.subjects << cs
      end
-     make_class_subject_schedule(c.subjects)
+     # make_class_subject_schedule(c.subjects)
    end
    puts "Class Subjects created "
    puts "Fake initial schedule created "
@@ -257,7 +265,7 @@ end
 def make_students (people)
   puts "Creating students"
   students = [] 
-  number = 100
+  number = 10
   names = ['أحمد', 'محمد' ,'عمر',
            'عمرو', 'كريم', 'زياد',
            'نبيل','كرم',  'مصطفى' ,
@@ -280,6 +288,7 @@ def make_students (people)
       relative =  people.sample
       student.family_members += [relative] if not student.family_members.include? relative
     end
+    student.n_class = NClass.first
     student.save!
     students << student
   end
