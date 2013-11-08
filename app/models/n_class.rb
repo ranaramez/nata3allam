@@ -6,6 +6,9 @@ class NClass
   has_one :class_teacher, :class_name => "Teacher", :validate => true
   has_many :subjects, :class_name => "ClassSubject", :validate => false
   has_many :students, :class_name => "Student", :validate => false
+  belongs_to :student, :class_name => "Student", :inverse_of => :past_classes
+  
+  field :start_year, :type => Integer, :default =>  Date.today.year 
 
   validates_presence_of :class_teacher
   def teacher_name
@@ -36,7 +39,6 @@ class NClass
         students_class_report[student._id] += [unfinished_lessons]
       end
     end
-
     students_class_report
   end
 
