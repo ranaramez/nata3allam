@@ -42,13 +42,41 @@ class Importer::Importer
   def self.save_all_students filepath
     sheet = sheet_to_hash filepath
     sheet[:rows].each do |row|
+      # Add the student
       student = Student.create!( 
-                :first_name => row[:first_name],
-                :last_name => row[:last_name],
-                :address => row[:address],
-                :gender => row[:gender],
-                :educational_backround => row[:e_bg],
-                :contacts => row[:phone] )
+                first_name: row[:first_name],
+                last_name: row[:last_name],
+                address: row[:address],
+                date_of_birth: row[:date_of_birth],
+                gender: row[:gender],
+                national_id: (row[:national_id]).to_s
+                )
+
+      # Create the father as well
+      unless row[:father_fname].blank?
+        father = Person.create!( first_name: row[:father_fname],
+                              last_name: row[:father_lname],
+                              address: row[:address],
+                              gender: :male,
+                              educational_background: row[:father_edu],
+                              job: row[:father_job],
+                            )
+        student.family_members += [father]
+      end
+      
+      # Create the mother
+      unless row[:mother_fname].blank?
+        mother = Person.create!( first_name: row[:mother_fname],
+                              last_name: row[:mother_lname],
+                              address: row[:address],
+                              gender: :female,
+                              educational_background: row[:mother_edu],
+                              job: row[:mother_job],
+                            )  
+        student.family_members += [mother]
+      end
+      
+      student.save!
     end
   end
 
