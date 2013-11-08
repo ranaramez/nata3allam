@@ -11,6 +11,7 @@ class Person
   field :job, :type => String
   field :educational_backgroud, :type => String #certain values?
   field :contacts, :type => String
+  has_many :relatives, :class_name => "Relative", validate: false
   belongs_to :student
 
 
