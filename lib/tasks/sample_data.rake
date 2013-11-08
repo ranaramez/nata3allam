@@ -125,11 +125,11 @@ def init
 
   montessori3 = NClass.new 
   montessori3.name = "المجموعة الثالثة"
-  montessori3.class_teacher = rabab
+  montessori3.class_teacher = magda
 
   montessori4 = NClass.new 
   montessori4.name = "المجموعة الرابعة"
-  montessori4.class_teacher = elham
+  montessori4.class_teacher = magda
 
   montessori5 = NClass.new 
   montessori5.name = "المجموعة الخامسة"
@@ -141,15 +141,15 @@ def init
 
   class1= NClass.new 
   class1.name = "فصل 1"
-  class1.class_teacher = nahed
+  class1.class_teacher = rabab
 
   class2= NClass.new 
   class2.name = "فصل 2"
-  class2.class_teacher = nahed
+  class2.class_teacher = elham
 
   class3= NClass.new 
   class3.name = "فصل 3"
-  class3.class_teacher = magda
+  class3.class_teacher = nahed
 
   classes = [ 
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
