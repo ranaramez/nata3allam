@@ -28,7 +28,7 @@ namespace :sample_data do
     classes = make_classes(teachers, students, class_subjects)
     #class_evaluation_records = make_class_evaluation_records(students, class_subjects)
     class_attendance_records = make_class_attendance_records(students, class_subjects)
-    make_class_subject_schedule(class_subjects)
+    #make_class_subject_schedule(class_subjects)
     assign_students_behaviors(students)
   end
 
@@ -241,9 +241,15 @@ def make_students (people)
   puts "Creating students"
   students = [] 
   number = 100
+  names = ['أحمد', 'محمد' ,'عمر',
+           'عمرو', 'كريم', 'زياد',
+           'نبيل','كرم',  'مصطفى' ,
+           'علي' ,'ياسين', 'أنس',
+           'صلاح'
+          ]
   number.times do |n|
-    fn = Faker::Name.first_name
-    ln = Faker::Name.last_name
+    fn = names.sample
+    ln = names.sample
     name = "#{fn} #{ln}"
     student = Student.create!( :first_name => fn,
                               :last_name => ln,
@@ -338,7 +344,7 @@ def make_classes(teachers, students, class_subjects)
     teachers = teachers - [teacher]
     nclass = NClass.create!(:name => class_names.sample, :class_teacher => teacher)
     puts "#{nclass.name} - #{nclass.class_teacher.first_name}"
-    (1..3).each do |c|
+    (1..10).each do |c|
       student = students.sample
       students = students - [student]
       nclass.students << students.sample

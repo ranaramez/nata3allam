@@ -1,0 +1,45 @@
+%ul.breadcrumb
+  %li
+    = link_to "#", class: "glyphicons user" do
+      %i
+        الطالب
+  %li.divider
+%h2= @student.full_name
+%h4= "التقييم الحالي"
+
+
+%table.table.table-white.table-bordered.table-vertical-center.table-pricing
+  %thead
+    %tr
+      - @subjects.each do |subject|
+        %th.center{style: "width: 15%"}
+          %span.plan= subject.description
+          .separator.bottom
+      %th.center{style: "width: 15%"}
+        %span.plan التقييم الكلي
+
+  %tbody
+    %tr{ style: "background-color: #E8E8E8 "}
+    - @subjects.each do |subject|
+      %td= "#{format_grade(@student_report[subject._id].first, @student_report[subject._id].second)}"
+    %td= "#{format_grade(@total_done, @total_lessons)}"
+%h4= "التقييم السابق"
+- @past_student_report.each do |year, report|
+  %h6= format_number year
+  %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+    %thead
+      %tr
+      - report.keys.each do |subject|
+        %th.center{style: "width: 15%"}
+          %span.plan= subject.description
+          .separator.bottom
+      %th.center{style: "width: 15%"}
+        %span.plan التقييم الكلي
+    %tbody
+      %tr{ style: "background-color: #E8E8E8 "}
+      - report.each do |subject, value|
+        %td= "#{format_grade(value.first, value.second)}"
+
+
+    
+

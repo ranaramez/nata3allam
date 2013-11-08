@@ -4,6 +4,17 @@
       %i
         'الطالب'
   %li.divider
+%table.fc-header{width: "100%"}
+  %tbody
+    %tr
+      %td.fc-header-left
+        .btn-group
+          %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+            %span= link_to "►", new_student_student_behavior_record_path(student_id: @student._id, date: (@start_date-7).to_s)
+          %span.fc-header-space
+          %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
+          %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+            %span= link_to "◄", new_student_student_behavior_record_path(student_id: @student._id, date: (@end_date+1).to_s)
 %h4= @student.full_name
 = form_for(@behavior_record, url: student_student_behavior_records_path, html: { method: :post, action: :create}) do |f|
   = f.hidden_field '_id', value: f.object._id

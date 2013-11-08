@@ -3,6 +3,8 @@ class ClassSubject
 	include Mongoid::Document
 
   field :description, :type => String
+  field :start_year, :type => Integer, :default =>  Date.today.year 
+
   has_and_belongs_to_many :subject_teachers, :class_name => "Teacher", :validate => false
   embeds_many :lessons, :class_name => "Lesson", :validate => false #TODO (schedule representation)
   has_many :class_evaluation_records, :class_name => "ClassEvaluationRecord", :validate => false
@@ -29,6 +31,18 @@ class ClassSubject
       class_lessons = class_schedule_entries.map(&:lesson)
     end
     class_lessons
+  end
+
+  def get_past_lessons date
+    if date.year > start_year
+      class_schedule_entries.map(&:lesson)
+    else
+      month = date.month
+      week_number = (date.day/7) 
+      entries = class_schedule_entries.any_of({'week' => { "$lte" => week_number}, 
+                                           'month'=> month}, {'month' => {"$lt" => month}})
+      entries.map(&:lesson)
+    end
   end
 
   def subject_monthly_schedule month
