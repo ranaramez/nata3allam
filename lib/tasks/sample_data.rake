@@ -16,6 +16,8 @@ namespace :sample_data do
     ClassAttendanceRecord.all.destroy
     AttendanceRecord.all.destroy
     ClassScheduleEntry.all.destroy
+    Behavior.all.destroy
+    BehaviorRecord.all.destroy
 
     people = make_people
     users = make_users
@@ -27,6 +29,7 @@ namespace :sample_data do
     #class_evaluation_records = make_class_evaluation_records(students, class_subjects)
     class_attendance_records = make_class_attendance_records(students, class_subjects)
     make_class_subject_schedule(class_subjects)
+    assign_students_behaviors(students)
   end
 
    task :init => :environment do
@@ -415,7 +418,22 @@ def make_class_subject_schedule(class_subjects)
       entry.save!
     end
   end
+end
 
+def assign_students_behaviors(students)
+  behavior_descriptions = ['الحفاظ على اللغة', '  المحافظة على المواعيد',
+                           'الزي الرسمي', 'النظافة', 'عدم الكلام في ألفصل',
+                           'المحافظة على الواجب', 'معاملة الزملاء'
+                          ]
+  students.each do |student|
+    (1..3).each do |index|
+      description = behavior_descriptions.sample
+      behavior = Behavior.new
+      behavior.description = description
+      behavior.student = student
+      behavior.save!
+    end
+  end
 end
 
 
