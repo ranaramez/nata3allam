@@ -62,9 +62,9 @@
     %tbody
       / Table row
       -@students.each do |student|
-        %tr.gradeX
+        %tr
           %td= student.full_name
           -@report[student._id].each do |value|
-            %td= value.map(&:description).join(',')
+            %td.center= value.map(&:description).join(',')
       / // Table row END
       / Table row
