@@ -155,6 +155,12 @@ def init
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
     class1, class2, class3 ]
 
+  classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
+  classes_names.each do |c|
+      nclass = NClass.new name: c, class_teacher: rabab
+      classes.push nclass
+  end
+
   classes.map{|s| s.save!}
 
   puts "Classes created ... "

@@ -39,9 +39,18 @@ class Importer::Importer
     end
   end
 
-  def self.save_all_students filepath
+  def self.save_all_students filepath, class_name
     sheet = sheet_to_hash filepath
+
+    # The class
+    nclass = NClass.find_by name: class_name
+
+    if nclass.blank?
+      return
+    end
+
     sheet[:rows].each do |row|
+      
       # Add the student
       student = Student.create!( 
                 first_name: row[:first_name],
@@ -52,7 +61,7 @@ class Importer::Importer
                 national_id: (row[:national_id]).to_s
                 )
 
-      # Create the father as well
+      # Create the father as well only if the name is not blank (since it's forced by the model)
       unless row[:father_fname].blank?
         father = Person.create!( first_name: row[:father_fname],
                               last_name: row[:father_lname],
@@ -61,10 +70,11 @@ class Importer::Importer
                               educational_background: row[:father_edu],
                               job: row[:father_job],
                             )
-        student.family_members += [father]
+        relation = student.relatives.build related: father, relation_type: 'father'
+        relation.save!
       end
       
-      # Create the mother
+      # Create the mother only if the name is not blank (since it's forced by the model)
       unless row[:mother_fname].blank?
         mother = Person.create!( first_name: row[:mother_fname],
                               last_name: row[:mother_lname],
@@ -73,17 +83,28 @@ class Importer::Importer
                               educational_background: row[:mother_edu],
                               job: row[:mother_job],
                             )  
-        student.family_members += [mother]
+        relation = student.relatives.build related: mother, relation_type: 'mother'
+        relation.save!
       end
 
-      nclass = NClass.find_by name: 'المجموعة الأولى'
+      # Set the class
       student.n_class = nclass
+      
+      # Save!
       student.save!
     end
   end
 
   def self.import_students
-    save_all_students Rails.root.join('lib/importer/files/students.csv')
+    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_5.csv'), 'abeer_montessori_5'
+    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_6.csv'), 'abeer_montessori_6'
+    save_all_students Rails.root.join('lib/importer/files/elham_class_2.csv'), 'elham_class_2'
+    save_all_students Rails.root.join('lib/importer/files/magda_montessori_3.csv'), 'magda_montessori_3'
+    save_all_students Rails.root.join('lib/importer/files/magda_montessori_4.csv'), 'magda_montessori_4'
+    save_all_students Rails.root.join('lib/importer/files/nahed_class3.csv'), 'nahed_class3'
+    save_all_students Rails.root.join('lib/importer/files/rabab_class1.csv'), 'rabab_class1'
+    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_1.csv'), 'shadya_montessori_1'
+    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_2.csv'), 'shadya_montessori_2'
   end
 
   def self.import_lessons
