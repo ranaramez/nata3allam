@@ -9,9 +9,10 @@ class Person
   field :date_of_birth, :type => Time
   field :gender, :type => Symbol
   field :job, :type => String
-  field :educational_background, :type => String #certain values?
+  field :educational_backgroud, :type => String #certain values?
   field :contacts, :type => String
   field :national_id, :type => String
+  has_many :relatives, :class_name => "Relative", validate: false
   belongs_to :student
 
 

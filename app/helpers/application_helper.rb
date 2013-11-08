@@ -21,6 +21,14 @@ module ApplicationHelper
     "#{number} #{month}"
   end
 
+  def format_grade(grade, total_grade)
+    if grade == 0 && total_grade==0
+      return '-'
+    else
+    "#{format_number(total_grade)} /  #{format_number(grade)}"
+    end
+  end
+
   def format_arr(arr)
     arr.join(', ').to_s
   end
