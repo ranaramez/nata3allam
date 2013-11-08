@@ -58,49 +58,32 @@ def init
   puts "Admin Created \n username: admin@net3allem.com \n password: password "
 
   #Teachers
-  teacher1 = Teacher.new
-  teacher1.first_name = "ميس نشوى"
-  teacher1.save!
+  abeer = Teacher.new
+  abeer.first_name = "ميس عبير"
+  abeer.save!
 
-  teacher2 = Teacher.new
-  teacher2.first_name = "ميس ايمان"
-  teacher2.save!
-
-
-  teacher3 = Teacher.new
-  teacher3.first_name = "ميس نازلي"
-  teacher3.save!
-
-  teacher4 = Teacher.new
-  teacher4.first_name = "ميس رنا"
-  teacher4.save!
-
-  teacher4 = Teacher.new
-  teacher4.first_name = "ميس هنا"
-  teacher4.save!
+  nahed = Teacher.new
+  nahed.first_name = "ميس ناهد"
+  nahed.save!
 
 
-  teacher5 = Teacher.new
-  teacher5.first_name = "ميس صفاء"
-  teacher5.save!
+  shadya = Teacher.new
+  shadya.first_name = "ميس شادية"
+  shadya.save!
 
-  teacher6 = Teacher.new
-  teacher6.first_name = "ميس لميا"
-  teacher6.save!
+  rabab = Teacher.new
+  rabab.first_name = "ميس رباب"
+  rabab.save!
 
-  teacher7 = Teacher.new
-  teacher7.first_name = "ميس هدى"
-  teacher7.save!
-
-
-  teacher8 = Teacher.new
-  teacher8.first_name = "ميس امل"
-  teacher8.save!
+  elham = Teacher.new
+  elham.first_name = "ميس الهام"
+  elham.save!
 
 
-  teacher9 = Teacher.new
-  teacher9.first_name = "ميس سارة"
-  teacher9.save!
+  magda = Teacher.new
+  magda.first_name = "ميس ماجدة"
+  magda.save!
+
 
   puts "Teachers Created ... "
 
@@ -142,39 +125,39 @@ def init
   #NClasses 
   montessori1 = NClass.new 
   montessori1.name = "المجموعة الأولى"
-  montessori1.class_teacher = teacher1
+  montessori1.class_teacher = shadya
 
   montessori2 = NClass.new 
   montessori2.name = "المجموعة الثانية"
-  montessori2.class_teacher = teacher2
+  montessori2.class_teacher = shadya
 
   montessori3 = NClass.new 
   montessori3.name = "المجموعة الثالثة"
-  montessori3.class_teacher = teacher3
+  montessori3.class_teacher = magda
 
   montessori4 = NClass.new 
   montessori4.name = "المجموعة الرابعة"
-  montessori4.class_teacher = teacher4
+  montessori4.class_teacher = magda
 
   montessori5 = NClass.new 
   montessori5.name = "المجموعة الخامسة"
-  montessori5.class_teacher = teacher5
+  montessori5.class_teacher = abeer
 
   montessori6 = NClass.new 
   montessori6.name = "المجموعة السادسة"
-  montessori6.class_teacher = teacher6
+  montessori6.class_teacher = abeer
 
   class1= NClass.new 
   class1.name = "فصل 1"
-  class1.class_teacher = teacher7
+  class1.class_teacher = rabab
 
   class2= NClass.new 
   class2.name = "فصل 2"
-  class2.class_teacher = teacher8
+  class2.class_teacher = elham
 
   class3= NClass.new 
   class3.name = "فصل 3"
-  class3.class_teacher = teacher9
+  class3.class_teacher = nahed
 
   classes = [ 
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
