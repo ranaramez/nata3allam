@@ -35,7 +35,6 @@ class Student < Person
 
   def get_student_past_classes_report  date
     student_report = {}
-    student_report.default = {}
     past_classes.each do |p_class|
       subjects = p_class.subjects
       total_lessons, total_done = 0, 0
@@ -47,7 +46,8 @@ class Student < Person
         finished_lessons_count = past_lessons.count - unfinished_lessons.count
         total_lessons += past_lessons.count
         total_done += finished_lessons_count
-        student_report[p_class.start_year].merge!({ subject._id => [finished_lessons_count, past_lessons.count] })
+        student_report[p_class.start_year] = {} if student_report[p_class.start_year].nil?
+        student_report[p_class.start_year].merge!({ subject => [finished_lessons_count, past_lessons.count] })
       end
     end
     student_report

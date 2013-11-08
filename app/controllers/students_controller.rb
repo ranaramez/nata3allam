@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
   	n_class = @student.n_class
   	@subjects = n_class.subjects
   	@student_report, @total_done, @total_lessons = @student.get_student_class_report(@start_date)
+    @past_student_report = @student.get_student_past_classes_report  @start_date
   end
 
 end
