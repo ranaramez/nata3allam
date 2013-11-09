@@ -68,68 +68,73 @@
                           %li.glyphicons.birthday_cake
                             %i
                             %strong تاريخ الميلاد :
-                            %span.label= format_number(@student.date_of_birth.to_date.day.to_s)
-                            %span.label= format_number(@student.date_of_birth.to_date.month.to_s)
-                            %span.label= format_number(@student.date_of_birth.to_date.year.to_s)
+                            - if @student.date_of_birth.present?
+                              %span.label= format_number(@student.date_of_birth.to_date.day.to_s)
+                              %span.label= format_number(@student.date_of_birth.to_date.month.to_s)
+                              %span.label= format_number(@student.date_of_birth.to_date.year.to_s)
+                            - else
+                              لا يوجد
                   
                 .row-fluid.innerB
                   .span6
                     - family_members = @student.family_members
                     - father = family_members.father.first
                     / About
-                    .widget.widget-heading-simple.widget-body-white.margin-none
-                      .widget-head
-                        %h4.heading.glyphicons.old_man
-                          %i
-                          %strong معلومات الاب
-                      .widget-body
-                        %ul.unstyled.icons.margin-none
-                          %li.glyphicons.circle_info
+                    - if father.present?
+                      .widget.widget-heading-simple.widget-body-white.margin-none
+                        .widget-head
+                          %h4.heading.glyphicons.old_man
                             %i
-                            %strong االاسم : 
-                            = father.full_name
-                          %li.glyphicons.tie
-                            %i
-                            %strong الوظيفة : 
-                            - if father.job.present?
-                              = father.job
-                            - else
-                              لا يوجد
-                          %li.glyphicons.briefcase
-                            %i
-                            %strong المؤهل التعليمي : 
-                            - if father.educational_background.present?
-                              = father.educational_background
-                            - else
-                              لا يوجد
+                            %strong معلومات الاب
+                        .widget-body
+                          %ul.unstyled.icons.margin-none
+                            %li.glyphicons.circle_info
+                              %i
+                              %strong االاسم : 
+                              = father.full_name
+                            %li.glyphicons.tie
+                              %i
+                              %strong الوظيفة : 
+                              - if father.job.present?
+                                = father.job
+                              - else
+                                لا يوجد
+                            %li.glyphicons.briefcase
+                              %i
+                              %strong المؤهل التعليمي : 
+                              - if father.educational_background.present?
+                                = father.educational_background
+                              - else
+                                لا يوجد
                     / // About END
                   .span6
                     / Bio
                     - mother = family_members.mother.first
-                    .widget.widget-heading-simple.widget-body-white.margin-none
-                      .widget-head
-                        %h4.heading.glyphicons.woman
-                          %i
-                          %strong معلومات الام
-                      .widget-body
-                        %ul.unstyled.icons.margin-none
-                          %li.glyphicons.circle_info
+                    - if mother.present?
+                      .widget.widget-heading-simple.widget-body-white.margin-none
+                        .widget-head
+                          %h4.heading.glyphicons.woman
                             %i
-                            %strong االاسم : 
-                            = mother.full_name
-                          %li.glyphicons.tie
-                            %i
-                            %strong الوظيفة : 
-                            - if mother.job.present?
-                              = mother.job
-                            - else
-                              لا يوجد
-                          %li.glyphicons.briefcase
-                            %i
-                            %strong المؤهل التعليمي : 
-                            - if mother.educational_background.present?
-                              = mother.educational_background
-                            - else
-                              لا يوجد
+                            %strong معلومات الام
+                        .widget-body
+                          %ul.unstyled.icons.margin-none
+                            %li.glyphicons.circle_info
+                              %i
+                              %strong االاسم : 
+                              = mother.full_name
+                            %li.glyphicons.tie
+                              %i
+                              %strong الوظيفة : 
+                              - if mother.job.present?
+                                = mother.job
+                              - else
+                                لا يوجد
+                            %li.glyphicons.briefcase
+                              %i
+                              %strong المؤهل التعليمي : 
+                              - if mother.educational_background.present?
+                                = mother.educational_background
+                              - else
+                                لا يوجد
                     / // Bio END
                 

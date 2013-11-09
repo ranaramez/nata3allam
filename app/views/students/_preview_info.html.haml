@@ -18,7 +18,7 @@
     %hr/
     .body
       .row-fluid
-        .span4.overflow-hidden
+        .span7.overflow-hidden
           / Profile Photo
           .center
             %a.thumb.inline-block{href: ""}
@@ -52,9 +52,9 @@
                 %span.label= format_number(student.date_of_birth.to_date.year.to_s)
               - else
                 لا يوجد 
-        .span8
+        .span5
           .row-fluid
-            .span7.offset5
+            .span12
               %h5.strong نبذة عن التقيم
               لغة عربية
               .progress.progress-mini.progress-primary.count-outside
@@ -85,7 +85,7 @@
                 .count 20%
                 .bar{style: "width: 20%;"}
               .separator.bottom
-              %a.btn.btn-primary.btn-medium.btn-block{href: ""}
+              = link_to student_evaluation_path(student), class: "btn btn-primary btn-medium btn-block" do
                 %i.icon-bar-chart.icon-fixed-width
                 التقيم الكلي
               .separator.bottom
