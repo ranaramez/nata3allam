@@ -16,7 +16,8 @@ class Person
   has_many :relatives, :class_name => "Relative", validate: false
   belongs_to :student
 
-
+  scope :father, where(gender: :male)
+  scope :mother, where(gender: :female)
   validates_presence_of :first_name
 
   def full_name

@@ -1,31 +1,3 @@
-/ .widget.widget-heading-simple.widget-body-white.widget-employees
-/   .widget-body.padding-none
-/     .row-fluid.row-merge
-/       .span6.listWrapper
-/         %span.results
-/           = @students.count 
-/           طالب
-/         %ul.list.unstyles{style: "top: 20px;"}
-/           - @students.each do |student|
-/             %li
-/               .media.innerAll
-/                 .media-object.pull-left.thumb
-/                   %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
-/                 .media-body
-/                   = student.first_name
-/                   = student.last_name
-/                   %p
-/                     = student.gender
-/           - @students.each do |student|
-/             %li
-/               .media.innerAll
-/                 .media-object.pull-left.thumb
-/                   %img{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
-/                 .media-body
-/                   = student.first_name
-/                   = student.last_name
-/                   %p
-/                     = student.gender
 %ul.breadcrumb
   %li
     = link_to students_path, class: "glyphicons group" do
@@ -39,7 +11,7 @@
     / Widget Heading
     .widget-head
       %h4.heading.glyphicons.user
-        %i>
+        %i
         معلومات عن الطلاب
     / // Widget Heading END
     .widget-body.padding-none
@@ -59,14 +31,15 @@
             %i.icon-circle-arrow-down
           %ul.list.unstyled
             - @students.each do |student|
-              %li
-                .media.innerAll
-                  .media-object.pull-left.thumb
-                    %img{alt: "Image", "data-src" => "holder.js/51x51/dark"}/
-                  .media-body
-                    %span.strong= student.full_name
-                    %span.muted= student.n_class.name
-                    
-        = render partial: 'preview_info', locals: {student: @students.first}  
+              = link_to student_preview_path(student), remote: true do
+                %li
+                  .media.innerAll
+                    .media-object.pull-left.thumb
+                      %img{alt: "Image", "data-src" => "holder.js/51x51/dark"}/
+                    .media-body
+                      %span.strong= student.full_name
+                      %span.muted= student.n_class.name
+        #preview_info            
+          = render partial: 'preview_info', locals: {student: @students.first}  
         
   / // Widget END

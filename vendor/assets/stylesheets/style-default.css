@@ -121,19 +121,19 @@ p {
   color: #7c7c7c;
 }
 ul.icons {
-  text-align: left;
+  text-align: right;
   padding: 0;
 }
 ul.icons li {
   display: block;
-  padding: 0 0 0 25px;
+  padding: 0 25px 0 0;
   line-height: 22px;
   color: #7c7c7c;
 }
 ul.icons li i:before {
   color: #7c7c7c;
   font-size: 17px;
-  left: 0;
+  right: 0;
   top: 4px;
 }
 input,
