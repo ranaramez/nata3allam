@@ -70,7 +70,7 @@ class Importer::Importer
                               educational_background: row[:father_edu],
                               job: row[:father_job],
                             )
-        relation = student.relatives.build related: father, relation_type: 'father'
+        relation = student.relatives.build related: father, relation_type: :father
         relation.save!
       end
       
@@ -83,7 +83,7 @@ class Importer::Importer
                               educational_background: row[:mother_edu],
                               job: row[:mother_job],
                             )  
-        relation = student.relatives.build related: mother, relation_type: 'mother'
+        relation = student.relatives.build related: mother, relation_type: :mother
         relation.save!
       end
 

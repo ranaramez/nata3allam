@@ -30,7 +30,7 @@
         %td.center.stats
           %span
             مدرسة الفصل
-          %span.count= n_class.teacher_name
+          %span.count= n_class.teachers_names.join('-')
         %td.center
           %button.btn.btn-default
             %span= link_to "تفاصيل", n_class_path(n_class)

@@ -6,7 +6,7 @@ class ClassEvaluationRecordsController < ApplicationController
     @lesson = @class_subject.lessons.where(_id: lesson_id).first
     @students = @class_subject.n_class.students
     @n_class = @class_subject.n_class
-    @teacher = @n_class.teacher_name    
+    @teachers = @n_class.teachers_names    
     @evaluation_record = @class_subject.class_evaluation_records.where('lesson._id' => Moped::BSON::ObjectId(lesson_id)).first
     @evaluation_record ||= ClassEvaluationRecord.template @class_subject, @students, @lesson
   end

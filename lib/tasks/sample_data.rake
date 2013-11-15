@@ -4,21 +4,7 @@ namespace :sample_data do
   task :generate => :environment do 
 
     #Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
-    Person.all.destroy
-    User.all.destroy
-    Student.all.destroy
-    Subject.all.destroy
-    Teacher.all.destroy
-    ClassSubject.all.destroy
-    NClass.all.destroy
-    ClassEvaluationRecord.all.destroy
-    EvaluationRecord.all.destroy
-    ClassAttendanceRecord.all.destroy
-    AttendanceRecord.all.destroy
-    ClassScheduleEntry.all.destroy
-    Behavior.all.destroy
-    BehaviorRecord.all.destroy
-
+    destroy_data
     people = make_people
     users = make_users
     students = make_students(people)
@@ -33,6 +19,7 @@ namespace :sample_data do
   end
 
   task :init => :environment do
+    destroy_data
     init
   end
 
@@ -125,39 +112,39 @@ def init
   #NClasses 
   montessori1 = NClass.new 
   montessori1.name = "المجموعة الأولى"
-  montessori1.class_teacher = shadya
+  montessori1.class_teachers = [shadya]
 
   montessori2 = NClass.new 
   montessori2.name = "المجموعة الثانية"
-  montessori2.class_teacher = shadya
+  montessori2.class_teachers = [shadya]
 
   montessori3 = NClass.new 
   montessori3.name = "المجموعة الثالثة"
-  montessori3.class_teacher = magda
+  montessori3.class_teachers = [magda]
 
   montessori4 = NClass.new 
   montessori4.name = "المجموعة الرابعة"
-  montessori4.class_teacher = magda
+  montessori4.class_teachers = [magda]
 
   montessori5 = NClass.new 
   montessori5.name = "المجموعة الخامسة"
-  montessori5.class_teacher = abeer
+  montessori5.class_teachers = [abeer]
 
   montessori6 = NClass.new 
   montessori6.name = "المجموعة السادسة"
-  montessori6.class_teacher = abeer
+  montessori6.class_teachers = [abeer]
 
   class1= NClass.new 
   class1.name = "فصل 1"
-  class1.class_teacher = rabab
+  class1.class_teachers = [rabab]
 
   class2= NClass.new 
   class2.name = "فصل 2"
-  class2.class_teacher = elham
+  class2.class_teachers = [elham]
 
   class3= NClass.new 
   class3.name = "فصل 3"
-  class3.class_teacher = nahed
+  class3.class_teachers = [nahed]
 
   classes = [ 
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
@@ -165,7 +152,7 @@ def init
 
   classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
   classes_names.each do |c|
-      nclass = NClass.new name: c, class_teacher: rabab
+      nclass = NClass.new name: c, class_teachers: [rabab]
       classes.push nclass
   end
 
@@ -272,11 +259,19 @@ def make_students (people)
                               :educational_backround => Faker::Lorem.sentence,
                               :contacts => Faker::PhoneNumber.phone_number
                             )
-    relatives_count = [1,2,3].sample
-    relatives_count.times do |t|
-      relative =  people.sample
-      student.family_members += [relative] if not student.family_members.include? relative
-    end
+    father = people.select{ |p| p.gender == :male }.sample
+    mother = people.select{ |p| p.gender == :female }.sample
+    
+    father_relation = Relative.new(relation_type: :father)
+    father_relation.person = student
+    father_relation.related = father
+    father_relation.save!
+
+    mother_relation = Relative.new(relation_type: :mother)
+    mother_relation.person = student
+    mother_relation.related = mother
+    mother_relation.save!
+    
     student.n_class = NClass.first
     student.save!
     students << student
@@ -357,8 +352,8 @@ def make_classes(teachers, students, class_subjects)
   number.times do |n|
     teacher = teachers.sample
     teachers = teachers - [teacher]
-    nclass = NClass.create!(:name => class_names.sample, :class_teacher => teacher)
-    puts "#{nclass.name} - #{nclass.class_teacher.first_name}"
+    nclass = NClass.create!(:name => class_names.sample, :class_teachers => [teacher])
+    puts "#{nclass.name} - #{nclass.class_teachers.first.first_name}"
     (1..10).each do |c|
       student = students.sample
       students = students - [student]
@@ -455,6 +450,25 @@ def assign_students_behaviors(students)
       behavior.save!
     end
   end
+end
+
+def destroy_data
+  Person.all.destroy
+  User.all.destroy
+  Student.all.destroy
+  Subject.all.destroy
+  Teacher.all.destroy
+  ClassSubject.all.destroy
+  NClass.all.destroy
+  ClassEvaluationRecord.all.destroy
+  EvaluationRecord.all.destroy
+  ClassAttendanceRecord.all.destroy
+  AttendanceRecord.all.destroy
+  ClassScheduleEntry.all.destroy
+  Behavior.all.destroy
+  BehaviorRecord.all.destroy
+  Relative.all.destroy
+
 end
 
 
