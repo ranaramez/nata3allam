@@ -32,9 +32,17 @@ namespace :sample_data do
     assign_students_behaviors(students)
   end
 
-   task :init => :environment do
+  task :init => :environment do
     init
-   end
+  end
+
+  task fake_students: :environment do
+    make_students(make_people)
+  end
+
+  task fake_behaviors: :environment do
+    assign_students_behaviors(Student.all.entries)
+  end
 end
 
 def init
@@ -155,6 +163,12 @@ def init
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
     class1, class2, class3 ]
 
+  classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
+  classes_names.each do |c|
+      nclass = NClass.new name: c, class_teacher: rabab
+      classes.push nclass
+  end
+
   classes.map{|s| s.save!}
 
   puts "Classes created ... "
@@ -181,7 +195,7 @@ def init
         cs.save!
         c.subjects << cs
      end
-     make_class_subject_schedule(c.subjects)
+     # make_class_subject_schedule(c.subjects)
    end
    puts "Class Subjects created "
    puts "Fake initial schedule created "
@@ -240,7 +254,7 @@ end
 def make_students (people)
   puts "Creating students"
   students = [] 
-  number = 100
+  number = 10
   names = ['أحمد', 'محمد' ,'عمر',
            'عمرو', 'كريم', 'زياد',
            'نبيل','كرم',  'مصطفى' ,
@@ -263,6 +277,7 @@ def make_students (people)
       relative =  people.sample
       student.family_members += [relative] if not student.family_members.include? relative
     end
+    student.n_class = NClass.first
     student.save!
     students << student
   end
