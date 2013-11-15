@@ -53,7 +53,7 @@
                           %li.glyphicons.briefcase
                             %i
                             %strong الفصل : 
-                            =link_to @student.n_class.name, n_class_path(@student.n_class)
+                            =link_to @student.n_class.name, n_class_path(@student.n_class) if @student.n_class.present?
                           %li.glyphicons.home
                             %i
                             %strong العنوان : 
@@ -77,8 +77,7 @@
                   
                 .row-fluid.innerB
                   .span6
-                    - family_members = @student.family_members
-                    - father = family_members.father.first
+                    - father = @student.father
                     / About
                     - if father.present?
                       .widget.widget-heading-simple.widget-body-white.margin-none
@@ -109,7 +108,7 @@
                     / // About END
                   .span6
                     / Bio
-                    - mother = family_members.mother.first
+                    - mother = @student.mother
                     - if mother.present?
                       .widget.widget-heading-simple.widget-body-white.margin-none
                         .widget-head

@@ -3,20 +3,16 @@ class NClass
   include Mongoid::Document
   
   field :name, :type => String
-  has_one :class_teacher, :class_name => "Teacher", :validate => true
+  has_and_belongs_to_many :class_teachers, :class_name => "Teacher", :validate => true
   has_many :subjects, :class_name => "ClassSubject", :validate => false
   has_many :students, :class_name => "Student", :validate => false
   belongs_to :student, :class_name => "Student", :inverse_of => :past_classes
   
   field :start_year, :type => Integer, :default =>  Date.today.year 
 
-  validates_presence_of :class_teacher
-  def teacher_name
-  	teacher = class_teacher
-  	if teacher.present?
-  		return teacher.full_name
-  	end
-  	return "none"
+  validates_presence_of :class_teachers
+  def teachers_names
+    class_teachers.to_a.map(&:full_name)
   end
 
   def class_monthly_schedule month

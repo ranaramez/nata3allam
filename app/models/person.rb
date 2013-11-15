@@ -23,4 +23,17 @@ class Person
   def full_name
     first_name.to_s + " " + last_name.to_s
   end
+
+  def father
+    father_relation = relatives.where('person_id' => self._id, relation_type: :father).first
+    return father_relation.related if father_relation.present?
+    nil
+  end
+
+  def mother
+    mother_relation = relatives.where('person_id' => self._id, relation_type: :mother).first
+    return mother_relation.related if mother_relation.present?
+    nil
+  end
+
 end

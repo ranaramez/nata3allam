@@ -1,3 +1,4 @@
+=javascript_include_tag :defaults, "select_all"
 %ul.breadcrumb
   %li
     = link_to n_classes_path, class: "glyphicons briefcase" do
@@ -19,7 +20,7 @@
                   %img.media-object.pull-left.thumb{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", alt: "Logo" }
                   .media-body
                     %h2= link_to @n_class.name, n_class_path(@n_class)
-                    %h4= @teacher
+                    %h4= @teachers.join('-')
                     .separator.bottom
       .span6
         .span3.pull-left
@@ -46,20 +47,36 @@
     %table.table.table-white.table-bordered.table-vertical-center.table-pricing
       %thead
         %tr
+          %th.center{style: "width: 10%"}
           %th.center{style: "width: 15%"}
             %span.plan الطالب
-          - ['تقديم', 'تدريب', 'إتقان', 'ملاحظات'].each do |criteria|
-            %th.center{style: "width: 15%"}
-              %span.plan= criteria
-              .separator.bottom
+          %th{style: "width: 15%"}
+            %span.plan.center
+              %span.pull-right=check_box_tag('p_check_all', 'p_check_all', false, :onClick => "selectAll(this,'.presentation');")
+              %span= 'تقديم'
+            .separator.bottom
+          %th.center{style: "width: 15%"}
+            %span.plan= 'تدريب'
+            .separator.bottom
+          %th{style: "width: 15%"}
+            %span.plan.center
+              %span.pull-right=check_box_tag('m_check_all', 'm_check_all', false, :onClick => "selectAll(this,'.mastery');")
+              %span= 'إتقان'
+            .separator.bottom
+          %th.center{style: "width: 15%"}
+            %span.plan= 'ملاحظات'
+            .separator.bottom
       %tbody
         = f.fields_for :evaluation_records do |ff|
           = ff.hidden_field 'student_id', value: ff.object.student._id
           %tr{ style: "background-color: #E8E8E8 "}
+            %td
+              .media-object.pull-right.thumb
+                %img{alt: "Image", "data-src" => "holder.js/51x51/dark"}/
             %td= ff.object.student.full_name
-            %td= ff.check_box  :presentation
+            %td= ff.check_box  :presentation, class: 'presentation'
             %td= ff.number_field  :training
-            %td= ff.check_box  :mastery
+            %td= ff.check_box  :mastery, class: 'mastery'
             %td= ff.text_field :general_comments, :placeholder => 'ملاحظات'
     %button{type: "submit", class: "right btn btn-blue"}
       حفظ
