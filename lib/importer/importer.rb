@@ -96,15 +96,15 @@ class Importer::Importer
   end
 
   def self.import_students
-    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_5.csv'), 'abeer_montessori_5'
-    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_6.csv'), 'abeer_montessori_6'
-    save_all_students Rails.root.join('lib/importer/files/elham_class_2.csv'), 'elham_class_2'
-    save_all_students Rails.root.join('lib/importer/files/magda_montessori_3.csv'), 'magda_montessori_3'
-    save_all_students Rails.root.join('lib/importer/files/magda_montessori_4.csv'), 'magda_montessori_4'
-    save_all_students Rails.root.join('lib/importer/files/nahed_class3.csv'), 'nahed_class3'
-    save_all_students Rails.root.join('lib/importer/files/rabab_class1.csv'), 'rabab_class1'
-    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_1.csv'), 'shadya_montessori_1'
-    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_2.csv'), 'shadya_montessori_2'
+    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_5.csv'), 'المجموعة الخامسة'
+    save_all_students Rails.root.join('lib/importer/files/abeer_montessori_6.csv'), 'المجموعة السادسة'
+    save_all_students Rails.root.join('lib/importer/files/elham_class_2.csv'), 'فصل 2'
+    save_all_students Rails.root.join('lib/importer/files/magda_montessori_3.csv'), 'المجموعة الثالثة'
+    save_all_students Rails.root.join('lib/importer/files/magda_montessori_4.csv'), 'المجموعة الرابعة'
+    save_all_students Rails.root.join('lib/importer/files/nahed_class3.csv'), 'nفصل 3'
+    save_all_students Rails.root.join('lib/importer/files/rabab_class1.csv'), 'فصل 1'
+    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_1.csv'), 'المجموعة الأولى'
+    save_all_students Rails.root.join('lib/importer/files/shadya_montessori_2.csv'), 'المجموعة الثانية'
   end
 
   def self.import_lessons
