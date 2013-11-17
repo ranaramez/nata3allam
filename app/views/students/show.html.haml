@@ -1,0 +1,139 @@
+%ul.breadcrumb
+  %li
+    = link_to students_path, class: "glyphicons group" do
+      %i
+      الطلاب
+  %li.divider
+  %li= @student.full_name
+
+%h3= @student.full_name
+.innerLR
+  / Widget
+  .widget.widget-tabs.widget-tabs-double-2.border-bottom-none
+    / Widget heading
+    .widget-head
+      %ul
+        %li.active
+          %a.glyphicons.display{"data-toggle" => "tab", href: "#overview"}
+            %i
+            معلومات تفصيلية
+        %li
+          = link_to student_evaluation_path(@student), class: 'glyphicons notes_2' do
+            %i
+            تقييم المواد
+        %li
+          = link_to new_student_student_behavior_record_path(@student), class: "glyphicons edit" do
+            %i
+            تقييم السلوكيات
+    / // Widget heading END
+    .widget-body
+      
+      .tab-content
+        #overview.tab-pane.active.widget-body-regular.padding-none
+          .row-fluid.row-merge
+            .span3.center.innerL.innerTB
+              .innerR
+                / Profile Photo
+                %a.thumb{href: ""}
+                  %img{alt: "Profile", "data-src" => "holder.js/300x200"}/
+                .separator.bottom
+                  
+                
+            .span9.containerBg.innerTB
+              .innerLR
+                .row-fluid.innerB
+                  .span12
+                    .widget.widget-heading-simple.widget-body-white.margin-none
+                      .widget-head
+                        %h4.heading.glyphicons.user
+                          %i
+                          %strong معلومات الطالب
+                      .widget-body
+                        %ul.unstyled.icons.margin-none
+                          %li.glyphicons.briefcase
+                            %i
+                            %strong الفصل : 
+                            =link_to @student.n_class.name, n_class_path(@student.n_class) if @student.n_class.present?
+                          %li.glyphicons.home
+                            %i
+                            %strong العنوان : 
+                            = @student.address
+                          %li.glyphicons.credit_card
+                            %i
+                            %strong الرقم القومي : 
+                            - if @student.national_id.present?
+                              = @student.national_id
+                            - else
+                              لا يوجد
+                          %li.glyphicons.birthday_cake
+                            %i
+                            %strong تاريخ الميلاد :
+                            - if @student.date_of_birth.present?
+                              %span.label= format_number(@student.date_of_birth.to_date.day.to_s)
+                              %span.label= format_number(@student.date_of_birth.to_date.month.to_s)
+                              %span.label= format_number(@student.date_of_birth.to_date.year.to_s)
+                            - else
+                              لا يوجد
+                  
+                .row-fluid.innerB
+                  .span6
+                    - father = @student.father
+                    / About
+                    - if father.present?
+                      .widget.widget-heading-simple.widget-body-white.margin-none
+                        .widget-head
+                          %h4.heading.glyphicons.old_man
+                            %i
+                            %strong معلومات الاب
+                        .widget-body
+                          %ul.unstyled.icons.margin-none
+                            %li.glyphicons.circle_info
+                              %i
+                              %strong االاسم : 
+                              = father.full_name
+                            %li.glyphicons.tie
+                              %i
+                              %strong الوظيفة : 
+                              - if father.job.present?
+                                = father.job
+                              - else
+                                لا يوجد
+                            %li.glyphicons.briefcase
+                              %i
+                              %strong المؤهل التعليمي : 
+                              - if father.educational_background.present?
+                                = father.educational_background
+                              - else
+                                لا يوجد
+                    / // About END
+                  .span6
+                    / Bio
+                    - mother = @student.mother
+                    - if mother.present?
+                      .widget.widget-heading-simple.widget-body-white.margin-none
+                        .widget-head
+                          %h4.heading.glyphicons.woman
+                            %i
+                            %strong معلومات الام
+                        .widget-body
+                          %ul.unstyled.icons.margin-none
+                            %li.glyphicons.circle_info
+                              %i
+                              %strong االاسم : 
+                              = mother.full_name
+                            %li.glyphicons.tie
+                              %i
+                              %strong الوظيفة : 
+                              - if mother.job.present?
+                                = mother.job
+                              - else
+                                لا يوجد
+                            %li.glyphicons.briefcase
+                              %i
+                              %strong المؤهل التعليمي : 
+                              - if mother.educational_background.present?
+                                = mother.educational_background
+                              - else
+                                لا يوجد
+                    / // Bio END
+                

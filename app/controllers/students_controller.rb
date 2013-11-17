@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
 	end
 
   def show
-
+    @student = Student.find params[:id]
   end
 
   def evaluation
@@ -24,9 +24,12 @@ class StudentsController < ApplicationController
   	end
   	@end_date = @start_date + 6
   	n_class = @student.n_class
-  	@subjects = n_class.subjects
+  	@subjects =  n_class.present? ? n_class.subjects : []
   	@student_report, @total_done, @total_lessons = @student.get_student_class_report(@start_date)
     @past_student_report = @student.get_student_past_classes_report  @start_date
   end
 
+  def preview
+    @student = Student.find params[:student_id]
+  end
 end

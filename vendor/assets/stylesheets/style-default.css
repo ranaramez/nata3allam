@@ -121,19 +121,19 @@ p {
   color: #7c7c7c;
 }
 ul.icons {
-  text-align: left;
+  text-align: right;
   padding: 0;
 }
 ul.icons li {
   display: block;
-  padding: 0 0 0 25px;
+  padding: 0 25px 0 0;
   line-height: 22px;
   color: #7c7c7c;
 }
 ul.icons li i:before {
   color: #7c7c7c;
   font-size: 17px;
-  left: 0;
+  right: 0;
   top: 4px;
 }
 input,
@@ -4302,7 +4302,7 @@ div.glyphicons.glyphicon-primary i:before {
 }
 .widget-employees [class*="span"].listWrapper {
   height: 100%;
-  min-height: 410px;
+  min-height: 460px;
   position: relative;
   overflow: hidden;
 }
@@ -4322,7 +4322,7 @@ div.glyphicons.glyphicon-primary i:before {
 .widget-employees [class*="span"].listWrapper ul.list {
   margin: 0;
   position: absolute;
-  top: 125px;
+  top: 97px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -4359,10 +4359,10 @@ div.glyphicons.glyphicon-primary i:before {
   display: block;
   content: "";
   border: 5px solid transparent;
-  border-left-color: #c8c8c8;
+  border-right-color: #c8c8c8;
   position: absolute;
   bottom: 10px;
-  right: 0;
+  left: 0;
 }
 .widget-employees ul.team {
   margin: 0;
@@ -6398,10 +6398,10 @@ div.dataTables_filter label {
 }
 .progress.add-outside .add {
   position: absolute;
-  width: 40px;
+  width: 70px;
   right: -45px;
   top: 0;
-  text-align: left;
+  text-align: right;
   padding-left: 5px;
 }
 .progress.count-outside {

@@ -65,6 +65,9 @@
         %tr
           %td= student.full_name
           -@report[student._id].each do |value|
-            %td.center= value.map(&:description).join(',')
+            %td
+              %ul
+                -value.each do |val|
+                  %li= val.description
       / // Table row END
       / Table row

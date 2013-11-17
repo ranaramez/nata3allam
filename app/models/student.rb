@@ -3,7 +3,6 @@ class Student < Person
 
   belongs_to :n_class, :class_name => "NClass", :inverse_of => :students
   has_many :past_classes, :class_name => "NClass"
-  has_many :family_members, :class_name => "Person" #where to store the relation? 
   embeds_many :health_records, :class_name => "HealthRecord"
   has_many :evaluation_records, :class_name => "EvaluationRecord"
   has_many :assigned_behaviors, :class_name => "Behavior"
@@ -18,6 +17,7 @@ class Student < Person
 
   def get_student_class_report date
     student_report = {}
+    return [{}, 0, 0] if n_class.nil?
     subjects = self.n_class.subjects
     total_lessons, total_done = 0, 0
     subjects.each do |subject|

@@ -24,7 +24,7 @@ class NClassesController < ApplicationController
     else
       @n_class = NClass.all.first
     end
-    @teacher = @n_class.teacher_name
+    @teachers = @n_class.teachers_names
     @students = @n_class.students
     @subjects = @n_class.subjects
 

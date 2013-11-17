@@ -4,21 +4,7 @@ namespace :sample_data do
   task :generate => :environment do 
 
     #Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
-    Person.all.destroy
-    User.all.destroy
-    Student.all.destroy
-    Subject.all.destroy
-    Teacher.all.destroy
-    ClassSubject.all.destroy
-    NClass.all.destroy
-    ClassEvaluationRecord.all.destroy
-    EvaluationRecord.all.destroy
-    ClassAttendanceRecord.all.destroy
-    AttendanceRecord.all.destroy
-    ClassScheduleEntry.all.destroy
-    Behavior.all.destroy
-    BehaviorRecord.all.destroy
-
+    destroy_data
     people = make_people
     users = make_users
     students = make_students(people)
@@ -163,11 +149,11 @@ def init
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
     class1, class2, class3 ]
 
-  # classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
-  # classes_names.each do |c|
-  #     nclass = NClass.new name: c, class_teacher: rabab
-  #     classes.push nclass
-  # end
+  classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
+  classes_names.each do |c|
+      nclass = NClass.new name: c, class_teacher: rabab
+      classes.push nclass
+  end
 
   classes.map{|s| s.save!}
 

@@ -1,45 +1,70 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons user" do
+    = link_to students_path, class: "glyphicons group" do
       %i
-        الطالب
+      الطلاب
   %li.divider
-%h2= @student.full_name
-%h4= "التقييم الحالي"
+  %li= @student.full_name
+%h3= @student.full_name
+.innerLR
+  / Widget
+  .widget.widget-tabs.widget-tabs-double-2.border-bottom-none
+    / Widget heading
+    .widget-head
+      %ul
+        %li
+          = link_to student_path(@student), class: "glyphicons display" do
+            %i
+            معلومات تفصيلية
+        %li.active
+          = link_to student_evaluation_path(@student), class: 'glyphicons notes_2' do
+            %i
+            التقييم
+        %li
+          = link_to new_student_student_behavior_record_path(@student), class: "glyphicons edit" do
+            %i
+            تقييم السلوكيات
+    .widget-body
+      
+      .tab-content
+        #overview.tab-pane.active.widget-body-regular.padding-none
+          .row-fluid.row-merge
+            .span12.containerBg.innerTB
+              .innerLR
+                .row-fluid.innerB
+                  .span12
+                    %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+                      %thead
+                        %tr
+                          - @subjects.each do |subject|
+                            %th.center{style: "width: 15%"}
+                              %span.plan= subject.description
+                              .separator.bottom
+                          %th.center{style: "width: 15%"}
+                            %span.plan التقييم الكلي
+
+                      %tbody
+                        %tr{ style: "background-color: #E8E8E8 "}
+                        - @subjects.each do |subject|
+                          %td= "#{format_grade(@student_report[subject._id].first, @student_report[subject._id].second)}"
+                        %td= "#{format_grade(@total_done, @total_lessons)}"
+                    %h4= "التقييم السابق"
+                    - @past_student_report.each do |year, report|
+                      %h6= format_number year
+                      %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+                        %thead
+                          %tr
+                          - report.keys.each do |subject|
+                            %th.center{style: "width: 15%"}
+                              %span.plan= subject.description
+                              .separator.bottom
+                          %th.center{style: "width: 15%"}
+                            %span.plan التقييم الكلي
+                        %tbody
+                          %tr{ style: "background-color: #E8E8E8 "}
+                          - report.each do |subject, value|
+                            %td= "#{format_grade(value.first, value.second)}"
 
 
-%table.table.table-white.table-bordered.table-vertical-center.table-pricing
-  %thead
-    %tr
-      - @subjects.each do |subject|
-        %th.center{style: "width: 15%"}
-          %span.plan= subject.description
-          .separator.bottom
-      %th.center{style: "width: 15%"}
-        %span.plan التقييم الكلي
-
-  %tbody
-    %tr{ style: "background-color: #E8E8E8 "}
-    - @subjects.each do |subject|
-      %td= "#{format_grade(@student_report[subject._id].first, @student_report[subject._id].second)}"
-    %td= "#{format_grade(@total_done, @total_lessons)}"
-%h4= "التقييم السابق"
-- @past_student_report.each do |year, report|
-  %h6= format_number year
-  %table.table.table-white.table-bordered.table-vertical-center.table-pricing
-    %thead
-      %tr
-      - report.keys.each do |subject|
-        %th.center{style: "width: 15%"}
-          %span.plan= subject.description
-          .separator.bottom
-      %th.center{style: "width: 15%"}
-        %span.plan التقييم الكلي
-    %tbody
-      %tr{ style: "background-color: #E8E8E8 "}
-      - report.each do |subject, value|
-        %td= "#{format_grade(value.first, value.second)}"
-
-
-    
+                        
 

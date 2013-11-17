@@ -81,7 +81,7 @@ a [class*=" icon-"] {
 }
 .icons-ul .icon-li {
   position: absolute;
-  left: -2.142857142857143em;
+  right: -2.142857142857143em;
   width: 2.142857142857143em;
   text-align: center;
   line-height: inherit;

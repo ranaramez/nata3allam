@@ -1,43 +1,76 @@
 %ul.breadcrumb
   %li
-    = link_to "#", class: "glyphicons user" do
+    = link_to students_path, class: "glyphicons group" do
       %i
-        'الطالب'
+      الطلاب
   %li.divider
-%table.fc-header{width: "100%"}
-  %tbody
-    %tr
-      %td.fc-header-left
-        .btn-group
-          %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
-            %span= link_to "►", new_student_student_behavior_record_path(student_id: @student._id, date: (@start_date-7).to_s)
-          %span.fc-header-space
-          %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
-          %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
-            %span= link_to "◄", new_student_student_behavior_record_path(student_id: @student._id, date: (@end_date+1).to_s)
-%h4= @student.full_name
-= form_for(@behavior_record, url: student_student_behavior_records_path, html: { method: :post, action: :create}) do |f|
-  = f.hidden_field '_id', value: f.object._id
-  = f.hidden_field 'from_date', value: @start_date
-  = f.hidden_field 'to_date', value: @end_date
-  = f.hidden_field 'student_id', value: f.object.student._id
-  %table.table.table-white.table-bordered.table-vertical-center.table-pricing
-    %thead
-      %tr
-        %th.center{style: "width: 15%"}
-          %span.plan السلوك
-          - [ 'التقييم', 'ملاحظات'].each do |criteria|
-            %th.center{style: "width: 15%"}
-              %span.plan= criteria
-              .separator.bottom
-    %tbody
-      = f.fields_for :behavior_records do |ff|
-        = ff.hidden_field 'from_date', value: @start_date
-        = ff.hidden_field 'to_date', value: @end_date
-        = ff.hidden_field 'behavior_id', value: ff.object.behavior._id
-        %tr{ style: "background-color: #E8E8E8 "}
-          %td= ff.object.behavior.description
-          %td= ff.select :level, [["غير ملتزم",1],  ["قليل اﻷلتزام",2] , ["ملتزم",3]]
-          %td= ff.text_field :general_comments, :placeholder => 'ملاحظات'
-  %button{type: "submit", class: "right btn btn-blue"}
-    حفظ
+  %li= @student.full_name
+
+%h3= @student.full_name
+.innerLR
+  / Widget
+  .widget.widget-tabs.widget-tabs-double-2.border-bottom-none
+    / Widget heading
+    .widget-head
+      %ul
+        %li
+          = link_to student_path(@student), class: 'glyphicons display' do
+            %i
+            معلومات تفصيلية
+        %li
+          = link_to student_evaluation_path(@student), class: 'glyphicons notes_2' do
+            %i
+            تقييم المواد
+        %li.active
+          = link_to new_student_student_behavior_record_path(@student), class: "glyphicons edit" do
+            %i
+            تقييم السلوكيات
+    / // Widget heading END
+    .widget-body
+      
+      .tab-content
+        #overview.tab-pane.active.widget-body-regular.padding-none
+          .row-fluid.row-merge
+            .span12.containerBg.innerTB
+              .innerLR
+                .row-fluid.innerB
+                  .span12
+                    %table.fc-header{width: "100%"}
+                      %tbody
+                        %tr
+                          %td.fc-header-left
+                            .btn-group
+                              %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+                                %span= link_to "►", new_student_student_behavior_record_path(student_id: @student._id, date: (@start_date-7).to_s)
+                              %span.fc-header-space
+                              %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
+                              %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+                                %span= link_to "◄", new_student_student_behavior_record_path(student_id: @student._id, date: (@end_date+1).to_s)
+                    .widget.widget-heading-simple.widget-body-white.margin-none
+                      .widget-head
+                      .widget-body
+                        = form_for(@behavior_record, url: student_student_behavior_records_path, html: { method: :post, action: :create}) do |f|
+                          = f.hidden_field '_id', value: f.object._id
+                          = f.hidden_field 'from_date', value: @start_date
+                          = f.hidden_field 'to_date', value: @end_date
+                          = f.hidden_field 'student_id', value: f.object.student._id
+                          %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+                            %thead
+                              %tr
+                                %th.center{style: "width: 15%"}
+                                  %span.plan السلوك
+                                  - [ 'التقييم', 'ملاحظات'].each do |criteria|
+                                    %th.center{style: "width: 15%"}
+                                      %span.plan= criteria
+                                      .separator.bottom
+                            %tbody
+                              = f.fields_for :behavior_records do |ff|
+                                = ff.hidden_field 'from_date', value: @start_date
+                                = ff.hidden_field 'to_date', value: @end_date
+                                = ff.hidden_field 'behavior_id', value: ff.object.behavior._id
+                                %tr{ style: "background-color: #E8E8E8 "}
+                                  %td= ff.object.behavior.description
+                                  %td= ff.select :level, [["غير ملتزم",1],  ["قليل اﻷلتزام",2] , ["ملتزم",3]]
+                                  %td= ff.text_field :general_comments, :placeholder => 'ملاحظات'
+                          %button{type: "submit", class: "right btn btn-blue"}
+                            حفظ
