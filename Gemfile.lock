@@ -270,6 +270,7 @@ GEM
     ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmagick (2.13.2)
     roadie (2.3.4)
       actionmailer (> 3.0.0, < 3.3.0)
       css_parser
@@ -393,6 +394,7 @@ DEPENDENCIES
   rack-webconsole
   rails (= 3.2.12)
   raphael-rails
+  rmagick
   roadie (~> 2.3.4)
   routing-filter (= 0.3.1)
   rspec-rails (= 2.12.2)

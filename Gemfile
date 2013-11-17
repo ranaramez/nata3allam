@@ -54,6 +54,7 @@ group :development do
   gem 'guard-cucumber'
   gem 'zeus'
   gem 'rack-test', require: 'rack/test'
+  gem "rmagick"
 end
 
 group :test do

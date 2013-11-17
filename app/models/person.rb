@@ -11,12 +11,13 @@ class Person
   field :job, :type => String
   field :educational_background, :type => String #certain values?
   field :contacts, :type => String
-<<<<<<< Temporary merge branch 1
+  field :avatar_url,  :type => String
   has_many :relatives, :class_name => "Relative", validate: false
   belongs_to :student
 
-
   validates_presence_of :first_name
+
+  mount_uploader :avatar, AvatarUploader
 
   def full_name
     first_name.to_s + " " + last_name.to_s

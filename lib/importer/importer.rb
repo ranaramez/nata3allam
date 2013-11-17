@@ -60,6 +60,8 @@ class Importer::Importer
                 gender: row[:gender],
                 national_id: (row[:national_id]).to_s
                 )
+      
+       student.avatar = File.open(Rails.root.join("lib/importer/files/photos/#{row[:photo]}")) unless row[:photo].blank?
 
       # Create the father as well only if the name is not blank (since it's forced by the model)
       unless row[:father_fname].blank?
@@ -86,6 +88,8 @@ class Importer::Importer
         relation = student.relatives.build related: mother, relation_type: 'mother'
         relation.save!
       end
+   
+
 
       # Set the class
       student.n_class = nclass
