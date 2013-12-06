@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/avatars/#{model.full_name}_#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/avatars/#{model.name}_#{model.id}"
   end
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:

@@ -8,6 +8,8 @@ gem 'tire-contrib',         '~> 0.1.1'
 gem 'haml-rails',           '0.3.4'
 gem 'routing-filter',       '0.3.1'
 gem 'carrierwave-mongoid',  github: 'carrierwaveuploader/carrierwave-mongoid', branch: 'master', require: 'carrierwave/mongoid'
+gem 'carrierwave',              '~> 0.9'
+gem 'carrierwave_backgrounder', '~> 0.0.8'
 gem 'mongoid_slug',         '2.0.1'
 gem 'mini_magick',          '3.4'
 gem "json_builder",         "~> 3.1.7"

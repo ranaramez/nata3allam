@@ -35,9 +35,10 @@
               .innerR
                 / Profile Photo
                 %a.thumb{href: ""}
-                  %img{alt: "Profile", "data-src" => "holder.js/300x200"}/
+                  - photo_url = @student.avatar.present? ? @student.avatar.avatar_url.to_s : "holder.js/300X200"
+                  %img{alt: "Profile", "src" => photo_url}/
                 .separator.bottom
-                  
+              = link_to 'تعديل الصورة', new_student_avatar_path(@student)    
                 
             .span9.containerBg.innerTB
               .innerLR

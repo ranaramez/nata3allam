@@ -65,6 +65,8 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    carrierwave_backgrounder (0.0.9)
+      carrierwave (~> 0.5)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.8)
@@ -357,7 +359,9 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 2.3.1.2)
   capybara (= 2.1.0.beta1)
+  carrierwave (~> 0.9)
   carrierwave-mongoid!
+  carrierwave_backgrounder (~> 0.0.8)
   coffee-rails (~> 3.2.1)
   compass-rails
   cucumber (= 1.2.5)

@@ -10,13 +10,13 @@ Nata3allam::Application.routes.draw do
     get :enrolled_students
   end
 
-
   resources :class_evaluation_records, only: [:create, :edit]
 
   resources :students do
     get :evaluation
     get :preview
     resources :student_behavior_records, :controller => 'students/student_behavior_records', only: [:create, :new]
+    resources :avatars, :controller => 'students/avatars',  only: [:new, :create]
   end
 
 

@@ -13,13 +13,14 @@ class Person
   field :contacts, :type => String
   field :avatar_url,  :type => String
   has_many :relatives, :class_name => "Relative", validate: false
+  has_one :avatar, :class_name => 'Avatar', validate: true
   belongs_to :student
 
   scope :father, where(gender: :male)
   scope :mother, where(gender: :female)
   validates_presence_of :first_name
 
-  mount_uploader :avatar, AvatarUploader
+  
 
   def full_name
     first_name.to_s + " " + last_name.to_s
