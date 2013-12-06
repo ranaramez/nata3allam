@@ -1,0 +1,11 @@
+= form_for(@avatar, url: student_avatars_path, html: { :multipart => true,method: :post, action: :create}) do |f|
+  = f.error_messages
+  = f.hidden_field 'person_id', value: @student_id
+  %h2= @student.full_name
+  %p
+    = f.file_field :avatar
+  %p
+    //= f.label :remote_image_url, "or image URL"
+    //= f.text_field :remote_image_url
+  %p
+    = f.submit 'حفظ'
