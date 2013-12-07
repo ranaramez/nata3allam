@@ -61,7 +61,7 @@ class Importer::Importer
                 national_id: (row[:national_id]).to_s
                 )
       
-       student.avatar = File.open(Rails.root.join("lib/importer/files/photos/#{row[:photo]}")) unless row[:photo].blank?
+       student.avatar.store!(File.open(Rails.root.join("lib/importer/photos/#{row[:photo]}"))) unless row[:photo].blank?
 
       # Create the father as well only if the name is not blank (since it's forced by the model)
       unless row[:father_fname].blank?
