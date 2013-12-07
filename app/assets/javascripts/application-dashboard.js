@@ -15,6 +15,7 @@
 //= require jquery-migrate-1.2.1.min
 //= require jquery/jquery.easing
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require js-beautify/beautify
 //= require js-beautify/beautify-html
 //= require jquery.prettyPhoto
@@ -57,9 +58,8 @@ $(function(){
   Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9});
 
   $('.subject-submit').on('click', function(e){
-    // console.log()
+    
     $(this).parents('form:first').submit();
-    // $(this).closest('form').submit();
   });
 
   // fix hack
@@ -71,11 +71,13 @@ $(function(){
       $('tr:last').find('div.dropdown-menu').css({ top: - menu + 'px'});
     }
   });
-
-  $('.datatable').dataTable({
-    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-    "sPaginationType": "bootstrap"
+  $("#photo_upload .wrapper .avatar").on('change', function(){
+    $(this).closest('form').submit();
   });
+  // $('.datatable').dataTable({
+  //   "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+  //   "sPaginationType": "bootstrap"
+  // });
 });
 
 var initPieChart = function() {

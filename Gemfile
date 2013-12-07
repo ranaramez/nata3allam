@@ -16,6 +16,7 @@ gem "json_builder",         "~> 3.1.7"
 gem 'dynamic_form',         '1.1.4'
 gem 'kaminari',             '0.13.0'
 gem "jquery-rails",         "2.3.0"
+gem 'remotipart',           '~> 1.2'
 
 
 group :assets do

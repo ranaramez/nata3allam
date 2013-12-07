@@ -22,8 +22,7 @@
           / Profile Photo
           .center
             %a.thumb.inline-block{href: ""}
-              - photo_url = student.avatar.present? ? student.avatar.avatar_url : "holder.js/300x200"
-              %img{alt: "Profile", "src" => photo_url}/
+              = image_tag student.avatar.preview.url
           .separator.bottom
           / // Profile Photo END
           %ul.icons-ul

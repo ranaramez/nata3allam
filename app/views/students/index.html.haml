@@ -35,7 +35,7 @@
                 %li
                   .media.innerAll
                     .media-object.pull-left.thumb
-                      %img{alt: "Image", "data-src" => "holder.js/51x51/dark"}/
+                      = image_tag student.avatar.thumb.url
                     .media-body
                       %span.strong= student.full_name
                       %span.muted= student.n_class.name if student.n_class.present?

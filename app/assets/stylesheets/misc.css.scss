@@ -15,3 +15,18 @@
 .student-preview{
   padding-top: 70px;
 }
+
+#photo_upload {
+    position: relative;
+}
+
+#photo_upload .wrapper {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    input {
+      cursor: pointer;
+    }
+}

@@ -32,4 +32,9 @@ class StudentsController < ApplicationController
   def preview
     @student = Student.find params[:student_id]
   end
+
+  def update
+    @student = Student.find params[:id]
+    @student.update_attributes(params[:student])
+  end
 end

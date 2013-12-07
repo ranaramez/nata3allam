@@ -1,6 +1,7 @@
 class Person
   
   include Mongoid::Document
+  include Mongoid::Slug
   include ActiveModel::SecurePassword
 
   field :first_name, :type => String
@@ -11,14 +12,16 @@ class Person
   field :job, :type => String
   field :educational_background, :type => String #certain values?
   field :contacts, :type => String
-  field :avatar_url,  :type => String
   has_many :relatives, :class_name => "Relative", validate: false
-  has_one :avatar, :class_name => 'Avatar', validate: true
   belongs_to :student
 
   scope :father, where(gender: :male)
   scope :mother, where(gender: :female)
   validates_presence_of :first_name
+
+  # Extensions
+  mount_uploader :avatar, AvatarUploader
+  slug :first_name, :last_name
 
   
 

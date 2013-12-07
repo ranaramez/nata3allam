@@ -35,11 +35,17 @@
               .innerR
                 / Profile Photo
                 %a.thumb{href: ""}
-                  - photo_url = @student.avatar.present? ? @student.avatar.avatar_url.to_s : "holder.js/300X200"
-                  %img{alt: "Profile", "src" => photo_url}/
+                  = image_tag @student.avatar.large.url, id: "student_avatar"
                 .separator.bottom
-              = link_to 'تعديل الصورة', new_student_avatar_path(@student)    
-                
+              .row-fluid
+                = form_for @student, html: {multipart: true, id: 'student_upload'}, remote: true do |f| 
+                  #photo_upload
+                    .wrapper
+                      = f.file_field :avatar, class: 'avatar'
+                    %button.btn.btn-icon.btn-primary.span11
+                      %i
+                      تعديل الصورة
+                                  
             .span9.containerBg.innerTB
               .innerLR
                 .row-fluid.innerB
