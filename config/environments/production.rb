@@ -46,7 +46,7 @@ Nata3allam::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( application.js application.css admin.css admin.js)
+  config.assets.precompile += %w( application.js application.css admin.css admin.js application-rtl.css style-default.css uniform.default.css application-dashboard-rtl.css application-dashboard.js system/html5shiv.js excanvas/excanvas.js json2.js)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

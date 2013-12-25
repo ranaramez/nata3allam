@@ -7170,7 +7170,7 @@ div.dataTables_filter label {
 .bwizard-steps a:hover {
   text-decoration: none;
 }
-.bwizard-steps.clickable li:not (.active ) {
+/*.bwizard-steps.clickable li:not (.active ) {
   cursor: pointer;
 }
 .bwizard-steps.clickable li:hover:not (.active ) {
@@ -7181,7 +7181,7 @@ div.dataTables_filter label {
 }
 .bwizard-steps.clickable li:hover:not (.active ) a {
   color: #08c;
-}
+}*/
 @media (max-width: 480px) {
   /* badges only on small screens */
   .bwizard-steps li:after,
