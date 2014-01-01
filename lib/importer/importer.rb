@@ -43,8 +43,11 @@ class Importer::Importer
     sheet = sheet_to_hash filepath
 
     # The class
-    nclass = NClass.find_by name: class_name
-
+    begin
+      nclass = NClass.find_by name: class_name
+    rescue
+      n_class = nil
+    end
     if nclass.blank?
       return
     end

@@ -3,8 +3,6 @@
 namespace :sample_data do
   task :generate => :environment do 
 
-    #Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
-    destroy_data
     people = make_people
     users = make_users
     students = make_students(people)
@@ -111,49 +109,49 @@ def init
   #NClasses 
   montessori1 = NClass.new 
   montessori1.name = "المجموعة الأولى"
-  montessori1.class_teachers << shadya
+  montessori1.class_teachers = [shadya]
 
   montessori2 = NClass.new 
   montessori2.name = "المجموعة الثانية"
-  montessori2.class_teachers << shadya
+  montessori2.class_teachers = [shadya]
 
   montessori3 = NClass.new 
   montessori3.name = "المجموعة الثالثة"
-  montessori3.class_teachers << magda
+  montessori3.class_teachers = [magda]
 
   montessori4 = NClass.new 
   montessori4.name = "المجموعة الرابعة"
-  montessori4.class_teachers << magda
+  montessori4.class_teachers = [magda]
 
   montessori5 = NClass.new 
   montessori5.name = "المجموعة الخامسة"
-  montessori5.class_teachers << abeer
+  montessori5.class_teachers = [abeer]
 
   montessori6 = NClass.new 
   montessori6.name = "المجموعة السادسة"
-  montessori6.class_teachers << abeer
+  montessori6.class_teachers = [abeer]
 
   class1= NClass.new 
   class1.name = "فصل 1"
-  class1.class_teachers << rabab
+  class1.class_teachers = [rabab]
 
   class2= NClass.new 
   class2.name = "فصل 2"
-  class2.class_teachers << elham
+  class2.class_teachers = [elham]
 
   class3= NClass.new 
   class3.name = "فصل 3"
-  class3.class_teachers << nahed
+  class3.class_teachers = [nahed]
 
   classes = [ 
     montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
     class1, class2, class3 ]
 
-  # classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
-  # classes_names.each do |c|
-  #     nclass = NClass.new name: c, class_teacher: rabab
-  #     classes.push nclass
-  # end
+  classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
+  classes_names.each do |c|
+      nclass = NClass.new name: c, class_teachers: [rabab]
+      classes.push nclass
+  end
 
   classes.map{|s| s.save!}
 
@@ -343,8 +341,8 @@ def make_classes(teachers, students, class_subjects)
   number.times do |n|
     teacher = teachers.sample
     teachers = teachers - [teacher]
-    nclass = NClass.create!(:name => class_names.sample, :class_teacher => teacher)
-    puts "#{nclass.name} - #{nclass.class_teacher.first_name}"
+    nclass = NClass.create!(:name => class_names.sample, :class_teachers => [teacher])
+    puts "#{nclass.name} - #{nclass.class_teacher.first.first_name}"
     (1..10).each do |c|
       student = students.sample
       students = students - [student]
@@ -427,11 +425,7 @@ def make_class_subject_schedule(class_subjects)
   end
 end
 
-def assign_students_behaviors(students)
-  behavior_descriptions = ['الحفاظ على اللغة', '  المحافظة على المواعيد',
-                           'الزي الرسمي', 'النظافة', 'عدم الكلام في ألفصل',
-                           'المحافظة على الواجب', 'معاملة الزملاء'
-                          ]
+def assign_students_behaviors(students, behavior_descriptions)
   students.each do |student|
     (1..3).each do |index|
       description = behavior_descriptions.sample
@@ -442,6 +436,9 @@ def assign_students_behaviors(students)
     end
   end
 end
+
+ 
+
 
 
 
