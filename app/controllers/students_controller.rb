@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
 
   def evaluation
   	student_id = params[:student_id]
-  	@student = Student.where(id: student_id).first
+  	@student = Student.find student_id
 	  if params[:date].present?
       @start_date = Date.parse(params[:date])
     else

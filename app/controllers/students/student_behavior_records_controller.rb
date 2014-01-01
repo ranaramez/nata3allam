@@ -1,7 +1,7 @@
 class Students::StudentBehaviorRecordsController < ApplicationController
 
   def new
-    @student = Student.where(_id: params[:student_id]).first
+    @student = Student.find params[:student_id]
     if params[:date].present?
       @start_date = Date.parse(params[:date])
     else
@@ -20,7 +20,6 @@ class Students::StudentBehaviorRecordsController < ApplicationController
     end
     record ||= StudentBehaviorRecord.new
     student_id = params[:student_behavior_record][:student_id]
-    @student = Student.where(_id: student_id).first
     @date = record.from_date
     record.update_attributes params[:student_behavior_record]
     record.save!
