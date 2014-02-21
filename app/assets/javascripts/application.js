@@ -43,12 +43,17 @@ $(function(){
 });
 
 function filter(element,what) {
-    var value = $(element).val();
-    value = value.trim()
-    if(value == '')
-        $('#'+what+'  li').show();
-    else{
-        $('#'+what+'  li:not(:contains(' + value + '))').hide();
-        $('#'+what+'  li:contains(' + value + ')').show();
-    }
+  var value = $(element).val();
+  value = value.trim()
+  if(value == '')
+    $('#'+what+'  li').show();
+  else {
+    words = value
+    var ils = $('#'+what+'  li').hide();
+    $.each(words.split(' '), function(i, v) {
+      ils = ils.filter(':contains(' + v.trim() + ')');
+    });
+    ils.show();
+  }
+
 };
