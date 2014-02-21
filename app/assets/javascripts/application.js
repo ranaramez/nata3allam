@@ -42,3 +42,13 @@ $(function(){
   Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9});
 });
 
+function filter(element,what) {
+    var value = $(element).val();
+    value = value.trim()
+    if(value == '')
+        $('#'+what+'  li').show();
+    else{
+        $('#'+what+'  li:not(:contains(' + value + '))').hide();
+        $('#'+what+'  li:contains(' + value + ')').show();
+    }
+};

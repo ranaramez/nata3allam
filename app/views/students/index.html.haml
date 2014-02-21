@@ -1,3 +1,4 @@
+=javascript_include_tag :defaults, "application"
 %ul.breadcrumb
   %li
     = link_to students_path, class: "glyphicons group" do
@@ -23,13 +24,13 @@
                 %button.btn.btn-inverse.pull-left{type: "button"}
                   %i.icon-search
                 .overflow-hidden
-                  %input{placeholder: "ابحث عن طالب ..", type: "text", value: ""}/
+                  %input{placeholder: "ابحث عن طالب ..", type: "text", value: "", onkeyup:"filter(this,'studentsList')"}/
       
           %span.results
             =format_number(@students.count)
             طالب
             %i.icon-circle-arrow-down
-          %ul.list.unstyled
+          %ul.list.unstyled{id: 'studentsList'}
             - @students.each do |student|
               = link_to student_preview_path(student), remote: true do
                 %li
