@@ -124,4 +124,21 @@ class Importer::Importer
     import_subject_lessons Rails.root.join('lib/importer/files/islamic.csv'), 'تربية اسلامية'
   end
 
+  def self.import_pics path
+    filenames = Dir.entries(path).select {|f| !File.directory? f}
+    filenames.each do |filename|
+      prefix = filename.split('.')[0]
+      next if prefix.ends_with? 'X'
+      student_id = prefix.split('_')[0]
+      begin
+        student = Student.find student_id
+      rescue Exception
+        puts "unable to find student: #{student_id}"
+        next
+      end
+      student.avatar = open("./#{path}/#{filename}")
+      student.save!
+    end
+  end
+
 end

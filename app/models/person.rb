@@ -6,6 +6,7 @@ class Person
 
   field :first_name, :type => String
   field :last_name, :type => String
+  field :full_name_generated, :type => String 
   field :address, :type => String
   field :date_of_birth, :type => Time
   field :gender, :type => Symbol

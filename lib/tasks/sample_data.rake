@@ -20,6 +20,14 @@ namespace :sample_data do
     init
   end
 
+  task :import_pics => :environment do
+    path = 'public/images/girls-pics'
+    Importer::Importer.import_pics path
+    path = 'public/images/boys-pics'
+    Importer::Importer.import_pics path
+    puts "Pics imported"
+  end
+
   task fake_students: :environment do
     make_students(make_people)
   end
@@ -187,8 +195,9 @@ def init
 
   #Import students 
   #make_class_evaluation_records(students, class_subjects)
-  #make_class_attendance_records(students, class_subjects)    
-  end
+  #make_class_attendance_records(students, class_subjects)  
+  assign_full_names  
+end
 
 def make_people 
   puts "Creating people"
@@ -434,6 +443,12 @@ def assign_students_behaviors(students, behavior_descriptions)
       behavior.student = student
       behavior.save!
     end
+  end
+end
+
+def assign_full_names
+  Student.all.each do |student|
+    student.set :full_name_generated, student.full_name
   end
 end
 

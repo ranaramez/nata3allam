@@ -37,4 +37,6 @@ class StudentsController < ApplicationController
     @student = Student.find params[:id]
     @student.update_attributes(params[:student])
   end
+
+
 end

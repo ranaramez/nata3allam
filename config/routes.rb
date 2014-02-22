@@ -19,6 +19,7 @@ Nata3allam::Application.routes.draw do
     resources :avatars, :controller => 'students/avatars',  only: [:new, :create]
   end
 
+ match 'search/autocomplete', :to => 'search#autocomplete',  :as => 'autocomplete'
 
   resources :class_schedule_entries, only: [:new, :create, :destroy]
 
