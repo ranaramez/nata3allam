@@ -105,3 +105,7 @@ var initPieChart = function() {
         });
       });
   };
+
+$(document).ready( function() {
+$('.dropdown-toggle').dropdown();
+});
