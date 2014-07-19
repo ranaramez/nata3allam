@@ -1,0 +1,41 @@
+/ Toolbar
+#toolbar
+  .container_16
+    .grid_16
+      %ul
+        %li.phone
+          %a{href: "tel:+1 554 555 5555"} Tel.: +1 554 555 5555
+        %li.rss
+          %a{href: "#"}
+            %i.icon-rss
+        %li.contact
+          %a{href: "#"}
+            %i.icon-envelope
+        %li.share
+          %a{href: "#"}
+            %i.icon-share
+          %ul.share-items.radius-bottom
+            %li.share-item-fb.radius
+              %a{href: "#"}
+                %i.icon-facebook-sign
+            %li.share-item-tw.radius
+              %a{href: "#"}
+                %i.icon-twitter-sign
+            %li.share-item-gp.radius
+              %a{href: "#"}
+                %i.icon-google-plus-sign
+        %li.search
+          %a{href: "#"}
+            %i.icon-search
+          %ul.search-items.radius-bottom
+            %li
+              .search-form
+                %form#searchform{action: "action", method: "get"}
+                  %div
+                    %input#s.radius{name: "s", onblur: "if(this.value=='')this.value=this.defaultValue;", onfocus: "if(this.value==this.defaultValue)this.value='';", size: "", type: "text", value: "Type your searching word"}/
+                    %input#searchsubmit{type: "submit", value: "Search"}/
+        %li.donate
+          %a{href: "#"}
+            Donate
+            %i.icon-tint
+/ /#toolbar

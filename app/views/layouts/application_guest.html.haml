@@ -1,0 +1,16 @@
+%html{style: "direction:ltr!important;"}
+  %head
+    %title Net3allem
+    = stylesheet_link_tag  "application", "style", "font-awesome", "flexslider","font-awesome-ie7", "keyframes", "grid", "meanmenu"
+    = javascript_include_tag 'application_guest'
+    / = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+  %body.home.blog.two-column.right-sidebar{"data-twttr-rendered" => "true" }
+    #page
+      = render partial: 'layouts/guest/toolbar'
+      = render partial: 'layouts/guest/header'
+      = render partial: 'layouts/guest/page_title'
+      #main.site-main.container_16
+        .inner
+        
+        = yield
