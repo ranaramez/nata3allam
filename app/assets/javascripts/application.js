@@ -30,6 +30,14 @@
 //= require bootstrap-extend/bootbox
 
 
+//= require base
+//= require jquery.fitvids
+//= require jquery.flexslider-min
+//= require jquery.inview
+//= require jquery.meanmenu
+//= require jquery.min
+//= require jquery.scrollParallax.min
+
 
 
 
