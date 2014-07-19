@@ -37,6 +37,7 @@ class StudentsController < ApplicationController
 
   def preview
     @student = Student.find params[:student_id]
+    @student_progress = @student.get_student_progress
   end
 
   def update

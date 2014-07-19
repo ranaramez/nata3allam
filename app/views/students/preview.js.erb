@@ -1,1 +1,1 @@
-$('#preview_info').html("<%= escape_javascript(render partial: 'preview_info', locals: {student: @student}) %>")
+$('#preview_info').html("<%= escape_javascript(render partial: 'preview_info', locals: {student: @student, progress: @student_progress}) %>")

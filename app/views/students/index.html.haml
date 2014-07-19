@@ -40,7 +40,8 @@
                     .media-body
                       %span.strong= student.full_name
                       %span.muted= student.n_class.name if student.n_class.present?
-        #preview_info            
-          = render partial: 'preview_info', locals: {student: @students.first}  
+        #preview_info
+          - @student_progress = @students.first.get_student_progress
+          = render partial: 'preview_info', locals: {student: @students.first, progress: @student_progress}  
         
   / // Widget END

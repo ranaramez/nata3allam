@@ -28,10 +28,28 @@ class Student < Person
       finished_lessons_count = past_lessons.count - unfinished_lessons.count
       total_lessons += past_lessons.count
       total_done += finished_lessons_count
+
       student_report[subject._id] = [finished_lessons_count, past_lessons.count]
     end
     [student_report, total_done, total_lessons]
   end
+
+  def get_student_progress
+    student_report = {}
+    return {} if n_class.nil?
+    subjects = self.n_class.subjects
+    subjects.each do |subject|
+      lessons = subject.lessons
+      finished_records = self.evaluation_records.where(mastery: true) #TODO have to specify subject
+      finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}
+      unfinished_lessons = lessons - finished_lessons
+      finished_lessons_count = lessons.count - unfinished_lessons.count
+      percentage = finished_lessons_count * 100 / lessons.count
+      student_report[subject.description] = percentage
+    end
+    student_report
+  end
+
 
   def get_student_past_classes_report  date
     student_report = {}
