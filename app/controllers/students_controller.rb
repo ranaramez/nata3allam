@@ -1,17 +1,23 @@
 class StudentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:evaluation, :update]
 
-	def index
+  #layout "application", except: [:index, :show]
+	
+  def index
 
     @students = Student.all
-
-    respond_to do |format|
-      format.html # index.html.erb
+    unless current_user.present?
+      @page_title = "Our Children"
+      render  'guest_index', layout: "application_guest" and return 
+    else
+      render
     end
+    
 	end
 
   def show
     @student = Student.find params[:id]
+    #render layout: "application"
   end
 
   def evaluation

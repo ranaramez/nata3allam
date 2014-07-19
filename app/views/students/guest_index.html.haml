@@ -1,0 +1,8 @@
+- @students.each do |student|
+  .candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
+    .candidate-margins
+      %a{href: "#"}
+        %img.attachment-candidate-thumb.wp-post-image{alt: "Sherook_Nasr", height: "235", src: "#{student.avatar.preview.url}", width: "224"}/
+        .name
+          = student.full_name
+
