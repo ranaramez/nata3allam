@@ -4,38 +4,37 @@
     .grid_16
       %ul
         %li.phone
-          %a{href: "tel:+1 554 555 5555"} Tel.: +1 554 555 5555
-        %li.rss
-          %a{href: "#"}
-            %i.icon-rss
+          %a{href:"tel:+01003405520"} Tel.:+01003405520
         %li.contact
-          %a{href: "#"}
+          %a{href: "http://net3allem.com/?page_id=101"}
             %i.icon-envelope
-        %li.share
-          %a{href: "#"}
-            %i.icon-share
-          %ul.share-items.radius-bottom
-            %li.share-item-fb.radius
-              %a{href: "#"}
-                %i.icon-facebook-sign
-            %li.share-item-tw.radius
-              %a{href: "#"}
-                %i.icon-twitter-sign
-            %li.share-item-gp.radius
-              %a{href: "#"}
-                %i.icon-google-plus-sign
+        / <li class="share"><a href="#"><i class="icon-share"></i></a>
+        / <ul class="share-items radius-bottom">
+        %li.contact.share-item-icon-facebook-sign.radius
+          %a{href: "http://www.facebook.com/net3allem", target: "_blank", title: "Facebook"}
+            %i.icon-facebook-sign
+        %li.contact.share-item-icon-twitter-sign.radius
+          %a{href: "http://twitter.com/net3allem", target: "_blank", title: "Twitter"}
+            %i.icon-twitter-sign
+        %li.contact.share-item-icon-pinterest-sign.radius
+          %a{href: "#", target: "_blank", title: "Pinterest"}
+            %i.icon-pinterest-sign
+        %li.contact.share-item-icon-youtube-play.radius
+          %a{href: "#", target: "_blank", title: "You Tube"}
+            %i.icon-youtube-play
+        / </ul>
         %li.search
           %a{href: "#"}
             %i.icon-search
           %ul.search-items.radius-bottom
             %li
               .search-form
-                %form#searchform{action: "action", method: "get"}
+                %form#searchform{action: "http://net3allem.com/", method: "get", role: "search"}
                   %div
-                    %input#s.radius{name: "s", onblur: "if(this.value=='')this.value=this.defaultValue;", onfocus: "if(this.value==this.defaultValue)this.value='';", size: "", type: "text", value: "Type your searching word"}/
+                    %input#s{name: "s", onblur: "if(this.value=='')this.value=this.defaultValue;", onfocus: "if(this.value==this.defaultValue)this.value='';", type: "text", value: "Search for..."}/
                     %input#searchsubmit{type: "submit", value: "Search"}/
         %li.donate
-          %a{href: "#"}
+          %a{href: "http://net3allem.com/?page_id=1441"}
             Donate
             %i.icon-tint
 / /#toolbar
