@@ -56,13 +56,12 @@
           .row-fluid
             .span12
               %h5.strong نبذة عن التقيم
-              لغة عربية
               - progress.each do |subject, progress_info|
+                = subject
                 .progress.progress-mini.progress-primary.count-outside
                   .count.span2
                     = "#{progress_info}%"
                   .bar{style: "width: #{progress_info}%;"}
-                = subject
               .separator.bottom
               = link_to student_evaluation_path(student), class: "btn btn-primary btn-medium btn-block" do
                 %i.icon-bar-chart.icon-fixed-width

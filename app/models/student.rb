@@ -21,9 +21,9 @@ class Student < Person
     subjects = self.n_class.subjects
     total_lessons, total_done = 0, 0
     subjects.each do |subject|
-      past_lessons = subject.get_past_lessons date
+      past_lessons = subject.get_past_lessons(date).uniq
       finished_records = self.evaluation_records.where(mastery: true) #TODO have to specify subject
-      finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}
+      finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}.uniq
       unfinished_lessons = past_lessons - finished_lessons
       finished_lessons_count = past_lessons.count - unfinished_lessons.count
       total_lessons += past_lessons.count
