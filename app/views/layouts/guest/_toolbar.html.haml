@@ -2,7 +2,7 @@
 #toolbar
   .container_16
     .grid_16
-      %ul
+      %ul.tb-list
         %li.phone
           %a{href:"tel:+01003405520"} Tel.:+01003405520
         %li.contact
@@ -37,4 +37,11 @@
           %a{href: "http://net3allem.com/?page_id=1441"}
             Donate
             %i.icon-tint
+      %ul#qtranslate-chooser.qtrans_language_chooser
+        %li.lang-en.active
+          =link_to 'English', url_for( :locale => 'en' )
+        %li.lang-ar
+          =link_to 'العربية', url_for( :locale => 'ar' )
+      .qtrans_widget_end
+      .clear
 / /#toolbar

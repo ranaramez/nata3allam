@@ -406,13 +406,13 @@ a:hover {
 	height: 40px;
 }
 
-#toolbar ul  {
+#toolbar .tb-list  {
 	float: right !important;
 	text-align: right !important;
 
 }
 
-#toolbar ul li{
+#toolbar .tb-list li{
 	float: left;
 	font-size: 16px;
 	display: inline;
@@ -422,7 +422,7 @@ a:hover {
 	position: relative;
 }
 
-#toolbar ul li a {
+#toolbar .tb-list li a {
 	color: #fff;
 	margin: 0;
 	padding: 0px 0 0 0;
@@ -609,6 +609,14 @@ a:hover {
 	-ms-animation-duration:1s;
 	-o-animation-duration:1s;
 	animation-duration:1s;
+}
+
+#qtranslate-chooser a, #qtranslate-chooser a:visited  {
+	color: #b41f66;
+}
+
+#qtranslate-chooser a:focus, #qtranslate-chooser a:active, #qtranslate-chooser a:hover { 
+	color: #c9253a; 
 }
 
 

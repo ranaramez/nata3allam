@@ -1,7 +1,9 @@
-%html{style: "direction:ltr!important;"}
+- locale = I18n.locale || 'en'
+%html{ lang: "#{locale}"}
   %head
     %title Net3allem
-    = stylesheet_link_tag  "application", "style", "font-awesome", "flexslider","font-awesome-ie7", "keyframes", "grid", "meanmenu"
+    = stylesheet_link_tag  "style", "font-awesome", "flexslider","font-awesome-ie7", "keyframes", "grid", "meanmenu"
+    = stylesheet_link_tag "rtl" if locale == :ar
     = javascript_include_tag 'application_guest'
     / = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags

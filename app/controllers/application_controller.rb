@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   layout :set_layout
-  before_filter :set_css_class
+  before_filter :set_css_class, :set_locale
   protect_from_forgery
 
   protected
