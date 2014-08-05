@@ -1,6 +1,7 @@
 class Student < Person
   include Mongoid::Document
-
+  field :sponsors_count, :type => Integer, :default => 0
+  
   belongs_to :n_class, :class_name => "NClass", :inverse_of => :students
   has_many :past_classes, :class_name => "NClass"
   embeds_many :health_records, :class_name => "HealthRecord"
