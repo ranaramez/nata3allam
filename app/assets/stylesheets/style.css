@@ -1521,16 +1521,6 @@ progress::-moz-progress-bar {
 	-moz-box-shadow: inset 0 0 12px #c2c0c0;
 	-webkit-box-shadow: inset 0 0 12px #c2c0c0;
 	box-shadow: inner 0 0 12px #c2c0c0;
-	-webkit-animation-name: bounce;
-	-moz-animation-name: bounce;
-	-o-animation-name: bounce;
-	animation-name: bounce;
-
-	-webkit-animation-duration:1s;
-	-moz-animation-duration:1s;
-	-ms-animation-duration:1s;
-	-o-animation-duration:1s;
-	animation-duration:1s;
 }
 
 .candidate a {
@@ -2628,7 +2618,6 @@ a.button.black:hover {
 }
 
 .tabs li {
-  float: left;
   list-style-type: none !important;
   list-style-position: outside !important;
   cursor: pointer;
