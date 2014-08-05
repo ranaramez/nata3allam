@@ -16,8 +16,15 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
+    unless current_user.present?
+      render  'guest_show', layout: "application_guest" and return 
+    else
+      render
+    end
     #render layout: "application"
+  
   end
+
 
   def evaluation
   	student_id = params[:student_id]

@@ -3,3 +3,14 @@
 
 en:
   hello: "Hello world"
+  "amount": "80 L.E./Month"
+  "sponsors": "Sponsors"
+  "sponsor": "Sponsor"
+  "basic": "Basic Info"
+  "progress": "Student's Progress"
+  "name": "Name"
+  "age": "Age"
+  "birth": "Date of Birth"
+  "class": "Class"
+  "NA": "لا يوجد"
+

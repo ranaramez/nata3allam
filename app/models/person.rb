@@ -42,4 +42,22 @@ class Person
     nil
   end
 
+  def avatar_preview_url
+    if self.avatar.present?
+      self.avatar.preview.url
+    else
+      person_gender = self.gender || :male
+      "/defaults/students/avatar/#{person_gender}.png"
+    end
+
+  end
+
+  def age
+    if date_of_birth.present?
+      Time.now.year - date_of_birth.year
+    else
+      nil
+    end
+  end
+
 end

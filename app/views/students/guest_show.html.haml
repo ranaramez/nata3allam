@@ -1,0 +1,50 @@
+.candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
+  .candidate-margins
+    %a{href: student_path(@student)}
+      %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_preview_url}", width: "224"}/
+      .name
+        = @student.first_name
+.short-content
+  .entry-meta{style:"border:none!important;"}
+    .tabs_table
+      %ul.tabs
+        %li
+          %a.selected{rel: "tab-1"}
+            = translate('basic')
+        %li
+          %a{rel: "tab-2"}
+            = translate("progress")
+      .panes
+        #tab-1.tab-content{style: "display: block;"}
+          %ul
+            %li
+              %span= "#{translate('name')} :"
+              %span=@student.full_name  
+            %li
+              %span= "#{translate('age')}  :"
+              - if @student.date_of_birth.present?
+                %span=format_number(@student.age)
+              - else
+                = translate('NA')
+            %li
+              %span="#{translate('birth')} :"
+              - if @student.date_of_birth.present?
+                %span= format_number(@student.date_of_birth.to_date.day.to_s)
+                %span= format_number(@student.date_of_birth.to_date.month.to_s)
+                %span= format_number(@student.date_of_birth.to_date.year.to_s)
+              - else
+                = translate('NA')
+            %li
+              %span= "#{translate('class')} :"
+              %span=@student.n_class.name
+        #tab-2.tab-content{style: "display: none;"}
+
+    .entry-meta    
+      %p.sponsors.fleft
+        %i.icon-heart-empty
+        = format_number(@student.sponsors_count) +" " +translate("sponsors")
+      %p.fund.fleft
+        %i.icon-credit-card
+        = translate("amount")
+      %a.buttons.fright{href: "#", title: "Sponsor"}
+        =translate("sponsor")

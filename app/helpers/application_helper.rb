@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   
   def format_number(numbers)
-    numbers = numbers.to_s if numbers.is_a? Integer
+    numbers = numbers.to_s
     results = numbers.chars.map { |char| translate char }.join
   end
 
