@@ -1,14 +1,14 @@
-- @page_title ||= "Our Children"
 - classes ||= "purple"
-.item.teaser-page-list{class: "#{classes}"}
-  .container_16
-    %aside.grid_10
-      %h1.page-title
-        = @page_title
-    .grid_6
-      #rootline
-        %a{href: "#"} Home
-        %i.icon-angle-right
-        %span.current
-          =@page_title
-    .clear
+- if @page_title.present?
+  .item.teaser-page-list{class: "#{classes}"}
+    .container_16
+      %aside.grid_10
+        %h1.page-title
+          = @page_title
+      .grid_6
+        #rootline
+          %a{href: "#"} Home
+          %i.icon-angle-right
+          %span.current
+            =@page_title
+      .clear
