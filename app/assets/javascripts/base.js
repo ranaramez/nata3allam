@@ -81,17 +81,17 @@ jQuery(document).ready(function(){
 	});
 
 	/* Tabs */
-	jQuery('.panes div').hide();
+	jQuery('.panes .tab-content').hide();
 	jQuery(".tabs a:first").addClass("selected");
 	jQuery(".tabs_table").each(function(){
-			jQuery(this).find('.panes div:first').show();
+			jQuery(this).find('.panes .tab-content:first').show();
 			jQuery(this).find('a:first').addClass("selected");
 	});
 	jQuery('.tabs a').click(function(){
 			var which = jQuery(this).attr("rel");
 			jQuery(this).parents(".tabs_table").find(".selected").removeClass("selected");
 			jQuery(this).addClass("selected");
-			jQuery(this).parents(".tabs_table").find(".panes").find("div").hide();
+			jQuery(this).parents(".tabs_table").find(".panes").find(".tab-content").hide();
 			jQuery(this).parents(".tabs_table").find(".panes").find("#"+which).fadeIn(800);
 	});
 
