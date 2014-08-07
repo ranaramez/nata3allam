@@ -18,16 +18,19 @@
         #tab-1.tab-content{style: "display: block;"}
           %ul
             %li
-              %span= "#{translate('name')} :"
+              %span
+                %b= "#{translate('name')} :"
               %span=@student.full_name  
             %li
-              %span= "#{translate('age')}  :"
+              %span
+                %b= "#{translate('age')}  :"
               - if @student.date_of_birth.present?
                 %span=format_number(@student.age)
               - else
                 = translate('NA')
             %li
-              %span="#{translate('birth')} :"
+              %span
+                %b="#{translate('birth')} :"
               - if @student.date_of_birth.present?
                 %span= format_number(@student.date_of_birth.to_date.day.to_s)
                 %span= format_number(@student.date_of_birth.to_date.month.to_s)
@@ -35,7 +38,8 @@
               - else
                 = translate('NA')
             %li
-              %span= "#{translate('class')} :"
+              %span
+                %b= "#{translate('class')} :"
               %span=@student.n_class.name
         #tab-2.tab-content{style: "display: none;"}
 
