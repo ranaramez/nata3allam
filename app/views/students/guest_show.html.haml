@@ -4,45 +4,52 @@
       %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_preview_url}", width: "224"}/
       .name
         = @student.first_name
-.short-content
-  .entry-meta{style:"border:none!important;"}
-    .tabs_table
-      %ul.tabs
-        %li
-          %a.selected{rel: "tab-1"}
-            = translate('basic')
-        %li
-          %a{rel: "tab-2"}
-            = translate("progress")
-      .panes
-        #tab-1.tab-content{style: "display: block;"}
-          %ul
-            %li
-              %span
-                %b= "#{translate('name')} :"
-              %span=@student.full_name  
-            %li
-              %span
-                %b= "#{translate('age')}  :"
-              - if @student.date_of_birth.present?
-                %span=format_number(@student.age)
-              - else
-                = translate('NA')
-            %li
-              %span
-                %b="#{translate('birth')} :"
-              - if @student.date_of_birth.present?
-                %span= format_number(@student.date_of_birth.to_date.day.to_s)
-                %span= format_number(@student.date_of_birth.to_date.month.to_s)
-                %span= format_number(@student.date_of_birth.to_date.year.to_s)
-              - else
-                = translate('NA')
-            %li
-              %span
-                %b= "#{translate('class')} :"
-              %span=@student.n_class.name
-        #tab-2.tab-content{style: "display: none;"}
-
+.students-preview.grid_9
+  .tabs_table.student-tabs
+    %ul.tabs
+      %li
+        %a.selected{rel: "tab-1"}
+          = translate('basic')
+      %li
+        %a{rel: "tab-2"}
+          = translate("progress")
+    .panes
+      #tab-1.tab-content
+        %ul
+          %li
+            %span
+              %b= "#{translate('name')} :"
+            %span=@student.full_name  
+          %li
+            %span
+              %b= "#{translate('age')}  :"
+            - if @student.date_of_birth.present?
+              %span=format_number(@student.age)
+            - else
+              = translate('NA')
+          %li
+            %span
+              %b="#{translate('birth')} :"
+            - if @student.date_of_birth.present?
+              %span= format_number(@student.date_of_birth.to_date.day.to_s)
+              %span= format_number(@student.date_of_birth.to_date.month.to_s)
+              %span= format_number(@student.date_of_birth.to_date.year.to_s)
+            - else
+              = translate('NA')
+          %li
+            %span
+              %b= "#{translate('class')} :"
+            %span=@student.n_class.name
+      #tab-2.tab-content
+        - progress = @student.get_student_progress
+        .student-eval
+          - progress.each do |subject, progress_info|
+            = subject
+            .progress.progress-mini.progress-primary.count-outside
+              .count.span2
+                = "#{progress_info}%"
+              .bar{style: "width: #{progress_info}%;"}
+  .short-content
     .entry-meta    
       %p.sponsors.fleft
         %i.icon-heart-empty

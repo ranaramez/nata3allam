@@ -2888,3 +2888,174 @@ a.button.black:hover {
 @media print {
 	
 }
+
+/*	----------------------------------------------------------
+	Progress
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.progress {
+  background: #f0f0f0;
+  margin: 0 0 10px;
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0), inset -1px -1px 1px rgba(0, 0, 0, 0);
+  -moz-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0), inset -1px -1px 1px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0), inset -1px -1px 1px rgba(0, 0, 0, 0);
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+}
+.progress .bar {
+  background: #7a7a7a;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+}
+.progress .bar.right {
+  text-align: right;
+  text-indent: 10px;
+  direction: rtl;
+}
+.progress.add-outside {
+  margin-right: 45px;
+}
+.progress.add-outside .add {
+  position: absolute;
+  width: 70px;
+  right: -45px;
+  top: 0;
+  text-align: right;
+  padding-left: 5px;
+}
+.progress.count-outside {
+  margin-left: 40px;
+  position: relative;
+  overflow: visible;
+}
+.progress.count-outside .count {
+  position: absolute;
+  width: 40px;
+  left: -40px;
+  top: 0;
+  text-align: left;
+}
+.progress.count-outside:after {
+  display: block;
+  content: "";
+  border: 5px solid transparent;
+  border-right-color: #7a7a7a;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  margin-top: -5px;
+}
+.progress.white {
+  background: #fff;
+}
+.progress.progress-success .bar {
+  background: #609450;
+}
+.progress.progress-success.count-outside:after {
+  border-right-color: #609450;
+}
+.progress.progress-warning .bar {
+  background: #ab7a4b;
+}
+.progress.progress-warning.count-outside:after {
+  border-right-color: #ab7a4b;
+}
+.progress.progress-primary .bar {
+  background: #4a8bc2;
+}
+.progress.progress-primary.count-outside:after {
+  border-right-color: #4a8bc2;
+}
+.progress.progress-danger .bar {
+  background: #bd362f;
+}
+.progress.progress-danger.count-outside:after {
+  border-right-color: #bd362f;
+}
+.progress.progress-inverse .bar {
+  background: #45484d;
+}
+.progress.progress-inverse.count-outside:after {
+  border-right-color: #45484d;
+}
+.progress.progress-small {
+  height: 16px;
+}
+.progress.progress-small .bar {
+  font-size: 8px;
+  line-height: 16px;
+}
+.progress.progress-small .bar.right {
+  text-indent: 2px;
+}
+.progress.progress-small.count-outside .count {
+  height: 16px;
+  line-height: 16px;
+}
+.progress.progress-small.add-outside .add {
+  height: 16px;
+  line-height: 16px;
+}
+.progress.progress-mini {
+  height: 10px;
+}
+.progress.progress-mini.count-outside {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.progress.progress-mini.count-outside .bar {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.progress.progress-mini.count-outside .count {
+  height: 10px;
+  line-height: 10px;
+}
+.progress.progress-mini.add-outside .add {
+  height: 10px;
+  line-height: 10px;
+}
+
+.progress .bar {
+  width: 0%;
+  height: 100%;
+  color: #ffffff;
+  float: right;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0e90d2;
+  background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+  background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+  background-image: -o-linear-gradient(top, #149bdf, #0480be);
+  background-image: linear-gradient(to bottom, #149bdf, #0480be);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.student-eval {
+	width: 65%; 
+	padding: 1rem 6.5rem;
+}
+
+.student-tabs {
+	margin-top: 0!important; 
+}
+
+.students-preview {
+	padding: 0 3rem 3rem 3rem;
+}
