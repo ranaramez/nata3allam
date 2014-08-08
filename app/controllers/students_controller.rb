@@ -7,6 +7,8 @@ class StudentsController < ApplicationController
 
     @students = Student.all
     unless current_user.present?
+      @page_title = "Our Children"
+      @sub_page = @page_title
       render  'guest_index', layout: "application_guest" and return 
     else
       render

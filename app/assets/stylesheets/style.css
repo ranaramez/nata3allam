@@ -2677,20 +2677,20 @@ a.button.black:hover {
 }
 
 .toggle-content .expand-button {
-	background: url('images/toggle-open.png') left top no-repeat;
+	background: url('toggle-open.png') left top no-repeat;
 	cursor: pointer;
 	font-weight: 700;
 	overflow: hidden;
 }
 
 .toggle-content .expand-button.close {
-	background: url('images/toggle-close.png') left top no-repeat;
+	background: url('toggle-close.png') left top no-repeat;
 }
 
 .toggle-content .expand-button p {
 	line-height: 40px;
 	margin: 0;
-	padding-left: 40px;
+	padding-left: 20px;
 }
 
 .toggle-content .expand {
@@ -3058,4 +3058,13 @@ a.button.black:hover {
 
 .students-preview {
 	padding: 0 3rem 3rem 3rem;
+	margin-top: -20px;
+}
+
+.padded-top {
+	padding-top: 1rem;
+}
+
+.padded-left {
+	padding-left: 0.5rem
 }
