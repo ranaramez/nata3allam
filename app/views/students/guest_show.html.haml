@@ -1,20 +1,19 @@
-.candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
-  .candidate-margins
-    %a{href: student_path(@student)}
-      %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_preview_url}", width: "224"}/
-      .name
-        = @student.first_name
-.students-preview.grid_9
-  .tabs_table.student-tabs
-    %ul.tabs
-      %li
-        %a.selected{rel: "tab-1"}
-          = translate('basic')
-      %li
-        %a{rel: "tab-2"}
-          = translate("progress")
-    .panes
-      #tab-1.tab-content
+.student-content
+  .candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
+    .candidate-margins
+      %a{href: student_path(@student)}
+        %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_preview_url}", width: "224"}/
+        .name
+          = @student.first_name
+  .students-preview.grid_9
+    .toggle-content
+      .expand-button.close
+
+        %p
+          %i.icon-user
+          %span.padded-left
+            = translate('basic')
+      .expand{style: "display: block;"}
         %ul
           %li
             %span
@@ -40,7 +39,13 @@
             %span
               %b= "#{translate('class')} :"
             %span=@student.n_class.name
-      #tab-2.tab-content
+    .toggle-content
+      .expand-button
+        %p
+          %i.icon-bar-chart
+          %span.padded-left
+            = translate('progress')
+      .expand
         - progress = @student.get_student_progress
         .student-eval
           - progress.each do |subject, progress_info|
@@ -49,13 +54,14 @@
               .count.span2
                 = "#{progress_info}%"
               .bar{style: "width: #{progress_info}%;"}
-  .short-content
-    .entry-meta    
-      %p.sponsors.fleft
-        %i.icon-heart-empty
-        = format_number(@student.sponsors_count) +" " +translate("sponsors")
-      %p.fund.fleft
-        %i.icon-credit-card
-        = translate("amount")
-      %a.buttons.fright{href: "#", title: "Sponsor"}
-        =translate("sponsor")
+    .short-content.padded-top
+      .entry-meta    
+        %p.sponsors.fleft
+          %i.icon-heart-empty
+          = format_number(@student.sponsors_count) +" " +translate("sponsors")
+        %p.fund.fleft
+          %i.icon-credit-card
+          = translate("amount")
+        %a.buttons.fright{href: "#", title: "Sponsor"}
+          =translate("sponsor")
+  %div.clear
