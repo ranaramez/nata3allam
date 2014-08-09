@@ -64,7 +64,9 @@
                         %tbody
                           %tr{ style: "background-color: #E8E8E8 "}
                           - report.each do |subject, value|
-                            %td= "#{format_grade(value.first, value.second)}"
+                            %td
+                              = link_to student_evaluation_records_path({student_id: @student._id, subject_id: subject._id}), remote: true do
+                                %span="#{format_grade(value.first, value.second)}"
       #preview_records
 
 
