@@ -47,13 +47,17 @@
             = translate('progress')
       .expand
         - progress = @student.get_student_progress
+        - progress_count = progress.values.inject(:+)
         .student-eval
-          - progress.each do |subject, progress_info|
-            = subject
-            .progress.progress-mini.progress-primary.count-outside
-              .count.span2
-                = "#{progress_info}%"
-              .bar{style: "width: #{progress_info}%;"}
+          - if progress_count > 0
+            - progress.each do |subject, progress_info|
+              = subject
+              .progress.progress-mini.progress-primary.count-outside
+                .count.span2
+                  = "#{progress_info}%"
+                .bar{style: "width: #{progress_info}%;"}
+          - else
+            %span=translate("empty_progress")
     .short-content.padded-top
       .entry-meta    
         %p.sponsors.fleft
