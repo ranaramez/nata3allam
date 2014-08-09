@@ -91,6 +91,7 @@
                                   %span=translate(ff.object.relation_type.to_s)
                                 %td
                               = ff.fields_for :related do |fff|
+                                = fff.hidden_field :gender, value: fff.object.gender
                                 %tr
                                   %td
                                     %span الإسم الأول 

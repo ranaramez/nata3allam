@@ -69,6 +69,14 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find params[:id]
+    unless @student.mother.present?
+      related = Person.new(:gender => :female)
+      @student.relatives << Relative.new(person: @student, related: related, relation_type: :mother)
+    end
+    unless @student.father.present?
+      related = Person.new(:gender => :male)
+      @student.relatives << Relative.new(person: @student, related: related, relation_type: :father)
+    end
   end
 
 
