@@ -1,0 +1,35 @@
+%table.table.table-white.table-bordered.table-vertical-center.table-pricing
+  %thead
+    %tr
+      %th.center{style: "width: 15%"}
+        %span.plan الدرس 
+      %th{style: "width: 15%"}
+        %span.plan.center
+          %span= 'تقديم'
+        .separator.bottom
+      %th.center{style: "width: 15%"}
+        %span.plan= 'تدريب'
+        .separator.bottom
+      %th{style: "width: 15%"}
+        %span.plan.center
+          %span= 'إتقان'
+        .separator.bottom
+      %th.center{style: "width: 15%"}
+        %span.plan= 'ملاحظات'
+        .separator.bottom
+  %tbody
+    - @records.each do |record|
+      %tr
+        %td= record.class_evaluation_record.lesson.description
+        %td
+          - if record.presentation
+            = translate('yes')
+          - else
+            = translate('no')
+        %td= record.training
+        %td
+          - if record.mastery
+            = translate('yes')
+          - else
+            = translate('no')
+        %td= record.general_comments
