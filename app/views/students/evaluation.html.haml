@@ -24,8 +24,7 @@
           = link_to new_student_student_behavior_record_path(@student), class: "glyphicons edit" do
             %i
             تقييم السلوكيات
-    .widget-body
-      
+    .widget-body  
       .tab-content
         #overview.tab-pane.active.widget-body-regular.padding-none
           .row-fluid.row-merge
@@ -46,7 +45,9 @@
                       %tbody
                         %tr{ style: "background-color: #E8E8E8 "}
                         - @subjects.each do |subject|
-                          %td= "#{format_grade(@student_report[subject._id].first, @student_report[subject._id].second)}"
+                          %td
+                            = link_to student_evaluation_records_path({student_id: @student._id, subject_id: subject._id}), remote: true do
+                              %span= "#{format_grade(@student_report[subject._id].first, @student_report[subject._id].second)}"
                         %td= "#{format_grade(@total_done, @total_lessons)}"
                     %h4= "التقييم السابق"
                     - @past_student_report.each do |year, report|
@@ -64,6 +65,7 @@
                           %tr{ style: "background-color: #E8E8E8 "}
                           - report.each do |subject, value|
                             %td= "#{format_grade(value.first, value.second)}"
+      #preview_records
 
 
                         

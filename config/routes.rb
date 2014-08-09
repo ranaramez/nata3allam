@@ -12,10 +12,13 @@ Nata3allam::Application.routes.draw do
 
   resources :class_evaluation_records, only: [:create, :edit]
 
+  resources :class_evaluation_records, only: [:preview]
+
   resources :students do
     get :evaluation
     get :preview
     resources :student_behavior_records, :controller => 'students/student_behavior_records', only: [:create, :new]
+    resources :evaluation_records, :controller => 'students/evaluation_records', only: [:index]
     resources :avatars, :controller => 'students/avatars',  only: [:new, :create]
   end
 

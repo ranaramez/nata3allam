@@ -51,6 +51,13 @@ class Student < Person
     student_report
   end
 
+  def get_detailed_subject_report subject
+    lessons = subject.lessons
+    lesson_ids = lessons.map(&:_id)
+    #TODO(nazly) get lesson directly
+    evaluation_records = self.evaluation_records.select {|i| lesson_ids.include? i.class_evaluation_record.lesson._id}
+    evaluation_records
+  end
 
   def get_student_past_classes_report  date
     student_report = {}
