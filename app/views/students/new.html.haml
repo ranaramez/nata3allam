@@ -1,0 +1,17 @@
+=javascript_include_tag :application, "application"
+%ul.breadcrumb
+  %li
+    = link_to students_path, class: "glyphicons group" do
+      %i
+      الطلاب
+
+%h3 الطلاب
+.innerLR
+  / Widget
+  .widget.widget-heading-simple.widget-body-white.widget-employees
+    .widget-head
+      %h4.heading.glyphicons.user_add
+        %i
+        إضافة طالب جديد 
+    .widget-body  
+      = render partial: 'students/form'

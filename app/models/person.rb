@@ -9,6 +9,7 @@ class Person
   field :full_name_generated, :type => String 
   field :address, :type => String
   field :date_of_birth, :type => Time
+  field :national_id, :type => String
   field :gender, :type => Symbol
   field :job, :type => String
   field :educational_background, :type => String #certain values?

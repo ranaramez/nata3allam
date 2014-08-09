@@ -14,6 +14,9 @@
       %h4.heading.glyphicons.user
         %i
         معلومات عن الطلاب
+      .offset11
+        = link_to new_student_path do
+          إضافة طالب جديد 
     / // Widget Heading END
     .widget-body.padding-none
       .row-fluid.row-merge
@@ -42,6 +45,7 @@
                       %span.muted= student.n_class.name if student.n_class.present?
         #preview_info
           - @student_progress = @students.first.get_student_progress
-          = render partial: 'preview_info', locals: {student: @students.first, progress: @student_progress}  
+          = render partial: 'preview_info', locals: {student: @students.first, progress: @student_progress} 
+
         
   / // Widget END

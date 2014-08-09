@@ -54,4 +54,8 @@ module ApplicationHelper
       "july", "august", "september","october", "november", "december"]
     arr.map { |m| translate(m) }
   end
+
+  def class_options
+    [translate('NA'), nil] + NClass.all.map{ |i| [i.name, i._id]}
+  end
 end

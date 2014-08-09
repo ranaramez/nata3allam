@@ -63,8 +63,23 @@ class StudentsController < ApplicationController
 
   end
 
+  def create
+    @student = Student.new
+    student_hash = params[:student]
+    
+    if student_hash["date_of_birth(3i)"]
+      student_hash[:date_of_birth] = "#{student_hash['date_of_birth(3i)']}/#{student_hash['date_of_birth(2i)']}/#{student_hash['date_of_birth(1i)']}"
+    end
+    @student.update_attributes(student_hash)
+    redirect_to student_path(@student)
+  end
+
   def new
     @student = Student.new
+    related = Person.new(:gender => :female)
+    @student.relatives << Relative.new(person: @student, related: related, relation_type: :mother)
+    related = Person.new(:gender => :male)
+    @student.relatives << Relative.new(person: @student, related: related, relation_type: :father)
   end
 
   def edit
