@@ -1504,7 +1504,7 @@ progress::-moz-progress-bar {
 
 .candidate .name{
 	font-size: 24px;
-	color: #e53b51;
+	color: #b41f66;
 	font-family: 'Archivo Narrow', sans-serif;
 	text-align: center;
 	margin-top: 12px;
@@ -1785,7 +1785,7 @@ aside ul {
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 .widget ul li {
-	background: transparent url('images/border-x.png') left bottom repeat-x;
+	background: transparent url('border-x.png') left bottom repeat-x;
 	padding: 12px;
 	margin: 0px;
 
@@ -1834,7 +1834,7 @@ aside ul {
 }
 
 .widget-title{
-	background: transparent url("images/widget-title-bg.png") repeat-x 0 60%;
+	background: transparent url("widget-title-bg.png") repeat-x 0 60%;
 	margin-bottom: 24px;
 }
 
@@ -2092,7 +2092,7 @@ aside ul {
 	height: 25px;
 	margin: 0;
 	display: block;
-	background: transparent url('images/bg_direction_nav_small.png') no-repeat 0 0;
+	background: transparent url('bg_direction_nav_small.png') no-repeat 0 0;
 	position: absolute;
 	top: 0%;
 	z-index: 10; 
@@ -2163,7 +2163,7 @@ aside ul {
 	Footer
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 #colophon {
-	background: #e53b51 url("images/footer-transparent.png") repeat-x top;
+	background: #e53b51 url("footer-transparent.png") repeat-x top;
 	padding-top: 40px;
 }
 
@@ -2173,7 +2173,7 @@ aside ul {
 }
 
 #colophon .widget ul li {
-	background: transparent url('images/border-x-footer.png') left bottom repeat-x;
+	background: transparent url('border-x-footer.png') left bottom repeat-x;
 	padding: 12px;
 	margin: 0px;
 	color: #fff;
@@ -2660,31 +2660,37 @@ a.button.black:hover {
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 .toggle-content {
-	background: #e53b51;
-	border: 1px solid #e53b51;
 	clear: both;
 	display: block;
 	margin: 20px 0 8px;
-	color: #fff;
+	color: #b41f66;
 }
 
-.toggle-content:hover { 
-	background: #e53b51;
-}
 
 .toggle-content + .toggle-content {
 	margin: 0;
 }
 
 .toggle-content .expand-button {
-	background: url('toggle-open.png') left top no-repeat;
 	cursor: pointer;
+	border: 1px solid #b41f66;
 	font-weight: 700;
 	overflow: hidden;
 }
+.toggle-content .expand-button p:after{
+	content: '+';
+	color: #b41f66;
+	float: right;
+	padding: 0 20px;
+	font-size: 20px;
 
-.toggle-content .expand-button.close {
-	background: url('toggle-close.png') left top no-repeat;
+}
+.toggle-content .expand-button.close p:after{
+	content: '-';
+	color: #b41f66;
+	float: right;
+	padding: 0 20px;
+	font-size: 25px;
 }
 
 .toggle-content .expand-button p {
