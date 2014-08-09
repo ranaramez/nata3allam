@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :authenticate_user!, only: [:evaluation, :update]
+  before_filter :authenticate_user!, only: [:evaluation, :update, :edit, :new]
 
   #layout "application", except: [:index, :show]
 	
@@ -50,7 +50,25 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find params[:id]
-    @student.update_attributes(params[:student])
+    student_hash = params[:student]
+    
+    if student_hash["date_of_birth(3i)"]
+      student_hash[:date_of_birth] = "#{student_hash['date_of_birth(3i)']}/#{student_hash['date_of_birth(2i)']}/#{student_hash['date_of_birth(1i)']}"
+    end
+    @student.update_attributes(student_hash)
+    respond_to do |format|
+      format.html {redirect_to student_path(@student)} unless params[:student][:avatar].present?
+      format.js if params[:student][:avatar].present?
+    end
+
+  end
+
+  def new
+    @student = Student.new
+  end
+
+  def edit
+    @student = Student.find params[:id]
   end
 
 

@@ -24,7 +24,7 @@ class Person
   mount_uploader :avatar, AvatarUploader
   slug :first_name, :last_name
 
-  
+  accepts_nested_attributes_for :relatives
 
   def full_name
     first_name.to_s + " " + last_name.to_s

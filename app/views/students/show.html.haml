@@ -18,11 +18,15 @@
             %i
             معلومات تفصيلية
         %li
+          = link_to edit_student_path(@student), class: 'glyphicons edit' do
+            %i
+            تعديل المعلومات 
+        %li
           = link_to student_evaluation_path(@student), class: 'glyphicons notes_2' do
             %i
             تقييم المواد
         %li
-          = link_to new_student_student_behavior_record_path(@student), class: "glyphicons edit" do
+          = link_to new_student_student_behavior_record_path(@student), class: "glyphicons notes" do
             %i
             تقييم السلوكيات
     / // Widget heading END

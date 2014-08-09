@@ -9521,3 +9521,14 @@ html.rtl.front .navbar.main .secondary ul.topnav:first-of-type {
 #themer.themer-advanced .wrapper ul li.advanced {
   display: block;
 }
+
+.separator-table {
+  border-top: 1px solid #ebebeb
+}
+
+#student_date_of_birth_3i {
+  width: 10%;
+}
+#student_date_of_birth_1i{
+  width: 15%;
+}

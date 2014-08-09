@@ -48,4 +48,10 @@ module ApplicationHelper
   def get_student_grades lessons, evaluation_record
     evaluation_record.get_student_grades lessons
   end
+
+  def get_month_names
+    arr = ["january", "february","march", "april", "may", "june",
+      "july", "august", "september","october", "november", "december"]
+    arr.map { |m| translate(m) }
+  end
 end
