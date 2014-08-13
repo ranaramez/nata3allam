@@ -114,7 +114,7 @@ ul {
     border-bottom-left-radius: 1px;
 }
 
-.toggle-content .expand-button p {
+.toggle-content .expand-button p, .toggle-content .title p {
     padding-right: 20px;
     padding-left: 0!important;
 }

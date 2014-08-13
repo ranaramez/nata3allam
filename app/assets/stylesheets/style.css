@@ -2677,6 +2677,13 @@ a.button.black:hover {
 	font-weight: 700;
 	overflow: hidden;
 }
+
+.toggle-content .title {
+	border: 1px solid #b41f66;
+	font-weight: 700;
+	overflow: hidden;
+}
+
 .toggle-content .expand-button p:after{
 	content: '+';
 	color: #b41f66;
@@ -2693,7 +2700,7 @@ a.button.black:hover {
 	font-size: 25px;
 }
 
-.toggle-content .expand-button p {
+.toggle-content .expand-button p, .toggle-content .title p  {
 	line-height: 40px;
 	margin: 0;
 	padding-left: 20px;
