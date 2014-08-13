@@ -51,31 +51,37 @@ def init
 
   #Teachers
   abeer = Teacher.new
-  abeer.first_name = "ميس عبير"
+  abeer.first_name = "أ\\ عبير"
   abeer.save!
 
   nahed = Teacher.new
-  nahed.first_name = "ميس ناهد"
+  nahed.first_name = "أ\\ ناهد"
   nahed.save!
 
 
-  shadya = Teacher.new
-  shadya.first_name = "ميس شادية"
-  shadya.save!
+  shadya_saeed = Teacher.new
+  shadya_saeed.first_name = "أ\\ شادية"
+  shadya_saeed.last_name = "سعيد"
+  shadya_saeed.save!
 
   rabab = Teacher.new
-  rabab.first_name = "ميس رباب"
+  rabab.first_name = "أ\\ رباب"
   rabab.save!
 
-  elham = Teacher.new
-  elham.first_name = "ميس الهام"
-  elham.save!
+  shadya_gamal = Teacher.new
+  shadya_gamal.first_name = "أ\\ شادية"
+  shadya_gamal.last_name = "جمال"
+  shadya_gamal.save!
 
 
   magda = Teacher.new
-  magda.first_name = "ميس ماجدة"
+  magda.first_name = "أ\\ ماجدة"
   magda.save!
 
+  rania = Teacher.new
+  rania.first_name = "أ\\ رانيا"
+  rania.last_name = "سيد"
+  rania.save!
 
   puts "Teachers Created ... "
 
@@ -115,51 +121,40 @@ def init
   puts "Subjects Created ... "
 
   #NClasses 
-  montessori1 = NClass.new 
-  montessori1.name = "المجموعة الأولى"
-  montessori1.class_teachers = [shadya]
+  
+  class1 = NClass.new 
+  class1.name = "فصل أ\\ رانيا سيد"
+  class1.class_teachers = [rania]
 
-  montessori2 = NClass.new 
-  montessori2.name = "المجموعة الثانية"
-  montessori2.class_teachers = [shadya]
+  class2 = NClass.new 
+  class2.name = "فصل أ\\ رباب"
+  class2.class_teachers = [rabab]
 
-  montessori3 = NClass.new 
-  montessori3.name = "المجموعة الثالثة"
-  montessori3.class_teachers = [magda]
+  class3 = NClass.new 
+  class3.name = "فصل أ\\ شادية جمال"
+  class3.class_teachers = [shadya_gamal]
 
-  montessori4 = NClass.new 
-  montessori4.name = "المجموعة الرابعة"
-  montessori4.class_teachers = [magda]
+  class4 = NClass.new 
+  class4.name = "فصل أ\\ شادية سعيد"
+  class4.class_teachers = [shadya_saeed]
 
-  montessori5 = NClass.new 
-  montessori5.name = "المجموعة الخامسة"
-  montessori5.class_teachers = [abeer]
+  class5 = NClass.new 
+  class5.name = "المجموعة الخامسة"
+  class5.class_teachers = [abeer]
 
-  montessori6 = NClass.new 
-  montessori6.name = "المجموعة السادسة"
-  montessori6.class_teachers = [abeer]
+  class6 = NClass.new 
+  class6.name = "المجموعة السادسة"
+  class6.class_teachers = [abeer]
 
-  class1= NClass.new 
-  class1.name = "فصل 1"
-  class1.class_teachers = [rabab]
+  class7= NClass.new 
+  class7.name = "فصل أ\\ ماجدة"
+  class7.class_teachers = [magda]
 
-  class2= NClass.new 
-  class2.name = "فصل 2"
-  class2.class_teachers = [elham]
+  class8= NClass.new 
+  class8.name = "فصل أ\\ ناهد"
+  class8.class_teachers = [nahed]
 
-  class3= NClass.new 
-  class3.name = "فصل 3"
-  class3.class_teachers = [nahed]
-
-  classes = [ 
-    montessori1, montessori2, montessori3, montessori4, montessori5, montessori6, 
-    class1, class2, class3 ]
-
-  classes_names = ['abeer_montessori_5', 'abeer_montessori_6', 'elham_class_2', 'magda_montessori_3', 'magda_montessori_4', 'nahed_class3', 'rabab_class1', 'shadya_montessori_1', 'shadya_montessori_2']
-  classes_names.each do |c|
-      nclass = NClass.new name: c, class_teachers: [rabab]
-      classes.push nclass
-  end
+  classes = [class1, class2, class3, class4, class5, class6, class7, class8]
 
   classes.map{|s| s.save!}
 
