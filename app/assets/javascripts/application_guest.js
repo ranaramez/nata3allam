@@ -19,3 +19,12 @@
 //= require jquery.flexslider-min
 //= require jquery.inview
 //= require jquery.scrollParallax.min
+function filter_students(index) {
+  
+  var value = $("#search-bar").val();
+  $.ajax({
+    type: 'GET',
+    url: "students.js?page=" + index + "&term=" +value
+  })
+}
+

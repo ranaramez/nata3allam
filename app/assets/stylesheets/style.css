@@ -1752,15 +1752,15 @@ img.alignright {
 }
 
 .pagination li .active {
-	background: #e53b51;
+	background: #b41f66;
 	color: #fff;
-	border: 1px solid #e53b51;
+	border: 1px solid #b41f66;
 }
 
 .pagination li a:hover{
-	background: #e53b51;
+	background: #b41f66;
 	color: #fff;
-	border: 1px solid #e53b51;
+	border: 1px solid #b41f66;
 }
 
 
@@ -3080,4 +3080,8 @@ a.button.black:hover {
 
 .padded-left {
 	padding-left: 0.5rem
+}
+
+#search-bar {
+	margin: -65px 0px 35px 11px;
 }

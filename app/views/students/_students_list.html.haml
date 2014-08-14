@@ -1,0 +1,16 @@
+- students.each do |student|
+  .candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
+    .candidate-margins
+      %a{href: student_path(student)}
+        %img.attachment-candidate-thumb.wp-post-image{height: "235", src: "#{student.avatar_preview_url}", width: "224"}/
+        .name
+          = student.full_name
+%div.clear
+- if pages_count > 1
+  %ul.pagination
+    -(1..pages_count).each do |index|
+      - classes = index == page ? 'active' : ''
+      %li
+        %a.radius{href: '#', onclick: "filter_students(#{index})", :class => classes }= format_number(index)
+
+  %div.clear

@@ -131,3 +131,8 @@ ul {
 .toggle-content .expand-button.close p:after{
     float: left!important;
 }
+
+#search-bar {
+    margin-right: 11px!important;
+    margin-left: 0px!important;
+}

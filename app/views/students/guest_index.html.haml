@@ -1,10 +1,4 @@
-%div
-  - @students.each do |student|
-    .candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
-      .candidate-margins
-        %a{href: student_path(student)}
-          %img.attachment-candidate-thumb.wp-post-image{height: "235", src: "#{student.avatar_preview_url}", width: "224"}/
-          .name
-            = student.first_name
-  %div.clear
+%input.radius#search-bar{:type=> "text", :placeholder=> translate('student_search'), onkeyup:"filter_students(1)"}
+#students-list
+  = render partial: 'students_list', locals: {students: @students, pages_count: @pages_count, page: @page }
 
