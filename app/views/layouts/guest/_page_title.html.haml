@@ -4,11 +4,11 @@
     .container_16
       %aside.grid_10
         %h1.page-title
-          = @page_title
+          = translate(@page_title)
       .grid_6
         #rootline
-          %a{href: "#"} Home
+          %a{href: "#"}= translate('home')
           %i.icon-angle-right
           %span.current
-            =@sub_page
+            =translate(@sub_page)
       .clear

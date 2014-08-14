@@ -19,7 +19,7 @@ class StudentsController < ApplicationController
     @students = Kaminari.paginate_array(@students).page(@page).per(20)
     
     unless current_user.present?
-      @page_title = "Our Children"
+      @page_title = "our_children"
       @sub_page = @page_title
       render  'guest_index', layout: "application_guest" and return 
     else
