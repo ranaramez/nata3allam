@@ -9,6 +9,7 @@ class Student < Person
   has_many :assigned_behaviors, :class_name => "Behavior"
   has_many :student_behavior_records, :class_name => "StudentBehaviorRecord"
   #cache general evaluation record
+  default_scope order_by([[:avatar, :desc]])
 
   def template_behavior_record date
     record = student_behavior_records.where(from_date: date).first
