@@ -611,13 +611,6 @@ a:hover {
 	animation-duration:1s;
 }
 
-#qtranslate-chooser a, #qtranslate-chooser a:visited  {
-	color: #b41f66;
-}
-
-#qtranslate-chooser a:focus, #qtranslate-chooser a:active, #qtranslate-chooser a:hover { 
-	color: #c9253a; 
-}
 
 
 #branding{
@@ -3084,4 +3077,25 @@ a.button.black:hover {
 
 #search-bar {
 	margin: -65px 0px 35px 11px;
+}
+
+#toolbar #qtranslate-chooser {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	float: none!important;
+}
+
+#qtranslate-chooser li {
+	display: inline-block;
+}
+
+#qtranslate-chooser li a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	line-height: 40px;
+	padding: 0 10px;
+	font-family: Arimo,Tahoma,sans-serif
 }
