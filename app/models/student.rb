@@ -41,12 +41,12 @@ class Student < Person
     return {} if n_class.nil?
     subjects = self.n_class.subjects
     subjects.each do |subject|
-      lessons = subject.lessons
+      lessons = subject.lessons.uniq
       finished_records = self.evaluation_records.where(mastery: true) #TODO have to specify subject
-      finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}
-      unfinished_lessons = lessons - finished_lessons
+      finished_lessons = finished_records.map{|i|i.class_evaluation_record.lesson}.uniq
+      unfinished_lessons = lessons.map(&:_id) - finished_lessons.map(&:_id)
       finished_lessons_count = lessons.count - unfinished_lessons.count
-      percentage = finished_lessons_count * 100 / lessons.count
+      percentage = (finished_lessons_count * 100.0 / lessons.count).ceil
       student_report[subject.description] = percentage
     end
     student_report
