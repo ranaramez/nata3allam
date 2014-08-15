@@ -30,7 +30,9 @@
               %b="#{translate('birth')} :"
             - if @student.date_of_birth.present?
               %span= format_number(@student.date_of_birth.to_date.day.to_s)
+              %span /
               %span= format_number(@student.date_of_birth.to_date.month.to_s)
+              %span /
               %span= format_number(@student.date_of_birth.to_date.year.to_s)
             - else
               = translate('NA')
