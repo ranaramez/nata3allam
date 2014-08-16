@@ -60,13 +60,12 @@
           - else
             %span=translate("empty_progress")
     .short-content.padded-top
-      .entry-meta    
-        %p.sponsors.fleft
-          %i.icon-heart-empty
-          = format_number(@student.sponsors_count) +" " +translate("sponsors")
+      .entry-meta
         %p.fund.fleft
           %i.icon-credit-card
-          = translate("amount")
+          = "#{translate('sponsored_msg1')}  :  #{format_number(@student.sponsored_amount)}"
+        %p.fleft
+          = "#{translate('sponsored_msg2')}  :  #{translate("amount")}"
         %a.buttons.fright.purple{href: "#", title: "Sponsor"}
           =translate("sponsor")
   %div.clear

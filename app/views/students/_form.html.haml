@@ -28,8 +28,8 @@
 
     %tr
       %td
-        %span= translate('sponsors')
-      %td=f.number_field  :sponsors_count
+        %span= translate('sponsored_amount')
+      %td=f.number_field  :sponsored_amount
     = f.fields_for :relatives do |ff|
       = ff.hidden_field :relation_type, value: ff.object.relation_type.to_s
       %tr.separator-table
