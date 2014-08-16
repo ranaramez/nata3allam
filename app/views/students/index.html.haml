@@ -1,51 +1,6 @@
-=javascript_include_tag :application, "application"
-%ul.breadcrumb
-  %li
-    = link_to students_path, class: "glyphicons group" do
-      %i
-      الطلاب
+#search
+  %input.radius#search-bar{:type=> "text", :placeholder=> translate('student_search'), onkeyup:"filter_students(1)"}
+  = render partial: 'shared/spinner' 
+#students-list
+  = render partial: 'students_list', locals: {students: @students, pages_count: @pages_count, page: @page }
 
-%h3 الطلاب
-.innerLR
-  / Widget
-  .widget.widget-heading-simple.widget-body-white.widget-employees
-    / Widget Heading
-    .widget-head
-      %h4.heading.glyphicons.user
-        %i
-        معلومات عن الطلاب
-      .offset11
-        = link_to new_student_path do
-          إضافة طالب جديد 
-    / // Widget Heading END
-    .widget-body.padding-none
-      .row-fluid.row-merge
-        .span4.listWrapper
-          .innerAll
-            %form.form-inline{autocomplete: "off"}
-              .widget-search.separator.bottom
-                %button.btn.btn-inverse.pull-left{type: "button"}
-                  %i.icon-search
-                .overflow-hidden
-                  %input{placeholder: "ابحث عن طالب ..", type: "text", value: "", onkeyup:"filter(this,'studentsList')"}/
-      
-          %span.results
-            =format_number(@students.count)
-            طالب
-            %i.icon-circle-arrow-down
-          %ul.list.unstyled{id: 'studentsList'}
-            - @students.each do |student|
-              = link_to student_preview_path(student), remote: true do
-                %li
-                  .media.innerAll
-                    .media-object.pull-left.thumb
-                      = image_tag student.avatar.thumb.url
-                    .media-body
-                      %span.strong= student.full_name
-                      %span.muted= student.n_class.name if student.n_class.present?
-        #preview_info
-          - @student_progress = @students.first.get_student_progress
-          = render partial: 'preview_info', locals: {student: @students.first, progress: @student_progress} 
-
-        
-  / // Widget END

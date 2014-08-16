@@ -15,14 +15,19 @@ Nata3allam::Application.routes.draw do
   resources :class_evaluation_records, only: [:preview]
 
   resources :students do
-    get :evaluation
-    get :preview
     resources :student_behavior_records, :controller => 'students/student_behavior_records', only: [:create, :new]
     resources :evaluation_records, :controller => 'students/evaluation_records', only: [:index]
     resources :avatars, :controller => 'students/avatars',  only: [:new, :create]
   end
 
- match 'search/autocomplete', :to => 'search#autocomplete',  :as => 'autocomplete'
+  namespace :admin do
+    resources :students do
+      get :evaluation
+      get :preview
+    end
+  end
+
+  match 'search/autocomplete', :to => 'search#autocomplete',  :as => 'autocomplete'
 
   resources :class_schedule_entries, only: [:new, :create, :destroy]
 

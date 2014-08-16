@@ -1,4 +1,4 @@
-= form_for @student do |f|
+= form_for [:admin, @student] do |f|
   = f.hidden_field '_id', value: f.object._id
   %table.table.table-borderless
     %tr

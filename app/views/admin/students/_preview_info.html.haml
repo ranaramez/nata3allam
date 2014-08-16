@@ -6,10 +6,10 @@
       .row-fluid
         .span8
           %h3.text-primary
-            =link_to  student.full_name, student_path(student)
+            =link_to  student.full_name, admin_student_path(student)
           %span.muted= student.n_class.name if student.n_class.present?
         .span3.offset1.text-right
-          = link_to student_path(student), class: "btn btn-medium btn-block btn-default" do
+          = link_to admin_student_path(student), class: "btn btn-medium btn-block btn-default" do
             مزيد من التفاصيل
             %i.icon-angle-left.icon-fixed-width
 
@@ -64,7 +64,7 @@
                     = "#{progress_info}%"
                   .bar{style: "width: #{progress_info}%;"}
               .separator.bottom
-              = link_to student_evaluation_path(student), class: "btn btn-primary btn-medium btn-block" do
+              = link_to admin_student_evaluation_path(student), class: "btn btn-primary btn-medium btn-block" do
                 %i.icon-bar-chart.icon-fixed-width
                 التقيم الكلي
               .separator.bottom

@@ -1,7 +1,7 @@
 =javascript_include_tag :application, "application"
 %ul.breadcrumb
   %li
-    = link_to students_path, class: "glyphicons group" do
+    = link_to admin_students_path, class: "glyphicons group" do
       %i
       الطلاب
 
@@ -14,4 +14,4 @@
         %i
         إضافة طالب جديد 
     .widget-body  
-      = render partial: 'students/form'
+      = render partial: 'admin/students/form'

@@ -1,6 +1,6 @@
 %ul.breadcrumb
   %li
-    = link_to students_path, class: "glyphicons group" do
+    = link_to admin_students_path, class: "glyphicons group" do
       %i
       الطلاب
   %li.divider
@@ -13,15 +13,15 @@
     .widget-head
       %ul
         %li
-          = link_to student_path(@student), class: "glyphicons display" do
+          = link_to admin_student_path(@student), class: "glyphicons display" do
             %i
             معلومات تفصيلية
         %li
-          = link_to edit_student_path(@student), class: 'glyphicons edit' do
+          = link_to edit_admin_student_path(@student), class: 'glyphicons edit' do
             %i
             تعديل المعلومات 
         %li.active
-          = link_to student_evaluation_path(@student), class: 'glyphicons notes_2' do
+          = link_to admin_student_evaluation_path(@student), class: 'glyphicons notes_2' do
             %i
             التقييم
         %li

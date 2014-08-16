@@ -64,7 +64,7 @@
       -@students.each do |student|
         %tr
           %td 
-            %a{href: student_path(student), target: '_blank'}
+            %a{href: admin_student_path(student), target: '_blank'}
               = student.full_name
           -@report[student._id].each do |value|
             %td

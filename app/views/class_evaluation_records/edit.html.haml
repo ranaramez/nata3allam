@@ -74,7 +74,7 @@
               .media-object.pull-right.thumb
                 = image_tag ff.object.student.avatar.thumb.url
             %td
-              %a{href: student_path(ff.object.student), target: '_blank'}
+              %a{href: admin_student_path(ff.object.student), target: '_blank'}
                 = ff.object.student.full_name
             %td= ff.check_box  :presentation, class: 'presentation'
             %td= ff.number_field  :training

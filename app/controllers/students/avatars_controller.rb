@@ -13,7 +13,7 @@ class Students::AvatarsController < ApplicationController
     avatar = Avatar.new(params[:avatar])
     puts params
     avatar.save!
-    redirect_to student_path(avatar.person)
+    redirect_to admin_student_path(avatar.person)
   end
 
 end
