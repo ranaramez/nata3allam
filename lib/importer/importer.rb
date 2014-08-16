@@ -166,7 +166,7 @@ class Importer::Importer
   end
 
   def self.import_students
-    filenames = ['المجموعة الخامسة.csv', 'المجموعة السادسة.csv', 'فصل  أ\ رانيا سيد.csv', 
+    filenames = ['المجموعة الخامسة.csv', 'المجموعة السادسة.csv', 'فصل أ\ رانيا سيد.csv', 
                  'فصل أ\ رباب.csv', 'فصل أ\ شادية جمال.csv', 'فصل أ\ شادية سعيد.csv',
                  'فصل أ\ ماجدة.csv', 'فصل أ\ ناهد.csv']
     filenames.each do |filename|
