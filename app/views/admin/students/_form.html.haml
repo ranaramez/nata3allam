@@ -4,11 +4,11 @@
     %tr
       %td
         %span الإسم الأول 
-      %td= f.text_field :first_name  
+      %td= f.text_field :first_name,  :required => true  
     %tr  
       %td
         %span إسم العائلة
-      %td= f.text_field :last_name
+      %td= f.text_field :last_name,  :required => true
     %tr
       %td
         %span تاريخ الميلاد
@@ -24,7 +24,7 @@
     %tr
       %td
         %span الفصل
-      %td= f.select :n_class_id, class_options
+      %td= f.select :n_class_id, class_options, :required => true
 
     %tr
       %td
