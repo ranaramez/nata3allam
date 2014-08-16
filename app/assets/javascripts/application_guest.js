@@ -22,9 +22,16 @@
 function filter_students(index) {
   
   var value = $("#search-bar").val();
+  var spinner = $('.spinner')
+  spinner.removeClass('invisible')
   $.ajax({
     type: 'GET',
-    url: "students.js?page=" + index + "&term=" +value
+    url: "students.js?page=" + index + "&term=" +value,
+    success: function() {
+      setTimeout(function(){ 
+        spinner.addClass('invisible')
+      }, 300)
+    }
   })
 }
 

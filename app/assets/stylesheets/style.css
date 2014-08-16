@@ -3075,7 +3075,7 @@ a.button.black:hover {
 	padding-left: 0.5rem
 }
 
-#search-bar {
+#search {
 	margin: -65px 0px 35px 11px;
 }
 
@@ -3098,4 +3098,8 @@ a.button.black:hover {
 	line-height: 40px;
 	padding: 0 10px;
 	font-family: Arimo,Tahoma,sans-serif
+}
+
+.invisible {
+	visibility: hidden!important;
 }

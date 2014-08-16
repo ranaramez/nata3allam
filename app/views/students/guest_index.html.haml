@@ -1,4 +1,6 @@
-%input.radius#search-bar{:type=> "text", :placeholder=> translate('student_search'), onkeyup:"filter_students(1)"}
+#search
+  %input.radius#search-bar{:type=> "text", :placeholder=> translate('student_search'), onkeyup:"filter_students(1)"}
+  = render partial: 'shared/spinner' 
 #students-list
   = render partial: 'students_list', locals: {students: @students, pages_count: @pages_count, page: @page }
 
