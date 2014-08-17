@@ -10,4 +10,17 @@
  *
  *= require_self
  *= require_tree .
+ *= require admin
+ *= require application-rtl
+ *= require style-default
+ *= require uniform.default
+ *= require application-dashboard-rtl
+ *= require grid
+ *= require flexslider
+ *= require keyframes
+ *= require meanmenu
+ *= require spinner
  */
+
+
+ 
