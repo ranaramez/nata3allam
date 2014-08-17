@@ -37,7 +37,6 @@
 //= require jquery.meanmenu
 //= require jquery.min
 //= require jquery.scrollParallax.min
-//= require admin
 //= require application-dashboard
 //= require system/html5shiv
 //= require excanvas/excanvas
