@@ -185,7 +185,7 @@ class Importer::Importer
   end
 
   def self.import_pics path
-    filenames = Dir.entries(path).select {|f| !File.directory? f}
+    filenames = Dir.entries(Rails.root.join(path)).select {|f| !File.directory? f}
     filenames.each do |filename|
       prefix = filename.split('.')[0]
       next if prefix.ends_with? 'X'
@@ -196,7 +196,8 @@ class Importer::Importer
         puts "unable to find student: #{student_id}"
         next
       end
-      student.avatar = open("./#{path}/#{filename}")
+      #puts open(Rails.root.join("#{path}/#{filename}"))
+      student.avatar = open(Rails.root.join("#{path}/#{filename}"))
       student.save!
     end
   end
