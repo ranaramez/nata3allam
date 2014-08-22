@@ -14,11 +14,12 @@
       = render partial: 'layouts/guest/page_title'
       #main.site-main.container_16
         - if flash[:success].present?
-          .padded-top.alert-box
+          .padded-top.alert-box.grid_14
             .alert.green
               = flash[:success]
               %a.alert-close{onclick:"hide_message()"}
                 %i.icon-remove-sign
+          .clear
         .inner
           = yield
       = render partial: 'layouts/guest/footer'
