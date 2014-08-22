@@ -16,5 +16,9 @@ class RequestsController < ApplicationController
     @student = Student.find params[:student_id]
   end
 
+  def index
+
+  end
+
 
 end
