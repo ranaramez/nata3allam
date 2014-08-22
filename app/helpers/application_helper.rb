@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 module ApplicationHelper
 
   def nav_link(link_text, link_path, classes)
@@ -21,6 +23,11 @@ module ApplicationHelper
     "#{number} #{month}"
   end
 
+  def format_time(time)
+    t = Time.at(time)
+    t.strftime "%d/%m [%H:%M]"
+  end
+
   def format_grade(grade, total_grade)
     if grade == 0 && total_grade==0
       return '-'
@@ -35,6 +42,14 @@ module ApplicationHelper
 
   def format_month(month_no)
     translate(Date::MONTHNAMES[month_no].downcase)
+  end
+
+  def request_text(closed)
+    closed ? "الطلب مغلق" : "الطلب مفتوح" 
+  end
+
+  def request_link(closed)
+    closed ? "إضغط هنا لفتحه" : "إضغط هنا لغلقه"
   end
 
   def translate(text)

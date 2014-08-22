@@ -8,6 +8,7 @@
       %br/
       = form_for @request, id: 'contact-form' do |f|
         =f.hidden_field :student_id, value: @student._id
+        =f.hidden_field :created_at, value: Time.now.to_f
         %p
           %label{:for => "contactName"}
           = f.text_field :name,  :required => true, class: "radius", placeholder: translate('name')

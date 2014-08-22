@@ -1,0 +1,49 @@
+%ul.breadcrumb
+  %li
+    = link_to admin_requests_path, class: "glyphicons group" do
+      %i
+      طلبات المستخدمين
+%h3 طلبات المستخدمين 
+.innerLR
+  / Widget
+  .widget.widget-heading-simple.widget-body-white.widget-employees
+
+    / // Widget Heading END
+  .widget-body.padding-none
+  .clearfix
+    %table.fc-header{width: "100%"}
+      %tbody
+        %tr
+          %td.fc-header-left
+            .btn-group
+              %button.fc-button.btn.btn-small.btn-primary.fc-button-next 
+                %span= link_to "►", admin_requests_path({date: (@start_date-7).to_s})
+              %span.fc-header-space
+              %button.fc-button.btn.btn-small.btn-primary.fc-button-today.fc-state-disabled{disabled: ""}= "#{format_date(@start_date)} - #{format_date(@end_date)}"
+              %button.fc-button.btn.btn-small.btn-primary.fc-button-prev 
+                %span= link_to "◄", admin_requests_path({date: (@end_date+1).to_s})
+    .separator.bottom
+    %table.table.table-white.table-bordered.table-vertical-center.table-pricing
+      %thead
+        %tr
+          %th
+            %span.plan التوقيت 
+          %th
+            %span.plan الإسم
+          %th
+            %span.plan الإيميل
+          %th
+            %span.plan حالة الطلب
+          %th
+      %tbody
+        - @requests.each do |request|
+          - color = request.closed ? "#E8E8E8": "#FFFFFF"
+          %tr{ style: "background-color: #{color} "}
+            %td= format_time(request.created_at)
+            %td=request.name
+            %td=request.email
+            %td= request.closed ? "مغلق" : "مفتوح"
+            %td
+              =link_to admin_request_path(request) do
+                = "تفاصيل"
+    

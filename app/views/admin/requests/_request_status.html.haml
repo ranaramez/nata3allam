@@ -1,0 +1,4 @@
+%td= request_text(request.closed)
+%td
+  = link_to admin_request_path(@request, {request: { closed: !request.closed }} ), remote: true, method: :put do
+    = request_link(request.closed)

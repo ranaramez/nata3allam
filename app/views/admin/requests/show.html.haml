@@ -1,0 +1,49 @@
+%ul.breadcrumb
+  %li
+    = link_to admin_requests_path, class: "glyphicons group" do
+      %i
+      طلبات المستخدمين
+%h3 طلبات المستخدمين 
+.innerLR
+  / Widget
+  .widget.widget-heading-simple.widget-body-white.widget-employees
+    .widget-head
+      %h4.heading.glyphicons.user
+        %i
+          = "طلب : #{@request.name}" 
+    / // Widget Heading END
+    / // Widget Heading END
+    .widget-body
+      %table.table.table-borderless
+        %tr
+          %td{style: "width:10%"}
+            %span الإسم:
+          %td= @request.name
+        %tr  
+          %td
+            %span الإيميل:
+          %td= @request.email
+        %tr
+          %td
+            %span التليفون:
+          %td= @request.contacts
+        %tr
+          %td
+            %span الطالب:
+          %td
+            -if @request.student.present?
+              = link_to student_path(@request.student) do
+                = @request.student.full_name
+        %tr
+          %td
+            %span التوقيت: 
+          %td=format_time(@request.created_at)
+        %tr
+          %td
+            %span ملاحظات:
+          %td= @request.comments
+        %tr#status
+          = render partial: 'request_status', locals: {request: @request}
+     
+
+    
