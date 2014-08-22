@@ -4,6 +4,7 @@ Nata3allam::Application.routes.draw do
   
   resources :admin_dashboard, only: :index
 
+  resources :requests, only: [:new, :create]
 
   resources :n_classes do
     put :course_week

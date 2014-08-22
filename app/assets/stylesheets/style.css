@@ -374,6 +374,10 @@ a:hover {
 .purple {
 	background-color: #b41f66 !important;
 }
+
+.purple-text {
+	color: #b41f66 !important;	
+}
 .teaser-page-404 {
 	height: 400px;
 	width: 100%;
@@ -2564,9 +2568,7 @@ a.button.black:hover {
 }
 
 .alert.green {
-	background: #2eb44b;
 	border: 1px solid #2eb44b;
-	color: #fff;
 }
 
 .alert.blue {
@@ -3102,4 +3104,16 @@ a.button.black:hover {
 
 .invisible {
 	visibility: hidden!important;
+}
+
+.hidden {
+	display: none!important;
+}
+
+.alert-close {
+	padding-top: 2px;
+	color: #2eb44b!important;
+	font-size: 16;
+	float: right;
+	text-decoration: none!important;
 }

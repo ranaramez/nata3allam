@@ -136,3 +136,7 @@ ul {
     margin-right: 11px!important;
     margin-left: 0px!important;
 }
+
+.alert-close {
+    float: left!important;
+}

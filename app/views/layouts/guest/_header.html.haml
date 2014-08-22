@@ -39,7 +39,8 @@
                 %li.menu-item
                   %a{href: "http://net3allem.com/?page_id=47"}=translate('volunteer')
                 %li.menu-item
-                  %a{href: "http://net3allem.com/?page_id=89"}=translate('foster_child')
+                  = link_to students_path do
+                    = translate('foster_child')
                 %li.menu-item
                   %a{href: "http://net3allem.com/?page_id=1441"}=translate('donate')
             %li.menu-item

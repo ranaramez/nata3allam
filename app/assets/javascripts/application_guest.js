@@ -35,3 +35,8 @@ function filter_students(index) {
   })
 }
 
+function hide_message() {
+  $('.alert-box').addClass('hidden');
+}
+
+

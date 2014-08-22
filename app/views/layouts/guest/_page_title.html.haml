@@ -6,9 +6,10 @@
         %h1.page-title
           = translate(@page_title)
       .grid_6
-        #rootline
-          %a{href: "#"}= translate('home')
-          %i.icon-angle-right
-          %span.current
-            =translate(@sub_page)
+        - if @sub_page.present?
+          #rootline
+            %a{href: "#"}= translate('home')
+            %i.icon-angle-right
+            %span.current
+              =translate(@sub_page)
       .clear

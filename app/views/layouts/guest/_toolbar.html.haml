@@ -39,9 +39,9 @@
             %i.icon-tint
       %ul#qtranslate-chooser.qtrans_language_chooser
         %li.lang-en.active
-          =link_to 'English', url_for( :locale => 'en' )
+          =link_to 'English', url_for(params.merge({:locale => 'en'}))
         %li.lang-ar
-          =link_to 'العربية', url_for( :locale => 'ar' )
+          =link_to 'العربية', url_for(params.merge({:locale => 'ar'}))
       .qtrans_widget_end
       .clear
 / /#toolbar

@@ -66,6 +66,6 @@
           = "#{translate('sponsored_msg1')}  :  #{format_number(@student.sponsored_amount)}"
         %p.fleft
           = "#{translate('sponsored_msg2')}  :  #{translate("amount")}"
-        %a.buttons.fright.purple{href: "#", title: "Sponsor"}
+        = link_to new_request_path({student_id: @student.slug}), remote: true, class: "buttons fright purple" do
           =translate("sponsor")
   %div.clear

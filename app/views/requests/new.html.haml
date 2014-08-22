@@ -1,0 +1,50 @@
+#primary.grid_11.suffix_1
+  %article.single
+    .entry-content
+      .long-description
+        %h3.purple-text= translate('sponsor_desc')
+      %br/
+      %span.purple-text="#{translate('sponsor_msg')} #{@student.first_name} : "
+      %br/
+      = form_for @request, id: 'contact-form' do |f|
+        =f.hidden_field :student_id, value: @student._id
+        %p
+          %label{:for => "contactName"}
+          = f.text_field :name,  :required => true, class: "radius", placeholder: translate('name')
+        %p
+          %label{:for => "contactEmail"}
+          = f.text_field :email,  :required => true, type: 'email', class: "radius", placeholder: translate('email')
+        %p
+          %label{:for => "contacts"}
+          = f.text_field :contacts, class: "radius", placeholder: translate('contacts')
+        %p
+          %label{:for => "comments"}
+          = f.text_area :comments, class: "radius contactme-text", rows: "10", cols: "10", placeholder: translate('comments')
+        %button{type: "submit", class: "buttons radius send", confirm: translate('thank_you_msg')}
+          = translate("send")
+      .clear
+    .clear
+#secondary.grid_4.widget-area{:role => "complementary"}
+  %aside#wpltfb-2.widget.WPlookCauses
+    .widget-title
+      %h3=translate('contact_us')
+      .clear
+    .text-widget-body
+      %address.vcard
+        %p.adr
+          %b=translate('address')
+          \-
+          %span.region="#{translate('batn_baqr')} - "
+          %span.postal-code="#{translate('cairo')} - "
+          %span.country-name="#{translate('egypt')} "
+        %b="#{translate('phone')}:"
+        %span.tel +1 (514)456 7899
+        %br/
+        %b="#{translate("email")}:"
+        %span.email net3allem@hotmail.com
+        %br/
+        %b="#{translate('website')}:"
+        %span.url www.net3allem.com
+        %br/
+  .clear
+.clear
