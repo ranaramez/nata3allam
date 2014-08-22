@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
     request = Request.new
     request.update_attributes(params[:request])
     flash[:success] = I18n.translate('thank_you_msg')
-    student = Student.find(params[:request][:student_id])
+    student = Student.where(_id: params[:request][:student_id]).first
     redirect_to student_path(student)
   end
 
