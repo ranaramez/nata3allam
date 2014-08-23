@@ -1,0 +1,33 @@
+=javascript_include_tag :application, "application"
+%ul.breadcrumb
+  %li="المواد"
+  %li.divider
+  %li= @subject.description
+
+%h3= @subject.description
+.innerLR
+  / Widget
+  .widget.widget-heading-simple.widget-body-white.widget-employees
+    / // Widget Heading END
+    .widget-body.padding-none
+      .row-fluid.row-merge
+        .span4.listWrapper#lessons-list
+          = render partial: "lessons_list", locals: { lessons: @subject.lessons }
+        .span8.detailsWrapper
+          .innerAll
+            .title
+              .row-fluid
+                %h3.text-primary
+                  ="إضافة درس جديد"
+            %hr
+            .separator.bottom
+            .body
+              .row-fluid
+                %span7
+                  = form_for [:admin, @subject] do |f|
+                    = f.fields_for :lessons do |ff|
+                      = ff.text_field :description, placeholder: "إسم الدرس"
+                    .separator.bottom
+                    .span3.text-right.offset1
+                      %button.btn.btn-medium.btn-block.btn-default{type: "submit"}
+                        ="إضافة درس جديد"                          

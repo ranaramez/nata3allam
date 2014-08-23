@@ -74,7 +74,9 @@
           .media
             %img.media-object.pull-left.thumb{ src: "http://2.s3.envato.com/files/50444644/80-avatar.jpg", style: "width: 51px; height: 51px;"}
             .media-body
-              %h4.media-heading=pair[0].description
+              %h4.media-heading
+                = link_to admin_subject_path(pair[0].subject) do
+                  =pair[0].description
               %span=pair[0].teachers_names
               %br
               = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[0], :lessons => pair[0].get_lessons(@start_date) } 
@@ -85,7 +87,9 @@
             .media
               %img.media-object.pull-left.thumb{ src: "http://1.s3.envato.com/files/50438174/tf-avatar.jpg", style: "width: 51px; height: 51px;"}
               .media-body
-                %h4.media-heading=pair[1].description
+                %h4.media-heading
+                  = link_to admin_subject_path(pair[1].subject) do
+                    =pair[1].description
                 %span=pair[1].teachers_names
                 %br
                 = render :partial => "class_subjects/lessons", :locals => { :class_subject => pair[1], :lessons => pair[1].get_lessons(@start_date) }

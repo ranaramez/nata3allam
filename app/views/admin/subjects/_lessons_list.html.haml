@@ -1,0 +1,17 @@
+.innerAll
+  %form.form-inline{autocomplete: "off"}
+    .widget-search.separator.bottom
+      %button.btn.btn-inverse.pull-left{type: "button"}
+        %i.icon-search
+      .overflow-hidden
+        %input{placeholder: "البحث عن درس ..", type: "text", value: "", onkeyup:"filter(this,'lessonsList')"}/
+%span.results
+  =format_number(lessons.count)
+  دروس
+  %i.icon-circle-arrow-down
+%ul.list.unstyled{id: 'lessonsList'}
+  - lessons.each do |lesson|
+    %li
+      .media.innerAll
+        .media-body
+          %span.strong= lesson.description

@@ -27,6 +27,7 @@ Nata3allam::Application.routes.draw do
       get :preview
     end
     resources :requests, only: [:index, :show, :update]
+    resources :subjects, only: [:show, :update]
   end
 
   match 'search/autocomplete', :to => 'search#autocomplete',  :as => 'autocomplete'
