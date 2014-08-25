@@ -43,9 +43,9 @@ class Person
     nil
   end
 
-  def avatar_preview_url
+  def avatar_large_url
     if self.avatar.present?
-      self.avatar.preview.url
+      self.avatar.large.url
     else
       person_gender = self.gender || :male
       "/defaults/students/avatar/#{person_gender}.png"

@@ -2,7 +2,7 @@
   .candidate.radius.grid_4{style: "height: 360px; overflow: auto;"}
     .candidate-margins
       %a{href: student_path(@student)}
-        %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_preview_url}", width: "224"}/
+        %img.attachment-candidate-thumb.wp-post-image{ height: "235", src: "#{@student.avatar_large_url}", width: "224"}/
         .name
           = @student.first_name
   .students-preview.grid_9
