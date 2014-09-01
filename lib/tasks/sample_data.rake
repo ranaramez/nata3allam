@@ -21,6 +21,8 @@ namespace :sample_data do
   end
 
   task :import_pics => :environment do
+    path = 'public/images/new-pics'
+    Importer::Importer.import_pics path
     path = 'public/images/girls-pics'
     Importer::Importer.import_pics path
     path = 'public/images/boys-pics'

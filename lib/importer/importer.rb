@@ -193,11 +193,14 @@ class Importer::Importer
       begin
         student = Student.find student_id
       rescue Exception
-        puts "unable to find student: #{student_id}"
-        next
+        student = Student.where(first_name: /#{student_id}/, last_name: /#{prefix.split('_')[1]}/).first
+        unless student.present?
+          puts "unable to find student: #{student_id}"
+          next
+        end
       end
       #puts open(Rails.root.join("#{path}/#{filename}"))
-      student.avatar = open(Rails.root.join("#{path}/#{filename}"))
+      student.remote_avatar_url = open(Rails.root.join("#{path}/#{filename}"))
       student.save!
     end
   end
