@@ -200,7 +200,7 @@ class Importer::Importer
         end
       end
       #puts open(Rails.root.join("#{path}/#{filename}"))
-      student.remote_avatar_url = open(Rails.root.join("#{path}/#{filename}"))
+      student.avatar = open(Rails.root.join("#{path}/#{filename}"))
       student.save!
     end
   end
