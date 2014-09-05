@@ -3,48 +3,46 @@
     .container_16
       %hgroup.fleft.grid_5
         %h1#site-title
-          %a{href: "http://net3allem.com/", rel: "home", title: "Net3allem - "}
+          %a{href: "http://net3allem.com/?lang=#{locale}", rel: "home", title: "Net3allem - "}
             %img{src: "http://net3allem.com/wp-content/uploads/2013/09/net3allemlogoeng-051.png"}
         %h2#site-description
       %nav#site-navigation.site-navigation.main-navigation.grid_11{role: "navigation"}
         .menu-main-menu-container
           %ul#menu-main-menu.nav-menu
             %li.menu-item
-              %a{href: "http://net3allem.com/"}= translate('home')
+              %a{href: "http://net3allem.com/?lang=#{locale}"}= translate('home')
             %li.menu-item
-              %a{href: "http://net3allem.com/?page_id=47"}=translate('about_us')
+              %a{href: "http://net3allem.com/?page_id=47&lang=#{locale}"}=translate('about_us')
             %li.menu-item
-              %a{href: "http://net3allem.com/?page_id=23"}= translate('projects')
+              %a{href: "http://net3allem.com/?page_id=89&lang=#{locale}"}= translate('projects')
               %ul.sub-menu
                 %li.menu-item.menu-item-type-custom.menu-item-object-custom
-                  %a{href: "http://net3allem.com/?p=1"}= translate('montessori')
+                  %a{href: "http://net3allem.com/?p=1&lang=#{locale}"}= translate('montessori')
                 %li.menu-item.menu-item-type-custom.menu-item-object-custom
-                  %a{href: "http://net3allem.com/?p=359"}= translate('foundation')
+                  %a{href: "http://net3allem.com/?p=359&lang=#{locale}"}= translate('foundation')
                 %li.menu-item.menu-item-type-custom.menu-item-object-custom
-                  %a{href: "http://net3allem.com/?p=350"}=translate('teenager')
+                  %a{href: "http://net3allem.com/?p=350&lang=#{locale}"}=translate('teenager')
                 %li.menu-item.menu-item-type-custom.menu-item-object-custom
-                  %a{href: "http://net3allem.com/?p=273"}= translate('literacy')
+                  %a{href: "http://net3allem.com/?p=273&lang=#{locale}"}= translate('literacy')
+            %li.menu-item
+              %a{href: "http://net3allem.com/?page_id=89&lang=#{locale}"}=translate('team')
             %li.menu-item
               %a{href: "#"}=translate('events')
               %ul.sub-menu
                 %li.menu-item
-                  %a{href: "http://net3allem.com/?page_id=77"}=translate('upcoming_events')
+                  %a{href: "http://net3allem.com/?page_id=77&lang=#{locale}"}=translate('upcoming_events')
                 %li.menu-item
-                  %a{href: "http://net3allem.com/?page_id=140"}=translate('past_events')
+                  %a{href: "http://net3allem.com/?page_id=140&lang=#{locale}"}=translate('past_events')
             %li.menu-item
-              %a{href: "http://net3allem.com/?page_id=9"}=translate('success_stories')
-            %li.menu-item
-              %a{href: "http://net3allem.com/?page_id=2"}=translate('contribute')
+              %a{href: "http://net3allem.com/?page_id=89&lang=#{locale}"}=translate('contribute')
               %ul.sub-menu
-                %li.menu-item
-                  %a{href: "http://net3allem.com/?page_id=47"}=translate('volunteer')
                 %li.menu-item
                   = link_to students_path do
                     = translate('foster_child')
                 %li.menu-item
-                  %a{href: "http://net3allem.com/?page_id=1441"}=translate('donate')
+                  %a{href: "http://net3allem.com/?page_id=1441&lang=#{locale}"}=translate('donate')
             %li.menu-item
-              %a{href: "http://net3allem.com/?page_id=624"}=translate('gallery')
+              %a{href: "http://net3allem.com/?page_id=624&lang=#{locale}"}=translate('gallery')
       / .site-navigation .main-navigation
       .grid_16.mob-nav
       .clear

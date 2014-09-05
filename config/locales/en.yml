@@ -22,7 +22,8 @@ en:
   "student_search": " Search students.."
   "home": "Home"
   "about_us": "About us"
-  "projects": "Projects"
+  "projects": "Current Projects"
+  "team": "Team"
   "events": "Events"
   "upcoming_events": "Upcoming Events"
   "past_events": "Past Events"
@@ -33,7 +34,7 @@ en:
   "success_stories": "Success Stories"
   "contribute": "Contribute"
   "volunteer": "Volunteer"
-  "foster_child": "Foster a Child"
+  "foster_child": "Educate a Child"
   "donate": "Donate"
   "gallery": "Our Gallery"
   "our_children": 'Our Children'
